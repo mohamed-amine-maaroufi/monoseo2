@@ -2,6 +2,31 @@
 {% block title_page %} Add key word {% endblock %}
 
 {% block content %}
+<style>
+        #loader {
+            border: 12px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 12px solid #444444;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .center {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
 
 <section class="content" style="padding-top: 130px;">
     <div class="content__inner">
@@ -22,32 +47,31 @@
 
                     {% if messages %}
 
-						<div class="span12">
-							{% for message in messages %}
-								{% if message.tags == 'success' %}
-									<div class="alert alert-success" role="alert">
-										{{ message|safe }}
-									</div>
-								{% endif %}
+                    <div class="span12">
+                        {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message|safe }}
+                        </div>
+                        {% endif %}
 
-								{% if message.tags == 'error' %}
-									<div class="alert alert-danger" role="alert">
-										{{ message|safe }}
-									</div>
-								{% endif %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message|safe }}
+                        </div>
+                        {% endif %}
 
-							{% endfor %}
-						</div>
+                        {% endfor %}
+                    </div>
                     {% endif %}
                 </center>
 
-				{% if projects %}
+                {% if projects %}
 
                 <form action="/search/" method="POST">
                     {% csrf_token %}
 
                     <div class="login__block__body">
-
 
 
                         <div class="form-group">
@@ -85,29 +109,32 @@
 
 
                         <div class="search-button">
-                            <button style="width: 50px height100px;" type="submit">Search</button>
+                            <button style="width: 50px height100px;" onclick="showLoaderOnClick('/search/')" type="submit">Search</button>
                         </div>
+
+
                     </div>
 
                 </form>
 
-				{% else %}
-						<div class="alert alert-danger" role="alert">
-							<h3> You don't any have any project, create new one then make quick search </h3>
-							<div class="col-sm-12 col-md-4 col-lg-2 text-center">
-                                <a href="{% url 'createproject' %}" class="btn btn-primary waves-effect"><i
-                                        class="zmdi zmdi-plus-circle"></i> Create project</a>
+                {% else %}
+                <div class="alert alert-danger" role="alert">
+                    <h3> You don't any have any project, create new one then make quick search </h3>
+                    <div class="col-sm-12 col-md-4 col-lg-2 text-center">
+                        <a href="{% url 'createproject' %}" class="btn btn-primary waves-effect"><i
+                                class="zmdi zmdi-plus-circle"></i> Create project</a>
 
-                            </div>
-                        </div>
-				{% endif %}
+                    </div>
+                </div>
+                {% endif %}
             </div>
 
             {% if result %}
 
             <br>
             <center>
-                <p><h3 style="color: green"> Google Result</h3></p>
+                <p>
+                <h3 style="color: green"> Google Result</h3></p>
                 <p><h4 style="color: green"> Key word : {{keyword}} | Domain : {{domain}} | Sector : {{sector}}</h4></p>
             </center>
 
@@ -128,7 +155,7 @@
                         <td query-amounts="36" align="left">
                             <a target="_blank" href="{{i}}"><i class="zmdi zmdi-key"></i> &nbsp; {{i}}</a>
                         </td>
-                        <td align="right"><a target="_blank" href=""> analyse </a>
+                        <td align="right"><a href="{% url 'analyse' %}"> analyse </a>
                         </td>
                         <!-- <td align='center'><i style='font-size: 1.2em;' class='zmdi zmdi-more-vert'></i></td> -->
                     </tr>

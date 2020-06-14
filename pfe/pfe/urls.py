@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^projets/$', views.projets, name='projets'),
     url(r'^rapport/$', views.rapport, name='rapport'),
     url(r'^search/$', views.searchkeyword, name='search'),
+    url(r'^analyse/$', views.analyse, name='analyse'),
     url(r'^addquickwork/(?P<id>[0-9]+)$', views.addquickwork, name='addquickwork'),
     url(r'^keywords/(?P<id>[0-9]+)$', views.keywords, name='keywords'),
     url(r'^deleteproject/(?P<id>[0-9]+)$', views.deleteproject, name='deleteproject'),

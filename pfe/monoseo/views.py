@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
 from monoseo.forms import UserForm,UserProfileInfoForm
 from django.contrib.auth import authenticate, login, logout
@@ -10,7 +11,13 @@ from django.db import IntegrityError
 from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
+import requests
+from bs4 import BeautifulSoup
+import re
+import sys
 
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 #@login_required(login_url='loginuser/')
 def index(request):
@@ -232,3 +239,118 @@ def deletekeyword(request,id):
         return HttpResponseRedirect("/projets")
 
     return render(request, "projects.html")
+
+
+def getcpr(code):
+    copyrightTexts = ""
+    copyrightTexts = code(text=re.compile('copy'))
+    if copyrightTexts != "":
+        copyrightTexts = code(text=re.compile('©'))
+    elif copyrightTexts != "":
+        copyrightTexts = code(text=re.compile('& copy '))
+    else:
+        copyrightTexts = copyrightTexts
+    print(copyrightTexts )
+    return copyrightTexts
+
+
+
+def geturls(code):
+    tags = code.find_all("a")
+    l = []
+    x = ''
+    for i in tags:
+        try:
+            x = i['href']
+        except KeyError:
+            x ='none'
+        if  x.startswith('http'
+                         ''):
+            l.append(x)
+    return l
+
+
+def getimages(code):
+    tags = code.find_all("img")
+    l = []
+    x = ''
+    for i in tags:
+        try:
+            x = i['src']
+        except KeyError:
+            x ='none'
+        #if  (x.startswith('http') and( x.endswith('.png') or  x.endswith('.jpg')  or x.endswith('.jpeg'))) :
+        if  (x.startswith('http') and(  ('.png' in x) or  ('.jpg' in x) or ('.jpeg' in x))) :
+            l.append(x)
+    return l
+
+def getps(code):
+    tags = code.find_all("p")
+    tags = code.find_all("h1")
+    l = []
+    x = ''
+    for i in tags:
+        l.append(i)
+    return l
+
+
+def is_meta_description(tag):
+    try:
+        return tag.name == 'meta' and tag['name'] == 'description'
+    except KeyError:
+        return 'val'
+
+def getdescription(code):
+    meta_tag = code.find('meta', attrs={'name': 'description'})
+    print(meta_tag)
+    try:
+        content = meta_tag['content']
+    except TypeError:
+        content = "no desc"
+    return content
+
+def getvideos(code):
+
+    tags = code.find_all("video")
+    l = []
+    x = ''
+    for i in tags:
+        try:
+            x = i['src']
+        except KeyError:
+            x ='none'
+        #if  (x.startswith('http') and( x.endswith('.png') or  x.endswith('.jpg')  or x.endswith('.jpeg'))) :
+        if  (x.startswith('http') and(  ('.mp4' in x) or  ('.avi' in x) )) :
+            l.append(x)
+    return l
+
+
+def analyse(request):
+    res = {}
+    urldetected = request.GET.get('link', '')
+    link = "https://www.planetsports.asia/"
+
+    print("***************")
+    print("urldetected")
+    print(urldetected)
+    print("link")
+    print(link)
+
+    page = requests.get(link)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    c1 = geturls(soup)
+    c2 = getimages(soup)
+    c3 = getps(soup)
+    c4 = getdescription(soup)
+    c5 = getvideos(soup)
+    c6 = getcpr(soup)
+
+    res.update({"urls": c1})
+    res.update({"images": c2})
+    res.update({"ps": c3})
+    res.update({"description": c4})
+    res.update({"videos": c5})
+    res.update({"copy": c6})
+
+    # return HttpResponse(soup)
+    return render(request, "analyse.html", {"res": res, 'site': link})
