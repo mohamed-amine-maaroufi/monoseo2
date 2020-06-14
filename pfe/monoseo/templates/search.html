@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block title_page %} Add key word {% endblock %}
+
+{% block content %}
+
+<section class="content" style="padding-top: 130px;">
+    <div class="content__inner">
+        <header class="content__title">
+            <h1>Search</h1>
+
+        </header>
+
+        <div class="card">
+            <div class="card-header" style="background-color: #00294e;">
+
+
+            </div>
+            <div>
+
+                <center>
+                    <h1> Quick search</h1>
+
+                    {% if messages %}
+
+						<div class="span12">
+							{% for message in messages %}
+								{% if message.tags == 'success' %}
+									<div class="alert alert-success" role="alert">
+										{{ message|safe }}
+									</div>
+								{% endif %}
+
+								{% if message.tags == 'error' %}
+									<div class="alert alert-danger" role="alert">
+										{{ message|safe }}
+									</div>
+								{% endif %}
+
+							{% endfor %}
+						</div>
+                    {% endif %}
+                </center>
+
+				{% if projects %}
+
+                <form action="/search/" method="POST">
+                    {% csrf_token %}
+
+                    <div class="login__block__body">
+
+
+
+                        <div class="form-group">
+                            <label>Project</label>
+                            <select class="form-control" name="id_project" id="">
+                                {% for project in projects %}
+                                <option value="{{project.id}}">{{project.name}}</option>
+                                {% endfor%}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Key word</label>
+
+                            <input type="text" name="keyword" id="id_username" required="true" class="form-control"
+                                   maxlength="150">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Domain</label>
+                            <select name="domain" class="form-control" id="">
+                                <option value="tn">tn</option>
+                                <option value="fr">fr</option>
+                                <option value="com">com</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Sector</label>
+
+                            <input type="text" name="sector" id="id_username" required="true" class="form-control"
+                                   maxlength="150">
+                        </div>
+
+
+                        <div class="search-button">
+                            <button style="width: 50px height100px;" type="submit">Search</button>
+                        </div>
+                    </div>
+
+                </form>
+
+				{% else %}
+						<div class="alert alert-danger" role="alert">
+							<h3> You don't any have any project, create new one then make quick search </h3>
+							<div class="col-sm-12 col-md-4 col-lg-2 text-center">
+                                <a href="{% url 'createproject' %}" class="btn btn-primary waves-effect"><i
+                                        class="zmdi zmdi-plus-circle"></i> Create project</a>
+
+                            </div>
+                        </div>
+				{% endif %}
+            </div>
+
+            {% if result %}
+
+            <br>
+            <center>
+                <p><h3 style="color: green"> Google Result</h3></p>
+                <p><h4 style="color: green"> Key word : {{keyword}} | Domain : {{domain}} | Sector : {{sector}}</h4></p>
+            </center>
+
+            <div class="card-block p-4">
+                <table style="width: 100%;" class="table table-sorting table-striped table-hover"
+                       id="top_keywords_table">
+                    <thead>
+                    <tr class="bg-deep-purple color-white">
+                        <th>Site</th>
+                        <th></th>
+                        <!-- <th>&nbsp;</th> -->
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for i in result %}
+                    <tr>
+                        <td query-amounts="36" align="left">
+                            <a target="_blank" href="{{i}}"><i class="zmdi zmdi-key"></i> &nbsp; {{i}}</a>
+                        </td>
+                        <td align="right"><a target="_blank" href=""> analyse </a>
+                        </td>
+                        <!-- <td align='center'><i style='font-size: 1.2em;' class='zmdi zmdi-more-vert'></i></td> -->
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+
+            <br>
+
+
+            {% endif %}
+
+
+        </div>
+</section>
+
+{% endblock %}

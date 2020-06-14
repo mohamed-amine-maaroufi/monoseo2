@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title_page %} Projects {% endblock %}
+
+{% block content %}
+<section class="content" style="padding-top: 130px;">
+    <div class="content__inner">
+        <header class="content__title">
+            <h1>Projects</h1>
+            <small class="hidden-xs-down">View, edit and delete your projects from this panel.</small>
+
+
+        </header>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                <div class="card bg-sw-blue color-white">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-8 col-lg-10">
+
+                                Visible Projects {{request.user}}
+
+                            </div>
+
+
+                            <div class="col-sm-12 col-md-4 col-lg-2 text-center">
+                                <a href="{% url 'createproject' %}" class="btn btn-primary waves-effect"><i
+                                        class="zmdi zmdi-plus-circle"></i> Create project</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div id="warnings">
+
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+                 {% if messages %}
+                        <div class="span12">
+                        {% for message in messages %}
+                            {% if message.tags == 'success' %}
+									<div class="alert alert-success" role="alert">
+										{{ message|safe }}
+									</div>
+								{% endif %}
+
+								{% if message.tags == 'error' %}
+									<div class="alert alert-danger" role="alert">
+										{{ message|safe }}
+									</div>
+								{% endif %}
+                        {% endfor %}
+                        </div>
+                {% endif %}
+
+                <div class="card">
+                    <div class="tab-container">
+
+
+                        <div class="tab-content p-5">
+
+                            <div class="tab-pane active fade show" id="shown_projects" role="tabpanel">
+
+
+                                <table style="width: 100%"
+                                       class="table table-sorting table-striped table-hover tab_table" id="main_table">
+                                    <thead>
+                                    <tr class="color-white">
+                                        <th rowspan="1" colspan="10" class="bg-teal hidden-lg-down">
+
+
+                                        </th>
+                                    </tr>
+
+                                    <tr class="color-white">
+
+                                        <th class="bg-sw-blue">ID</th>
+                                        <th class="bg-sw-blue">Project Name</th>
+                                        <th class="bg-sw-blue">Created At</th>
+                                        <th class="bg-sw-blue">Type</th>
+                                        <th class="bg-sw-blue hidden-md-down" data-sort="int">Key words</th>
+                                        <th class="bg-sw-blue hidden-md-down" data-sort="int">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                {% if projects %}
+                                    {% for i in projects %}
+
+                                    <tr class="project_row" data-id="3" id="row_3">
+
+                                        <td class="text-center " data-sort-value="regular">{{i.id}}</td>
+                                        <td class="text-center " data-sort-value="regular">{{i.name}}</td>
+                                        <td class="text-center " data-sort-value="regular">{{i.date_created}}</td>
+                                        <td class="text-center " data-sort-value="regular">{{i.type}}</td>
+                                        <td class="text-center " data-sort-value="regular"><a
+                                                href="/keywords/{{i.id}}">Show key words</a>
+                                        <td class="text-center hidden-md-down" data-sort-value="1">
+
+
+                                            <form action="/deleteproject/{{ i.id }}"
+                                                  method="post" style="display: inline;" onsubmit="window.mytest()">
+                                                {% csrf_token %}
+
+
+                                                <button type="submit"
+                                                    class="btn btn-danger btn waves-effect a_projects_quick_add_btn"
+                                                    data-project-id="3"><i class="zmdi zmdi-delete"></i> <a
+                                                    style="color: white;" > Delete </a></button>
+                                            </form>
+                                            <script type="text/javascript">
+                                                window.mytest = function() { var isValid = confirm('Are you sure ?');if (!isValid) { event.preventDefault();  alert("It wont delete. Yay!");}}
+                                            </script>
+
+                                         <button type="button" class="btn btn-success btn waves-effect a_projects_quick_add_btn" data-project-id="3"><i class="zmdi zmdi-plus-circle"></i> <a style="color: white;" href="/addquickwork/{{i.id}}"> Quick Add </a> </button>
+                                        </td>
+
+                                        </td>
+                                      </tr>
+
+
+                                    {% endfor %}
+
+                                {% else %}
+
+                                    <div class="alert alert-info" role="alert">
+                                        <h3>There is no project created, if you want create a new one </h3>
+                                    </div>
+
+                                {% endif %}
+
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</section>
+{% endblock %}

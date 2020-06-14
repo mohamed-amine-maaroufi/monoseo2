@@ -1,0 +1,1733 @@
+{% load staticfiles %}
+<html lang="en"><head>
+		        <meta charset="utf-8">
+		        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		        <!-- Vendor styles -->
+		        <link rel="stylesheet" href="{% static 'material-design-iconic-font.min.css' %}">
+		        <link rel="stylesheet" href="{% static 'animate.min.css' %}">
+
+				<title>Alerts</title>
+
+				<script type="text/javascript" defer="" async="" src="https://www.serpwoo.com/analytics/piwik.js"></script><script type="text/javascript">
+				var WID = 'm3QutO3a2hSqq9BKUd0KUw';
+				</script><style>@media print {#ghostery-purple-box {display:none !important}}</style>
+				
+				
+		        <!-- App styles -->
+				<link rel="stylesheet" href="{% static 'app-1585000005.css' %}">
+				<link rel="stylesheet" href="{% static 'bootstrap-colorpicker.css' %}">
+				<link rel="stylesheet" href="{% static 'morph-stripe-1570000000.css' %}">
+				<link rel="stylesheet" href="{% static 'bootstrap-datetimepicker.css' %}">
+				<link rel="stylesheet" href="{% static 'basictable.css' %}">
+				    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"> 
+				
+		<style type="text/css">
+			table {
+				border-collapse: separate;
+				border-spacing: 4px;
+			}
+            #project_view, #classic_view {
+                display: none;
+            }
+			.capitalized {
+			    text-transform:capitalize;
+			}
+		</style>
+		
+				
+		    <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head><div id="ghostery-purple-box" class="ghostery-bottom ghostery-right ghostery-collapsed"><div id="ghostery-box"><div id="ghostery-count" style="background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; color: rgb(255, 255, 255);">1</div><div id="ghostery-pb-icons-container"><span id="ghostery-breaking-tracker" class="ghostery-pb-tracker" title="mouchards de page brisée" style="background: rgba(0, 0, 0, 0) url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxOHB4IiBoZWlnaHQ9IjE4cHgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4NCiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQwICgzMzc2MikgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+DQogICAgPHRpdGxlPmJyZWFraW5ncGFnZTwvdGl0bGU+DQogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+DQogICAgPGRlZnM+PC9kZWZzPg0KICAgIDxnIGlkPSJQdXJwbGUtQm94IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4NCiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQxNi4wMDAwMDAsIC00NTMuMDAwMDAwKSIgaWQ9ImJhbSEtYnJlYWtpbmctdGhlLXBhZ2UtY29weS0yIiBmaWxsPSIjRkNCQTMzIj4NCiAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQxNi4wMDAwMDAsIDQ1My4wMDAwMDApIj4NCiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNOSwwLjE5NTY1MjE3NCBDNC4xNDQzNjAyNSwwLjE5NTY1MjE3NCAwLjE5NTY1MjE3NCw0LjE0NDM2MDI1IDAuMTk1NjUyMTc0LDkgQzAuMTk1NjUyMTc0LDEzLjg1NTYzOTggNC4xNDQzNjAyNSwxNy44MDQzNDc4IDksMTcuODA0MzQ3OCBDMTMuODU1NjM5OCwxNy44MDQzNDc4IDE3LjgwNDM0NzgsMTMuODU1NjM5OCAxNy44MDQzNDc4LDkgQzE3LjgwNDM0NzgsNC4xNDQzNjAyNSAxMy44NTU2Mzk4LDAuMTk1NjUyMTc0IDksMC4xOTU2NTIxNzQgWiBNMTEuNDg1NTg5OSwxMy40MTA0NDQxIEwxMS4wNzcwNzk4LDEzLjAyMDY3NjggTDEyLjEwMDQ3MTEsMTIuMjE2OTU3OSBMMTEuMDQ2MjQ1MSwxMi4yMTY5NTc5IEwxMS4yMzQ0NzgxLDEwLjg3MDcwODcgTDkuODAzMTgxNDIsMTEuNzk1NzUxMiBMOS40MDMzMzczNCw5LjM0NTA5MzkyIEw4LjY5NDc0MjY5LDExLjA4NjU1MTkgTDcuMzI1NzIwMDksMTAuMTcwOTgxNSBMNy43NTI1Njk3NywxMS45Mjk1NyBMNi41NTQyNDY3MywxMi4zMTE0Nzc1IEw3Ljg4MjM1Nzg3LDEzLjQxMDQ0NDEgTDExLjQ4NTU4OTksMTMuNDEwNDQ0MSBaIE02LjcxNTY3NTcyLDEzLjQxMDQ0NDEgTDUuMDI4NjMxOTcsMTIuMDA2NzU3NiBMNi44Njg0Mzg3MywxMS40MzE5ODE4IEw2LjE2Mzg3NDc3LDguNDg4NTczMDkgTDguMzQ5MzEyODgsOS45NTk5NzUxMiBMOS43MDQwMjY1NCw2LjYxMjQ5MDE1IEwxMC4zNTAzNDcxLDEwLjU1NjcxODIgTDEyLjE5NDk5MDcsOS4zNzY1MzMyOCBMMTEuODk4OTM2OCwxMS40NzY5MjM5IEwxNC4yNjI5MzQzLDExLjQ3NjkyMzkgTDEyLjIxMjkyNzIsMTMuMDc4OTIwMiBMMTIuNTY3MjI0NSwxMy40MTA0NDQxIEwxNS4zMzEyNjc3LDEzLjQxMDQ0NDEgTDE0LjQ3Mzk0MDcsMTIuNTk4NjYzOSBMMTcuMjA3MzUwNiwxMC40NjY4MzM5IEwxMy4wNjA3ODIxLDEwLjQ2NjgzMzkgTDEzLjQ5NjI5NzcsNy4zNDg2OTUgTDExLjA5OTg1MzIsOC44Nzg5NDUwNSBMMTAuMTIxMjAyNiwyLjg5Mjc3MTMgTDcuODc3NzIyNTgsOC40MjU0OTI4NSBMNC41NzA1NDQ0Nyw2LjIwMzk4MDEgTDUuNjY1NDgwNDEsMTAuNzUwMzkyNyBMMi45NTEwMTQ3MiwxMS41OTgyNDc2IEw1LjEzNjQ1MjgzLDEzLjQxMDQ0NDEgTDYuNzE1Njc1NzIsMTMuNDEwNDQ0MSBaIiBpZD0iYnJlYWtpbmdwYWdlIj48L3BhdGg+DQogICAgICAgICAgICA8L2c+DQogICAgICAgIDwvZz4NCiAgICA8L2c+DQo8L3N2Zz4=&quot;) repeat scroll 0% 0%; opacity: 0.5;"></span><span id="ghostery-slow-tracker" class="ghostery-pb-tracker" title="Afficher les mouchards" style="background: rgba(0, 0, 0, 0) url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxN3B4IiBoZWlnaHQ9IjE3cHgiIHZpZXdCb3g9IjAgMCAxNyAxNyIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4NCiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQwICgzMzc2MikgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+DQogICAgPHRpdGxlPnNsb3d0cmFja2VyczwvdGl0bGU+DQogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+DQogICAgPGRlZnM+PC9kZWZzPg0KICAgIDxnIGlkPSJQdXJwbGUtQm94IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4NCiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTM5NS4wMDAwMDAsIC00NTQuMDAwMDAwKSIgaWQ9InNsb3d0cmFja2VycyIgZmlsbD0iI0ZDQkEzMyI+DQogICAgICAgICAgICA8cGF0aCBkPSJNNDAzLjUsNDU0IEMzOTguODEyMjEsNDU0IDM5NSw0NTcuODEyMjEgMzk1LDQ2Mi41IEMzOTUsNDY3LjE4Nzc5IDM5OC44MTIyMSw0NzEgNDAzLjUsNDcxIEM0MDguMTg3NzksNDcxIDQxMiw0NjcuMTg3NzkgNDEyLDQ2Mi41IEM0MTIsNDU3LjgxMjIxIDQwOC4xODc3OSw0NTQgNDAzLjUsNDU0IFogTTQwOS42MDk1ODQsNDY1LjE3ODY1NCBDNDA5LjUzMDI1OSw0NjUuMTU0MDkgNDA4LjY3NzI4Myw0NjQuNzQ2NDIgNDA3LjU2MTA5MSw0NjQuMzYyNjM3IEM0MDguNDg0Mzc4LDQ2My43NDU2MSA0MDkuMDk0NDE4LDQ2Mi42OTM2NDUgNDA5LjA5NDQxOCw0NjEuNTAxNzMzIEM0MDkuMDk0NDE4LDQ1OS42MDU1ODEgNDA3LjU1MTQwMSw0NTguMDYyMzM4IDQwNS42NTUyNDksNDU4LjA2MjMzOCBDNDAzLjc1OTA5Nyw0NTguMDYyMzM4IDQwMi4yMTU4NTQsNDU5LjYwNTU4MSA0MDIuMjE1ODU0LDQ2MS41MDE3MzMgQzQwMi4yMTU4NTQsNDYyLjA0OTM1IDQwMi4zNDUyMDgsNDYyLjU2Njc2OSA0MDIuNTczMjY5LDQ2My4wMjY0OTcgQzQwMi43ODgwMzQsNDYzLjA2ODYzOCA0MDMuMzQ0NDQsNDYzLjE3NTIzMiA0MDQuMjIzNzgyLDQ2My4zMjM5NjggQzQwNS4yMDQ1MzUsNDYzLjQ5MDI4MSA0MDUuODUyNDM2LDQ2My4zNTY0MTkgNDA2LjM5MTAzOSw0NjIuODc2NjM0IEM0MDYuNzI4MTcyLDQ2Mi41NzY0NTkgNDA2LjkyODA2NCw0NjIuMTYzNjA2IDQwNi45NTM1MjksNDYxLjcxMzc5NCBDNDA2Ljk4MDEyMSw0NjEuMjYzOTgxIDQwNi44Mjk1ODMsNDYwLjgyOTk0NCA0MDYuNTI5NDA4LDQ2MC40OTM3MTIgQzQwNi4wNDY5MTksNDU5Ljk1MjQwNSA0MDUuMjE1MTI3LDQ1OS45MDM5NTMgNDA0LjY3MjY5Myw0NjAuMzg1NTQxIEM0MDQuMjM5NTU3LDQ2MC43NzExMjYgNDA0LjE4NTAyMSw0NjEuNDQ0NDkyIDQwNC41NTIxMjcsNDYxLjg1NzM0NiBDNDA0Ljg0MDEzMyw0NjIuMTgwNTA3IDQwNS4zNjk5NDcsNDYyLjIxNzQ2NiA0MDUuNjg2Nzk5LDQ2MS45MzU3NyBDNDA1LjgwMzk4NCw0NjEuODMxODggNDA1Ljg3MzM5NCw0NjEuNjkyODM1IDQwNS44ODA2MDYsNDYxLjU0NDc3NiBDNDA1Ljg4NjY5LDQ2MS40MjQyMSA0MDUuODUwNjMzLDQ2MS4zMTA2MyA0MDUuNzgwOTk4LDQ2MS4yMzQwMDkgQzQwNS43MTg1NzQsNDYxLjE2NTUgNDA1LjYxOTE5Miw0NjEuMTI3NjQxIDQwNS41MTY4OCw0NjEuMTI4NTQyIEM0MDUuNDI5ODkyLDQ2MS4xMzEwMjEgNDA1LjMxNzIxNCw0NjEuMTY1NSA0MDUuMjQ0MTk4LDQ2MS4yMzc2MTUgQzQwNS4yMjYzOTUsNDYxLjI1NDI5MSA0MDUuMjA0NTM1LDQ2MS4yNjQ4ODMgNDA1LjE3OTc0Niw0NjEuMjY0ODgzIEM0MDUuMTI2MTExLDQ2MS4yNjQ4ODMgNDA1LjA4MzA2OCw0NjEuMjE2NDMxIDQwNS4wODMwNjgsNDYxLjE1NzYxMyBDNDA1LjA4MzA2OCw0NjEuMTIxMzMxIDQwNS4wOTc5NDEsNDYxLjA5NDk2NCA0MDUuMTE2NDIxLDQ2MS4wNjk0OTggQzQwNS4yMjYzOTUsNDYwLjkxODk2IDQwNS4zODE0NCw0NjAuODMxNzQ3IDQwNS41MzUzNTksNDYwLjgxODY3NiBDNDA1Ljc0NDAzOSw0NjAuODAxMDk5IDQwNS45MTMwNTcsNDYwLjg2MDgxOCA0MDYuMDQ2OTE5LDQ2MS4wMDc3NTEgQzQwNi4xNzk4NzksNDYxLjE1NDAwNyA0MDYuMjQ5Mjg5LDQ2MS4zNDg0OSA0MDYuMjM3MTIsNDYxLjU2MzI1NSBDNDA2LjIyMzgyNCw0NjEuODA2MTkgNDA2LjExMjk0OCw0NjIuMDMyNDQ4IDQwNS45MjM2NDksNDYyLjIwMDU2NCBDNDA1LjQ1NzE2LDQ2Mi42MTYxMjIgNDA0LjcwNzE3Myw0NjIuNTY2MDkzIDQwNC4yODU1Myw0NjIuMDkzMjk0IEM0MDMuNzg5NzQ1LDQ2MS41MzU5ODcgNDAzLjg1ODQ3OSw0NjAuNjMyMDgxIDQwNC40MzUxNjcsNDYwLjExNzgxNyBDNDA1LjEyMzQwNyw0NTkuNTA1Mjk3IDQwNi4xODI1ODQsNDU5LjU2NjgyIDQwNi43OTQyMDIsNDYwLjI1NTI4NCBDNDA3LjE1NzAyNiw0NjAuNjYyNzMgNDA3LjM0MDAxNiw0NjEuMTg4MjYyIDQwNy4zMDg0NjYsNDYxLjczMzE3NCBDNDA3LjI3NjY5MSw0NjIuMjc4OTg4IDQwNy4wMzQ2NTgsNDYyLjc3OTA1NSA0MDYuNjI2OTg3LDQ2My4xNDE2NTQgQzQwNi4xNjgzODYsNDYzLjU1MDIyNiA0MDUuNjMyMjYyLDQ2My43NDY1MTIgNDA0Ljk0NjUwMiw0NjMuNzQ2NTEyIEM0MDQuNzA1MzcsNDYzLjc0NjUxMiA0MDQuNDQ0ODU3LDQ2My43MjE3MjIgNDA0LjE2MzE2Miw0NjMuNjc0Mzk3IEM0MDMuMTkyMDk5LDQ2My41MDk2NjIgNDAyLjE1NTAwNyw0NjMuMzI0ODY5IDQwMi4wMTU5NjIsNDYzLjMwNTQ4OCBDNDAxLjMxNzEzMSw0NjMuMjEyMTkxIDQwMC43MzYxNjEsNDYyLjczNzU4OSA0MDAuNzE3NjgyLDQ2Mi4wMzk2NTkgTDQwMC44OTQ1ODcsNDU4Ljk4NzY1MyBDNDAwLjg5NDU4Nyw0NTguNzkxMzY3IDQwMC43MzUyNiw0NTguNjMxMTM4IDQwMC41MzgwNzIsNDU4LjYzMTEzOCBDNDAwLjM0MDg4NSw0NTguNjMxMTM4IDQwMC4xODE1NTgsNDU4Ljc5MDQ2NSA0MDAuMTgxNTU4LDQ1OC45ODc2NTMgQzQwMC4xODE1NTgsNDU4Ljk4NzY1MyA0MDAuMjg1NDQ3LDQ2MC44NDE0MzcgNDAwLjI5NzYxNyw0NjEuMDc1NTgzIEM0MDAuMzIwNjAzLDQ2MS41MjAyMTIgMzk5LjkxMTEzLDQ2MS44NzY3MjYgMzk5LjQ2MDQxNiw0NjEuODc2NzI2IEMzOTguOTk4NDM1LDQ2MS44NzY3MjYgMzk4LjU4NzE1OSw0NjEuNTAwODMxIDM5OC42MjM0NDEsNDYxLjAzOTUyNiBDMzk4LjY0MzQ5OCw0NjAuNzg0MTk3IDM5OC42NjQ2ODIsNDYwLjUyMDA3OSAzOTguNjg1ODY1LDQ2MC4yNzI4NjIgTDM5OC43NTk3ODIsNDU5LjAwOTUxMiBDMzk4Ljc1OTc4Miw0NTguODEzMjI2IDM5OC42MDA0NTUsNDU4LjY1Mjk5OCAzOTguNDAzMjY4LDQ1OC42NTI5OTggQzM5OC4yMDYwOCw0NTguNjUyOTk4IDM5OC4wNDY3NTMsNDU4LjgxMjMyNSAzOTguMDQ2NzUzLDQ1OS4wMDk1MTIgTDM5OC4yMjAyNzgsNDYxLjk5OTk5NyBMMzk4LjIyMDI3OCw0NjIuMDA1MTggQzM5OC4yMjAyNzgsNDY0LjA5NzYxNyAzOTkuNDE3MzczLDQ2NS44MDI4OTIgNDAxLjUxMDcxMiw0NjUuODAxMDg5IEM0MDMuNjIyNTMxLDQ2NS43OTgzODUgNDA5LjYwODY4Myw0NjUuODAxMDg5IDQwOS42MDg2ODMsNDY1LjgwMTA4OSBDNDA5Ljc4MTA4MSw0NjUuODAxMDg5IDQwOS45MjAzNTEsNDY1LjY2MTE0MyA0MDkuOTIwMzUxLDQ2NS40ODk0MjEgQzQwOS45MjAzNTEsNDY1LjMxNzAyMyA0MDkuNzczMTkzLDQ2NS4yMzA3MTEgNDA5LjYwOTU4NCw0NjUuMTc4NjU0IFoiPjwvcGF0aD4NCiAgICAgICAgPC9nPg0KICAgIDwvZz4NCjwvc3ZnPg==&quot;) repeat scroll 0% 0%; opacity: 0.5;"></span><span id="ghostery-non-secure-tracker" class="ghostery-pb-tracker" title="mouchards non sécurisés" style="background: rgba(0, 0, 0, 0) url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxOHB4IiBoZWlnaHQ9IjE4cHgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4NCiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQwICgzMzc2MikgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+DQogICAgPHRpdGxlPndhcm5pbmc8L3RpdGxlPg0KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPg0KICAgIDxkZWZzPjwvZGVmcz4NCiAgICA8ZyBpZD0iUHVycGxlLUJveCIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+DQogICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zNzMuMDAwMDAwLCAtNDUzLjAwMDAwMCkiIGlkPSJ3YXJuaW5nIiBmaWxsPSIjRkVCMDMyIj4NCiAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDM3My4wMDAwMDAsIDQ1My4wMDAwMDApIj4NCiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNOSwwLjYzMDQzNDc4MyBDNC4zODQxNDQ5MywwLjYzMDQzNDc4MyAwLjYzMDQzNDc4Myw0LjM4NDE0NDkzIDAuNjMwNDM0NzgzLDkgQzAuNjMwNDM0NzgzLDEzLjYxNTg1NTEgNC4zODQxNDQ5MywxNy4zNjk1NjUyIDksMTcuMzY5NTY1MiBDMTMuNjE1ODU1MSwxNy4zNjk1NjUyIDE3LjM2OTU2NTIsMTMuNjE1ODU1MSAxNy4zNjk1NjUyLDkgQzE3LjM2OTU2NTIsNC4zODQxNDQ5MyAxMy42MTU4NTUxLDAuNjMwNDM0NzgzIDksMC42MzA0MzQ3ODMgWiBNNC42NDI5MjgxMSwxMS43ODk4NTUxIEM1LjI1MDQxMTY1LDExLjc4OTg1NTEgNS43NTY5NTIzNCwxMS4zNjA3NTY3IDUuODc4NzE2OTMsMTAuODgxMzY5NSBDNi4wMDA0ODE1MiwxMS4zNjEyNDM3IDYuNTA3MDIyMjIsMTEuNzIzNzM2OSA3LjExNDM4NCwxMS43MjM3MzY5IEM3LjcyNDE4MTA2LDExLjcyMzczNjkgOC4yMzI2Njk5OSwxMS4zNjUwMTg0IDguMzUxNTEyMjMsMTAuODgyNzA4OSBDOC40NzA5NjMzLDExLjM2NTAxODQgOC45Nzk0NTIyMywxMS43MzY1MjIyIDkuNTg4NzYyMjQsMTEuNzM2NTIyMiBDMTAuMTk0NjYyOCwxMS43MzY1MjIyIDEwLjcwMTIwMzUsMTEuMzk0OTcyNSAxMC44MjM0NTUyLDEwLjkxNjU1OTQgQzEwLjk0NTcwNjgsMTEuMzk0OTcyNSAxMS40NTIyNDc1LDExLjc4OTM2OCAxMi4wNTgyNjk5LDExLjc4OTM2OCBDMTIuMzUzNjcwOCwxMS43ODkzNjggMTIuNjI0NzE4OCwxMS42OTkzODQgMTIuODM5NzU1LDExLjU1OTU5ODIgQzExLjAwOTUxMTUsOC43MTgwOTk3NSAxMi4xNDUzMzE2LDQuMTM3NjgxMTYgMTIuMTQ1MzMxNiw0LjEzNzY4MTE2IEM2Ljk0NjQ3MDYzLDUuMjMxNjE0MjQgNC42NjU4MTk4NSwxMC4xMDAzNzE0IDQuMDU3OTcxMDEsMTEuNjY2MTQyMiBDNC4yMzI5NDY3MywxMS43NDMyMTkyIDQuNDMxNzg4MzEsMTEuNzg5ODU1MSA0LjY0MjkyODExLDExLjc4OTg1NTEgWiIgaWQ9Indhcm5pbmd0cmFja2VycyI+PC9wYXRoPg0KICAgICAgICAgICAgPC9nPg0KICAgICAgICA8L2c+DQogICAgPC9nPg0KPC9zdmc+&quot;) repeat scroll 0% 0%; opacity: 0.5;"></span></div><div id="ghostery-title">Mouchard</div><div id="ghostery-minimize"><span id="ghostery-minimize-icon"></span></div><span id="ghostery-close" style="background: rgba(0, 0, 0, 0) url(&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnIHdpZHRoPSIxNXB4IiBoZWlnaHQ9IjE1cHgiIHZpZXdCb3g9IjAgMCAxNSAxNSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4NCiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDMuNy4yICgyODI3NikgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+DQogICAgPHRpdGxlPmNvbGxhcHNlIGNvcHkgMjwvdGl0bGU+DQogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+DQogICAgPGRlZnM+PC9kZWZzPg0KICAgIDxnIGlkPSJQdXJwbGUtQm94IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4NCiAgICAgICAgPGcgaWQ9ImNvbGxhcHNlLWNvcHktMiI+DQogICAgICAgICAgICA8Y2lyY2xlIGlkPSJPdmFsLTMxNSIgZmlsbC1vcGFjaXR5PSIwLjI3MDE1Mzk4NiIgZmlsbD0iI0Q4RDhEOCIgY3g9IjcuNSIgY3k9IjcuNSIgcj0iNy41Ij48L2NpcmNsZT4NCiAgICAgICAgICAgIDxwYXRoIGQ9Ik00LjM2LDQuMzYgTDEwLjU3NDU2MzQsMTAuNTc0NTYzNCIgaWQ9IkxpbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSI+PC9wYXRoPg0KICAgICAgICAgICAgPHBhdGggZD0iTTQuMzYsNC4zNiBMMTAuNTc0NTYzNCwxMC41NzQ1NjM0IiBpZD0iTGluZS1Db3B5IiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDcuNjAwMDAwLCA3LjYwMDAwMCkgc2NhbGUoLTEsIDEpIHRyYW5zbGF0ZSgtNy42MDAwMDAsIC03LjYwMDAwMCkgIj48L3BhdGg+DQogICAgICAgIDwvZz4NCiAgICA8L2c+DQo8L3N2Zz4=&quot;) repeat scroll 0% 0%;"></span></div><div id="ghostery-pb-background"><div id="ghostery-trackerList"><div class="ghostery-trackerContainer" category="social_media"><span id="ghostery-no-tracker" class="ghostery-pb-tracker-list"></span><span class="ghostery-tracker">Gravatar</span></div></div></div></div>
+
+		    <body data-ma-theme="blue">
+		        <main class="main">
+		            <div class="page-loader">&nbsp;</div>
+
+		            <header class="header bg-sw-blue">
+		                <div class="navigation-trigger hidden-1800-up" data-ma-action="aside-open" data-ma-target=".sidebar">
+		                    <div class="navigation-trigger__inner">
+		                        <i class="navigation-trigger__line"></i>
+		                        <i class="navigation-trigger__line"></i>
+		                        <i class="navigation-trigger__line"></i>
+		                    </div>
+		                </div>
+
+		                <div class="header__logo hidden-sm-down"> <!-- //img src="/img/members/serpwoo-q.png" style="max-width: 240px; -->
+		                    <h1 class="animated zoomIn"><a href="/q/main/"><img src="/img/members/serpwoo-q-600.png" style="max-width: 200px;"></a></h1>
+		                </div>
+
+
+		                <div id="top_nav_search_input" class="search" style="display: none;">
+		                    <div class="search__inner">
+		                        <input type="text" class="search__text" id="search_my_stuff" placeholder="Search for keywords, projects, notes, teams..." maxlength="100">
+		                        <i class="zmdi zmdi-search search__helper" data-ma-action="search-close"></i>
+		                    </div>
+
+				            <!-- Top Search Content -->
+								<div id="search_wrapper">
+									<div id="search_my_stuff_results"></div>
+								</div>
+
+		                </div>
+
+					<div id="search_wrapper_overlay"></div>
+						
+						<div id="top_nav_dropdown_input" style="display: block;">
+
+		                        <div class="fg-line">
+
+									<select id="header_dropdown_of_projects" name="header_dropdown_of_projects" style="width: 200px;"><option value="3">Beats By Dre</option><option value="2">Brands</option><option value="6">Life Insurance</option><option value="16945">Local SEO w/map packs</option><option value="5">Online Marketing</option><option value="4">Spammy Niches</option></select> &nbsp;
+
+									<a href="/q/project/3/" id="header_dropdown_of_projects_folder" class="btn btn-primary btn-sm waves-effect">Project &nbsp; <i class="zmdi zmdi-folder"></i></a> &nbsp;
+
+									<select id="header_dropdown_of_keywords" name="header_dropdown_of_keywords" style="width: 200px;"><option value="18">beats by dre</option><option value="65">beats by dre headphones</option><option value="64">cheap beats by dre</option></select> &nbsp;
+
+									<a href="/q/serp/3/18/?windowID=S2owhEiv4M" id="header_dropdown_of_keywords_serp_view" class="btn btn-primary btn-sm waves-effect">SERPs &nbsp; <i class="zmdi zmdi-key"></i></a>  &nbsp;
+
+									<!-- <a href="#/q/serp-analysis/" id="header_dropdown_of_keywords_serp_analysis" class="btn btn-primary btn-sm waves-effect">Analysis &nbsp; <i class="zmdi zmdi-assignment-check"></i></a> -->
+
+                                </div>
+
+						</div>
+
+
+		                <ul class="top-nav">
+		                    <li class="hidden-xl-up"><a href="" data-ma-action="search-open"><i class="zmdi zmdi-search"></i></a></li>
+					</ul>
+
+
+		                <ul class="top-nav">
+						<li>
+							<div class="icon_wrapper">
+								<div id="incoming_data" class="spinner3" style="display: none;">
+									<div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div>						
+								</div>
+							</div>
+		                    </li>
+
+						<li id="top_nav_search_vs_classic" class="hidden-md-down light_up_top_nav_button">
+	                            <a href="#searching" class="search_icon"><i class="tm-icon zmdi zmdi-search"></i></a>
+		                    </li>
+
+
+						<li id="top_nav_clients" class="dropdown hidden-xs-down">
+		                        <a id="open_client_data"><i id="top_nav_clients_icon" class="zmdi zmdi-apps color-white"></i></a>
+		                    </li>
+
+		                    <li class="hidden-xs-down">
+		                        <a href="" data-ma-action="aside-open" data-ma-target=".chat">
+		                            <i class="zmdi zmdi-folder"></i>
+		                        </a>
+		                    </li>
+		                </ul>
+
+
+			<div class="morph_stripe"> <!-- Start "cd-morph-dropdown" -->
+
+				<div class="globalNav top-menu-morph compact noDropdownTransition">
+
+				        <ul class="navRoot">
+				            <li class="navSection secondary">
+				                <a class="rootLink" href="#0">
+								<div id="client_name_badge" style="display: none;"></div>
+				                </a>
+
+<!--
+							 <a class="rootLink" href="#0">
+								<div id="data_slowdown" style="display: inline-block; position: relative; top: -14px; width: 90px; text-align: center;">
+		 							<span class="badge new_data_button color-white p-2" data-placement="bottom" data-html="true" data-toggle="popover" data-trigger="hover" title="" data-content="We are working on a fixing a data bug problem which is causing some keyword search results to be degraded.<br><br>The bug only impacts google results for pages 4 - 10 (search results positions: #31 - 100+).<br><br><b class='color-green'>Top 20/30 results are fine.<br><br>However Quick Glance and Charts are impacted! Just the charts, NOT THE DATA!</b>" data-original-title="Data Slowdown">&nbsp; <b>Data BUG</b> &nbsp;</span>
+		 						</div>
+							</a>
+-->
+
+				            </li>
+				            <li class="navSection primary">
+						  						  
+		  						<span id="top_nav_home" class="user_data_nav"><a id="my_home_url" class="nav-link rootLink" href="{% url 'index' %}"><i class="zmdi zmdi-home"></i> &nbsp; My Home</a></span>
+
+		  						<span id="top_nav_projects" class="user_data_nav"><a class="nav-link rootLink hasDropdown interface_all_projects" data-dropdown="projects" href="{% url 'projets' %}"><i class="zmdi zmdi-folder"></i> &nbsp; Projects</a></span>
+
+
+
+		  						<span id="top_nav_reports" class="user_data_nav"><a class="nav-link rootLink hasDropdown" data-dropdown="reports" href="{% url 'rapport' %}"><i class="zmdi zmdi-file"></i> &nbsp; Reports</a></span>
+
+
+		  						<span id="top_nav_keyword_lists" class="user_data_nav" style="display: none;"><a class="nav-link rootLink secondary hasDropdown" data-dropdown="keyword_lists" href="/keyword-finder-q/lists/"><i class="zmdi zmdi-view-list-alt"></i> &nbsp; Keyword Lists</a></span>
+
+		  						<span id="top_nav_alerts" class="user_data_nav active" style="background-color: rgb(238, 238, 238);"><a class="nav-link rootLink hasDropdown current_location" data-dropdown="alerts" href="{% url 'alert' %}"><i class="zmdi zmdi-notifications"></i> &nbsp; Alerts <sup style="border-radius: 20px; padding: 2px 4px 2px 4px; min-width: 60px; height: 1.2em; color:#fff; text-align: center; font-weight: bold;" id="nav_new_alerts_amount_main" class="bg-orange">0</sup></a></span>
+
+        <span id="top_nav_reports" class="user_data_nav">
+                                    <a class="nav-link rootLink hasDropdown" data-dropdown="reports" href="{% url 'search' %}"><i class="zmdi zmdi-file"></i> &nbsp; Search</a>
+                                </span>
+   				            </li>
+   				            <li class="navSection secondary">
+								
+								<a class="rootLink" href="#1">
+								<div id="new_data_available" style="display: none;">
+									<span class="badge badge-pill new_data_button color-white m-2 p-2" data-placement="bottom" data-toggle="popover" data-trigger="hover" title="" data-content="New data is available, you can reload the page to load it into the interface or wait till you visit another page and the new data will automatically load." data-original-title="New Data">&nbsp; <b>New Data</b> &nbsp;</span>
+								</div>
+								</a>
+
+
+				            </li>
+				        </ul>
+
+
+				    <div class="dropdownRoot">
+				        <div class="dropdownBackground" style="transform: translateX(452px) scaleX(0.707692) scaleY(1.1075);">
+				            <div class="alternateBackground" style="transform: translateY(255.53px);"></div>
+				        </div>
+				        <div class="dropdownArrow" style="transform: translateX(636px) rotate(45deg);"></div>
+				        <div class="dropdownContainer" style="transform: translateX(452px); width: 200px; height: 443px;">
+
+<!-- START - Morph Dropdown Content -->
+
+
+	<!-- Start Projects -->
+		<div class="dropdownSection left" data-dropdown="projects">
+		    <div class="dropdownContent">
+		        <div class="linkGroup">
+	            
+					<a href="/q/projects/?windowID=S2owhEiv4M" class="label interface_all_projects">Projects <span class="text-right" style="float:right;"><button class="btn btn-success btn--icon-text waves-effect"><i class="zmdi zmdi-folder"></i> View All</button></span></a>
+
+					<div class="content_horizontal_dropdown">
+
+						<div id="nav_project_rows" style="max-height: 240px; overflow-y: scroll;">
+							<table style="width: 100%; margin: 0px auto; padding: 0px;"><tbody><tr> </tr><tr class="client_filter client_filter_project" data-project-id="3"><td style="text-align: left; padding: 4px 4px 4px 12px; border-left: 3px #999999 solid; background: #f9f9f9;"><a href="/q/project/3/"><i class="zmdi zmdi-desktop-mac color-blue"></i> &nbsp; <img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12"> <span class="brightblue">Beats By Dre</span></a> <span class="color-grey">&nbsp;</span></td></tr><tr></tr><tr class="client_filter client_filter_project" data-project-id="2"><td style="text-align: left; padding: 4px 4px 4px 12px; border-left: 3px #999999 solid; background: #f9f9f9;"><a href="/q/project/2/"><i class="zmdi zmdi-desktop-mac color-blue"></i> &nbsp; <img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12"> <span class="brightblue">Brands</span></a> <span class="color-grey">&nbsp;</span></td></tr><tr></tr><tr class="client_filter client_filter_project" data-project-id="6"><td style="text-align: left; padding: 4px 4px 4px 12px; border-left: 3px #999999 solid; background: #f9f9f9;"><a href="/q/project/6/"><i class="zmdi zmdi-desktop-mac color-blue"></i> &nbsp; <img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12"> <span class="brightblue">Life Insurance</span></a> <span class="color-grey">&nbsp;</span></td></tr><tr></tr><tr class="client_filter client_filter_project" data-project-id="16945"><td style="text-align: left; padding: 4px 4px 4px 12px; border-left: 3px #999999 solid; background: #f9f9f9;"><a href="/q/project/16945/"><i class="zmdi zmdi-desktop-mac color-blue"></i> &nbsp; <img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12"> <span class="brightblue">Local SEO w/map packs</span></a> Chicago, Illinois, United States</td></tr><tr></tr><tr class="client_filter client_filter_project" data-project-id="5"><td style="text-align: left; padding: 4px 4px 4px 12px; border-left: 3px #999999 solid; background: #f9f9f9;"><a href="/q/project/5/"><i class="zmdi zmdi-desktop-mac color-blue"></i> &nbsp; <img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12"> <span class="brightblue">Online Marketing</span></a> <span class="color-grey">&nbsp;</span></td></tr><tr></tr><tr class="client_filter client_filter_project" data-project-id="4"><td style="text-align: left; padding: 4px 4px 4px 12px; border-left: 3px #999999 solid; background: #f9f9f9;"><a href="/q/project/4/"><i class="zmdi zmdi-desktop-mac color-blue"></i> &nbsp; <img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12"> <span class="brightblue">Spammy Niches</span></a> <span class="color-grey">&nbsp;</span></td></tr><tr> </tr></tbody></table>
+						</div>
+
+						<p class="text-right" style="margin: 10px;"><b class="color-deep-orange" id="total_projects_top_nav">6</b> Visible Projects</p>
+
+					</div>
+
+		        </div>
+		    </div>
+		</div>
+	<!-- END Projects -->
+
+
+	<!-- Start ZORA -->
+		<div class="dropdownSection left" data-dropdown="zoras">
+		    <div class="dropdownContent">
+		        <div class="linkGroup">
+	            
+					<a href="/q/zora/" class="label">ZORA Analysis <span class="text-right" style="float:right;"><button class="btn btn-success btn--icon-text waves-effect"><i class="zmdi zmdi-folder"></i> View All</button></span></a>
+
+					<div class="content_horizontal_dropdown">
+
+					<div id="nav_project_rows" style="max-height: 240px; overflow-y: scroll;">
+						<table style="width: 100%; margin: 0px auto; padding: 0px;"><tbody><tr>  </tr></tbody></table>
+					</div>
+
+					<p class="text-right" style="margin: 10px;"><b class="color-deep-orange" id="zora_analyses_top_nav">0</b> Analyses &nbsp; | &nbsp; <b class="color-deep-orange" id="zora_comparisons_top_nav">0</b> Comparisons &nbsp; | &nbsp; <b class="color-deep-orange" id="zora_trends_top_nav">0</b> Trends</p>
+
+					</div>
+
+		        </div>
+		    </div>
+		</div>
+	<!-- END ZORA -->
+
+	<!-- Start Reports -->
+		<div class="dropdownSection right" data-dropdown="reports">
+		    <div class="dropdownContent">
+		        <div class="linkGroup">
+
+					<span class="label">Reports 
+					<span class="text-right" style="float:right;">
+						<a href="/q/reports/schedule/" class="btn btn-primary waves-effect color-white"><i class="zmdi zmdi-calendar"></i> Schedule</a> &nbsp;
+						<a href="/q/reports/" class="btn btn-success waves-effect color-white"><i class="zmdi zmdi-file"></i> View All</a>
+					</span>
+					</span>
+
+					<div class="content_horizontal_dropdown">
+
+						<div id="nav_report_rows" style="max-height: 160px; overflow-y: scroll;">
+							<br><p>There are no currently scheduled reports.</p><table style="width: 100%; margin: 0px auto; padding: 0px;"><tbody><tr>  </tr></tbody></table>
+						</div>
+
+	<p class="text-right" style="margin: 10px;"><b class="color-deep-orange" id="total_reports_top_nav">0</b> Scheduled Reports</p>
+
+					</div>
+
+		        </div>
+		    </div>
+		</div>
+	<!-- END Reports -->
+
+
+
+	<!-- Start Notes -->
+		<div class="dropdownSection right" data-dropdown="notes">
+		    <div class="dropdownContent">
+		        <div class="linkGroup">
+
+
+					<a href="#0" class="label">Notes <span class="text-right" style="float:right;"><button class="btn btn-success btn--icon-text waves-effect" disabled=""><i class="zmdi zmdi-comment-text"></i> View All</button></span></a>
+
+					<div class="content_horizontal_dropdown">	
+
+						<div id="nav_note_rows" style="max-height: 240px; overflow-y: scroll;">
+							<br><p>It Doesn't look like you have any Notes.</p><p>You can create notes within the SERP View or Project View of your data.</p><table style="width: 100%; margin: 0px auto; padding: 0px;" class="normal_white_space">
+								
+							</table>
+						</div>
+
+	<p class="text-right" style="margin: 10px;"><b class="color-deep-orange" id="total_notes_top_nav">0</b> Notes</p>
+
+					</div>
+
+
+		        </div>
+		    </div>
+		</div>
+	<!-- END Notes -->
+
+
+	<!-- Start Keyword Lists -->
+		<div class="dropdownSection right" data-dropdown="keyword_lists">
+		    <div class="dropdownContent">
+		        <div class="smallGroup">
+
+					<span class="label">Keyword Lists <span class="text-right" style="float:right;"><a href="/keyword-finder-q/lists/" class="btn btn-success btn--icon-text waves-effect color-white"><i class="zmdi zmdi-view-list-alt"></i> View All</a></span></span>
+
+					<div class="content_horizontal_dropdown">
+						<div id="nav_list_rows" style="max-height: 240px; overflow-y: scroll;">
+							<br><p>It Doesn't look like you have any Keyword Lists.</p><p>You can create keyword lists within the Keyword Finder tool.</p><a href="/keyword-finder-q/" class="btn btn-success waves-effect p-3" style="width: 100%;">Visit Keyword Finder</a><table style="width: 100%; margin: 0px auto; padding: 0px;">
+							<tbody>
+									
+							</tbody>
+							</table>
+						</div>
+
+<p class="text-right" style="margin: 10px;"><b class="color-deep-orange">0</b> Keyword Lists</p>
+					</div>
+
+
+		        </div>
+		    </div>
+		</div>
+	<!-- END Keyword Lists -->
+
+
+
+	<!-- Start Alerts -->
+		<div class="dropdownSection right" data-dropdown="alerts">
+		    <div class="dropdownContent">
+		        <div class="smallGroup">
+
+						<span class="label">Alerts
+						
+							<span class="text-right" style="float:right;">
+								<button class="btn btn-warning btn--icon-text waves-effect color-white" id="clear_alerts_btn"><i class="zmdi zmdi-delete"></i> Clear ALL</button>
+								<a href="/q/alerts/" class="btn btn-success waves-effect color-white"><i class="zmdi zmdi-notifications"></i> View All</a>
+							</span>
+						</span>
+							
+				
+						<div class="content_horizontal_dropdown">
+
+<div id="nav_alert_rows" style="max-height: 280px; overflow-y: scroll;"><table style="width: 100%; margin: 0px auto; padding: 0px;"><tbody><tr></tr><tr class="client_filter client_filter_alert" data-project-id="5"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #ff6b68 solid; background: #f9f9f9;"><span class="brightblue">[seo] seobook.com declined by 6 pos. (28 to 34).</span> - <a href="/q/serp/5/3/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">1.1 hours ago</span></td></tr>
+ <tr class="client_filter client_filter_alert" data-project-id="5"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #ff6b68 solid; background: #f9f9f9;"><span class="brightblue">[online marketing] moz.com declined by 7 pos. (71 to 78).</span> - <a href="/q/serp/5/73/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">16.7 hours ago</span></td></tr>
+ <tr class="client_filter client_filter_alert" data-project-id="5"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #39bbb0 solid; background: #f9f9f9;"><span class="brightblue">[seo company] searchengineland.com started ranking (pos 94).</span> - <a href="/q/serp/5/12/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">17.3 hours ago</span></td></tr>
+ <tr class="client_filter client_filter_alert" data-project-id="4"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #32c787 solid; background: #f9f9f9;"><span class="brightblue">[garcinia cambogia] walgreens.com improved by 7 pos. (61 to 54).</span> - <a href="/q/serp/4/16/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">18.3 hours ago</span></td></tr>
+ <tr class="client_filter client_filter_alert" data-project-id="4"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #32c787 solid; background: #f9f9f9;"><span class="brightblue">[garcinia cambogia] gnc.com improved by 4 pos. (55 to 51).</span> - <a href="/q/serp/4/16/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">18.3 hours ago</span></td></tr>
+ <tr class="client_filter client_filter_alert" data-project-id="4"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #39bbb0 solid; background: #f9f9f9;"><span class="brightblue">[replica gucci] wikipedia.org started ranking (pos 71).</span> - <a href="/q/serp/4/9/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">18.3 hours ago</span></td></tr>
+ <tr class="client_filter client_filter_alert" data-project-id="4"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #32c787 solid; background: #f9f9f9;"><span class="brightblue">[replica gucci] ebay.com improved by 7 pos. (50 to 43).</span> - <a href="/q/serp/4/9/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">18.3 hours ago</span></td></tr>
+ <tr class="client_filter client_filter_alert" data-project-id="5"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #ff6b68 solid; background: #f9f9f9;"><span class="brightblue">[link building] bruceclay.com declined by 4 pos. (66 to 70).</span> - <a href="/q/serp/5/171/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">1.1 days ago</span></td></tr>
+ <tr class="client_filter client_filter_alert" data-project-id="5"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #32c787 solid; background: #f9f9f9;"><span class="brightblue">[link building] searchengineland.com improved by 5 pos. (15 to 10).</span> - <a href="/q/serp/5/171/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">1.1 days ago</span></td></tr>
+ <tr class="client_filter client_filter_alert" data-project-id="5"><td style="word-wrap: break-word; text-align: left; padding: 12px; border-left: 4px #32c787 solid; background: #f9f9f9;"><span class="brightblue">[seo] seobook.com improved by 8 pos. (36 to 28).</span> - <a href="/q/serp/5/3/#1">Direct Link</a>, <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em;">1.1 days ago</span></td></tr>
+ </tbody></table></div>
+
+<p class="text-right" style="margin: 10px;"><b class="color-deep-orange" id="nav_new_alerts_amount_minor">10</b> New Alerts</p>
+
+						</div>
+
+
+		        </div>
+		    </div>
+		</div>
+	<!-- END Alerts -->
+
+
+<!-- END - Morph Dropdown Content -->
+
+				        </div>
+				    </div>
+
+				</div>
+
+
+
+
+			</div> <!-- END "cd-morph-dropdown" -->
+
+
+		            </header>
+
+		            <aside class="sidebar" style="padding-top: 130px; background-color: #eeeeee;">
+		                <div class="scrollbar-inner">
+		                    <div class="user" style="background: rgba(0, 0, 0, 0) url(&quot;/img/material/bg/red.png&quot;) no-repeat scroll center center;">
+		                        <div class="user__info" data-toggle="dropdown">
+		                            <img class="user__img" src="https://www.gravatar.com/avatar/b6e17e1fe9394f8bd76e6a8a24747a4b.jpg?s=100&amp;d=https://www.serpwoo.com/img/material/default-avatar-blank2.png" alt="">
+		                            <div>
+		                                <div class="user__name" id="sidebar_user_name" style="color: #ffffff; width: 100px;">demo</div>
+		                                <div class="user__email" id="sidebar_user_plan" style="color: #ffffff; font-weight: bold;">Demo</div>
+		                            </div>
+		                            <div style="color: #ffffff; right: 12px; padding-right: 10px; font-size: 1.6em; position: absolute;">
+		                                <div><i class="zmdi zmdi-settings"></i></div>
+		                            </div>
+		                        </div>
+
+							<div class="dropdown-menu">
+								<a id="leftsidebar_account" class="dropdown-item" href="/q/account/"><i class="zmdi zmdi-account"></i> &nbsp; Account Settings</a>
+								<a id="leftsidebar_customize" class="dropdown-item" href="/q/interface/"><i class="zmdi zmdi-label"></i> &nbsp; Customization Settings</a>
+								<a id="leftsidebar_share" class="dropdown-item" href="/q/share/"><i class="zmdi zmdi-share"></i> &nbsp; Share Settings</a>
+								<a id="leftsidebar_api" class="dropdown-item" href="/q/api/"><i class="zmdi zmdi-code-setting"></i> &nbsp; API Settings</a>
+								<a id="leftsidebar_affiliate" class="dropdown-item" href="/q/affiliate/"><i class="zmdi zmdi-money-box"></i> &nbsp; Affiliate Program</a>
+									<div class="dropdown-divider"></div>
+								<a id="leftsidebar_reload" class="dropdown-item color-blue" href="#reload-data"><i class="zmdi zmdi-refresh-sync"></i> &nbsp; Reload Data</a>
+								<a id="leftsidebar_logout" class="dropdown-item" href="/q/logout/"><i class="zmdi zmdi-long-arrow-return"></i> &nbsp; Logout</a>
+							</div>
+		                    </div>
+
+		  <div class="morph-dropdown_vertical">
+			  <nav class="main-nav">
+		                    <ul class="navigation">
+
+								<li><hr></li>
+
+							<li id="leftsidebar_home_panel"><a href="/q/home/"><i class="zmdi zmdi-home"></i> Home Screen <div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="The home screen shows you the most relevant data for your projects." data-original-title="Home Screen"></i></div></a></li>
+
+								<li><hr></li>
+
+		                        <li id="leftsidebar_wizard"><a href="/q/wizard/"><i class="zmdi zmdi-wrench"></i> Project Wizard 
+								
+									<div id="project_wizard_blinker" class="status_icon_wrapper" style="display: none;">
+										<div class="status_icon"><div class="blinker blinker-eight"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div></div>
+									</div>
+								
+								<div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="Start tracking domains within your keyword's search results by creating new project(s) here." data-original-title="Project Wizard"></i></div></a></li>
+
+								<li><hr></li>
+
+<!--
+
+ 		                        <li id="leftsidebar_serp_view"><a href="/q/serp/"><i class="zmdi zmdi-eye"></i> SERP View 
+							
+ 								<div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="SERP View" data-original-title="SERP View"></i></div></a></li>
+
+ 								<li><hr></li>
+
+		                        <li id="leftsidebar_dashes"><a href="index.html"><i class="zmdi zmdi-view-dashboard"></i> Dashes <div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="Dashes provides customized views of your data - create your own dashboards for each project, team, or whatever customized way you want to see your data." data-original-title="Dashes"></i></div></a></li>
+
+		                        <li id="leftsidebar_quick_glance"><a href="index.html"><i class="zmdi zmdi-view-comfy"></i> Quick Glance <div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="Check our your latest rankings results for the keywords you are monitoring. This panel showcases traditional rank tracking data." data-original-title="Quick Glance (Rank Tracking)"></i></div></a></li>
+
+								<li><hr></li>
+
+		                        <li id="leftsidebar_serp_sightings"><a href=""><i class="zmdi zmdi-home"></i> SERP Sightings <div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="Get a detailed breakdown about a particular domain." data-original-title="SERP Sightings"></i></div></a></li>
+
+								<li><hr></li>
+-->
+
+
+							<li id="leftsidebar_keyword_finder"><a href="/keyword-finder-q/"><i class="zmdi zmdi-search"></i> Keyword Finder <i class="zmdi zmdi-star-circle color-teal" title="" data-toggle="tooltip" data-placement="top" data-original-title="Premium Feature"></i> <div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="This is our keyword research tool available to paying users. You can find new keywords grouped together by relevancy since we pull the top search results pages' keywords and display them along with the related keywords for your inputted seed keyword." data-original-title="Keyword Finder"></i></div></a></li>
+
+								<li><hr></li>
+
+							<li id="leftsidebar_monitoring"><a href="/q/monitoring/"><i class="zmdi zmdi-notifications-active"></i> Monitoring <i class="zmdi zmdi-star-circle color-teal" title="" data-toggle="tooltip" data-placement="top" data-original-title="Premium Feature"></i> <div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="Monitor mentions of your brand across the internet" data-original-title="Monitoring"></i></div></a></li>
+
+								<li><hr></li>
+
+
+	 		                        <li id="leftsidebar_zora"><a href="/q/zora/"><i class="zmdi zmdi-flash"></i> ZORA Analysis <div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="ZORA find correlating data within your keyword's search results data." data-original-title="ZORA Analysis"></i></div></a></li>
+
+ 								<li><hr></li>
+
+		                        <li id="leftsidebar_global_stats"><a href="/q/stats/"><i class="zmdi zmdi-globe"></i> Global Stats <div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="Need to know if there was a recent Google update globally or for a particular region, device, or location? Our infamous SERPWoo Volatility metrics can help you." data-original-title="Global Stats"></i></div></a></li>
+
+								<li><hr></li>
+
+		                        <li id="leftsidebar_changes"><a href="/q/changes/"><i class="zmdi zmdi-portable-wifi-changes"></i> Changes &amp; Updates 
+								
+								<div id="changes_blinker" class="status_icon_wrapper" style="display: inline-block;">
+									<div class="status_icon"><div class="blinker blinker-eight"><div class="circle"></div><div class="circle"></div><div class="circle"></div></div></div>
+								</div>
+
+								<div style="float: right; font-size: 1.2em;"><i class="zmdi zmdi-help color-deep-orange" data-toggle="popover" data-trigger="hover" title="" data-content="SERPWoo is constantly updating, checkout what's new by visiting our Changes Panel." data-original-title="Changes &amp; Updates"></i></div></a></li>
+		                    </ul>
+
+				</nav>
+
+<!--
+<center><img src="/img/kirby.gif"></center>
+-->
+			</div>
+
+
+		</div>
+		            </aside>
+
+		            <aside class="chat">
+		                <div class="chat__header">
+		                    <h2 class="chat__title"><span class="color-deep-orange" id="total_projects_right_sidebar">6</span> Visible Projects <span style="font-size: 1em;"><i class="color-blue zmdi zmdi-help" data-html="true" data-trigger="hover" data-toggle="popover" data-placement="bottom" title="" data-content="You can filter for a project below by inputted in the project's name or by device ('desktop' or 'mobile'), or by locality (example 'chicago')." data-original-title="Project Filter"></i></span></h2>
+
+		                    <div class="chat__search">
+		                        <div class="form-group">
+		                            <input id="right_sidebar_search" type="text" class="form-control" placeholder="Search...">
+		                            <i class="form-group__bar"></i>
+		                        </div>
+		                    </div>
+		                </div>
+
+		                <div class="listview listview--hover chat__buddies scrollbar-inner">
+						
+							<a class="listview__item client_filter client_filter_project_sidebar" data-project-id="3"><div class="pull-left p-3 sidebar_sparkline_chart" id="project_sparkline_3"><div id="sparkline_line_3" style="max-width: 60px;" class="flipspark"><canvas style="display: inline-block; width: 60px; height: 30px; vertical-align: top;" width="60" height="30"></canvas></div></div><div class="listview__content"><div class="listview__heading">Beats By Dre</div><p><img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12">&nbsp; 3 KWs / 8 Domains</p><div class="on_hover_reveal">Locality: <span class="color-grey">&nbsp;</span><br>Device: Desktop</div></div></a><a class="listview__item client_filter client_filter_project_sidebar" data-project-id="2"><div class="pull-left p-3 sidebar_sparkline_chart" id="project_sparkline_2"><div id="sparkline_line_2" style="max-width: 60px;" class="flipspark"><canvas style="display: inline-block; width: 60px; height: 30px; vertical-align: top;" width="60" height="30"></canvas></div></div><div class="listview__content"><div class="listview__heading">Brands</div><p><img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12">&nbsp; 6 KWs / 11 Domains</p><div class="on_hover_reveal">Locality: <span class="color-grey">&nbsp;</span><br>Device: Desktop</div></div></a><a class="listview__item client_filter client_filter_project_sidebar" data-project-id="6"><div class="pull-left p-3 sidebar_sparkline_chart" id="project_sparkline_6"><div id="sparkline_line_6" style="max-width: 60px;" class="flipspark"><canvas style="display: inline-block; width: 60px; height: 30px; vertical-align: top;" width="60" height="30"></canvas></div></div><div class="listview__content"><div class="listview__heading">Life Insurance</div><p><img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12">&nbsp; 2 KWs / 6 Domains</p><div class="on_hover_reveal">Locality: <span class="color-grey">&nbsp;</span><br>Device: Desktop</div></div></a><a class="listview__item client_filter client_filter_project_sidebar" data-project-id="16945"><div class="pull-left p-3 sidebar_sparkline_chart" id="project_sparkline_16945"><div id="sparkline_line_16945" style="max-width: 60px;" class="flipspark"><canvas style="display: inline-block; width: 60px; height: 30px; vertical-align: top;" width="60" height="30"></canvas></div></div><div class="listview__content"><div class="listview__heading">Local SEO w/map packs</div><p><img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12">&nbsp; 4 KWs / 6 Domains</p><div class="on_hover_reveal">Locality: Chicago, Illinois, United States<br>Device: Desktop</div></div></a><a class="listview__item client_filter client_filter_project_sidebar" data-project-id="5"><div class="pull-left p-3 sidebar_sparkline_chart" id="project_sparkline_5"><div id="sparkline_line_5" style="max-width: 60px;" class="flipspark"><canvas style="display: inline-block; width: 60px; height: 30px; vertical-align: top;" width="60" height="30"></canvas></div></div><div class="listview__content"><div class="listview__heading">Online Marketing</div><p><img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12">&nbsp; 8 KWs / 6 Domains</p><div class="on_hover_reveal">Locality: <span class="color-grey">&nbsp;</span><br>Device: Desktop</div></div></a><a class="listview__item client_filter client_filter_project_sidebar" data-project-id="4"><div class="pull-left p-3 sidebar_sparkline_chart" id="project_sparkline_4"><div id="sparkline_line_4" style="max-width: 60px;" class="flipspark"><canvas style="display: inline-block; width: 60px; height: 30px; vertical-align: top;" width="60" height="30"></canvas></div></div><div class="listview__content"><div class="listview__heading">Spammy Niches</div><p><img src="/img/members/flags/com.png" title="Google.com" alt="Google.com" style="position: relative; top: -2px;" width="12" height="12">&nbsp; 3 KWs / 8 Domains</p><div class="on_hover_reveal">Locality: <span class="color-grey">&nbsp;</span><br>Device: Desktop</div></div></a>
+
+							<div style="height: 150px; background-color: tranparent;">&nbsp;</div>
+		                </div>
+
+		            </aside>
+
+		            <section class="content" style="padding-top: 130px;">
+						<div class="content__inner">
+		                <header class="content__title">
+		                    <h1>Alerts</h1>
+		                    <small class="hidden-xs-down">View the most recent alerts for your projects.</small>
+
+		                    <div class="actions hidden-xs-down">
+
+								<div id="panel_account_details">
+									<span class="color-deep-orange"><span id="dash_total_keywords">0</span> / <span id="dash_keyword_capacity">3</span></span> <span data-href="#/q/quick-glance/">Keywords</span> <i class="zmdi zmdi-key"></i> <span id="dash_total_shared_keywords">&nbsp;</span> | &nbsp; <span class="color-deep-orange" id="dash_total_projects">6</span> <a href="/q/projects/?windowID=S2owhEiv4M" class="interface_all_projects bordered_link">Projects</a> <i class="zmdi zmdi-folder"></i> <span id="dash_total_shared_projects">&nbsp;</span> | &nbsp; <span class="color-deep-orange" id="dash_total_clients">1</span> <a href="/q/teams/" class="bordered_link">Teams</a> <i class="zmdi zmdi-accounts"></i>
+		                        </div>
+
+		                        <div class="dropdown actions__item">
+		                            <i data-toggle="dropdown" class="zmdi zmdi-settings" aria-expanded="false"></i>
+		                            <div class="dropdown-menu dropdown-menu-right">
+		                                <a href="#" class="dropdown-item" id="set_new_home_panel_btn"><i class="zmdi zmdi-home color-green"></i> &nbsp; Set This Panel As My Home</a>
+		                                <!-- <div class="dropdown-divider"></div> -->
+		                            </div>
+		                        </div>
+
+							</div>
+		                </header>
+						
+<div class="card">
+    <div class="card-header" style="background-color: #00294e;">
+
+		<div class="row">
+		<div class="col-sm-12 col-md-6 col-lg-9">
+			<h4 class="color-orange">Past 0 Notifications - 0 Shown</h4>
+			<small class="color-white"><span class="color-white">(0 duplicates)</span> <i style="color: #ff6d00;" class="color-white zmdi zmdi-help" data-trigger="hover" data-toggle="popover" data-placement="right" title="" data-content="Duplicates are urls/domains which have had multiple movements for a single keyword in the timeframe, only the most recent alert is shown." data-original-title="Duplicate notifications"></i></small>
+		</div>
+
+		<div class="col-sm-12 col-md-6 col-lg-3 color-white">
+				<b class="color-orange">Mode: <i style="color: #ff6d00;" class="color-white zmdi zmdi-help" data-trigger="hover" data-toggle="popover" data-placement="bottom" title="" data-content="Switch between seeing the data organized by 'Projects' or the classic mode where it just lists alerts in most recent order." data-original-title="Projects vs Classic Mode"></i></b> &nbsp;
+								
+				<span id="project_vs_classic_label">Projects Mode &nbsp;</span>
+
+                    <div id="project_vs_classic_div" class="toggle-switch toggle-switch--amber pt-2">
+                        <input id="project_vs_classic" class="toggle-switch__checkbox" checked="" type="checkbox">
+                        <i class="toggle-switch__helper"></i>
+                    </div>
+					
+				<span id="project_vs_classic_label2">&nbsp; Classic Mode</span>
+
+		</div>		
+        </div>
+
+    </div>
+
+    <div class="card-body" id="project_view" style="display: block;">
+		
+        <table style="width: 100%; margin: 0px auto; padding: 4px; background-color: #ffffff;">
+			
+<tbody><tr>
+		        <td colspan="3" style="padding: 0px; border-bottom: 4px #ffffff solid;">
+
+		<table style="width: 100%; margin: 0px auto; padding: 0px;">
+		<tbody><tr>
+
+		                                    
+		                    <td colspan="1" style="text-align: right; width:35%; padding: 20px; color: #ffffff; border-left: 80px #1d86da solid; border-right: 20px #ffffff solid; background-color: #2196f3;">
+		                        <a href="/q/project/6/" class="color-white"><img src="/img/members/flags/com.png" width="22"> &nbsp; <b>Life Insurance</b> &nbsp; <i class="color-white zmdi zmdi-folder"></i></a>
+		                    </td>
+		                    <td colspan="2" style="text-align: center; width:65%; padding: 20px; color: #666666; font-size: 1em;">
+		<span style="padding: 2px 8px 2px 8px; white-space: nowrap;">Project's Alerts</span>
+		<span style="border-radius: 2px; background: #999999; padding: 2px 8px 2px 8px; min-width: 60px; height: 1.4em; color:#ffffff; text-align: center; white-space: nowrap;">0 Shown</span> / 
+		<span style="border-radius: 2px; background: #45b34e; padding: 2px 8px 2px 8px; min-width: 60px; height: 1.4em; color:#ffffff; text-align: center; white-space: nowrap;">0 Good</span>
+		<span style="border-radius: 2px; background: #e91766; padding: 2px 8px 2px 8px; min-width: 60px; height: 1.4em; color:#ffffff; text-align: center; white-space: nowrap;">0 Not Good</span>
+		
+		<span style="border-radius: 2px; background: #00294e; padding: 2px 8px 2px 8px; min-width: 60px; height: 1.4em; color:#ffffff; text-align: center; white-space: nowrap;">0 Total</span>
+		                    </td>
+		</tr>
+		</tbody></table>
+
+		                    </td>
+		                </tr>
+
+
+		                {% for i in alerts %}
+		<tr>
+                    <td style="text-align: right; max-width: 280px; padding: 16px; border-left: 5px #45b34e solid; background: #f9f9f9;">
+                        5/8/2020 1:18:01 pm<br>
+
+                        <span style="color: #0099AA; font-style: italic; font-weight: bold; font-size: 0.9em; white-space: nowrap;">1.7 days ago</span>
+                    </td>
+                    <td style="text-align: left; padding: 16px; border-left: 5px #45b34e solid; background: #f9f9f9;">
+                        <span class="brightblue">[whole life insurance] libertymutual.com improved by 5 pos. (91 to 86).</span> - <a href="/q/serp/6/181/#1">Direct Link</a> <br><span style="font-size: 0.9em; color: #666; padding: 6px; float: right;">(<b>22,200</b> monthly searches)</span>
+                    </td>
+                    <td style="text-align: center; width: 80px; padding: 16px; background: #f9f9f9; white-space: nowrap;">
+                        <span style="border-radius: 20px; background: #45b34e; padding: 2px 8px 2px 8px; min-width: 60px; height: 1.4em; color:#f9f9f9; font-size: 1em; text-align: center;">positive tag</span>
+                    </td>
+                    </tr>
+
+                    {% endfor %}
+
+
+</tbody>
+</table>
+
+
+    </div>
+</div>
+
+
+					
+
+		                <footer class="footer hidden-xs-down">
+		                    <p>© Tik. All rights reserved.</p>
+
+		     
+		                </footer>
+
+					</div>
+		            </section>
+		        </main>
+			   
+<!-- ClientSwitch -->
+
+                          <div class="modal fade" id="ClientSwitch" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                  <div class="modal-content">
+									<div class="modal-header bg-sw-blue p-4">
+										<h2 class="modal-title pull-left color-white"><b>Team Interface Filter (<span id="client_switch_total_clients"></span>)</b>
+											<br>Use this filter to show only projects for a single team</h2>
+
+<div class="pull-right">
+  <button class="btn bg-amber waves-effect" data-dismiss="modal"><i class="zmdi zmdi-close"></i></button>
+</div>
+
+									</div>
+                                      <div class="modal-body">
+
+<div id="client_switch_body">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+
+				<div class="p-4"><p>It Doesn't look like you have created any teams yet.</p><p>You can create teams and assign projects to them in order to organize yourself better.</p><p>Click the <b>Team Panel</b> button in the bottom right corner of this pop-up and start creating your first team (it's best to already have some projects created - visit the <a href="/q/wizard/">Project Wizard</a> for that).</p></div>
+
+		</div>
+	</div>
+</div>
+
+
+                                      </div>
+                                      <div class="modal-footer bg-grey">
+
+<div class="col-sm-12 col-md-6 col-lg-6 text-center">
+	<ul id="pagination_nav" class="pagination-lg mt-2 mb-1"></ul>
+</div>
+
+<div class="col-sm-12 col-md-3 col-lg-3 text-center">
+	<a class="btn btn-success btn--icon-text waves-effect" href="/q/teams/"><i class="zmdi zmdi-accounts"></i> &nbsp; Team Panel &nbsp;</a>
+</div>
+
+<div class="col-sm-12 col-md-3 col-lg-3 text-center">
+	<button class="btn bg-sw-orange btn--icon-text waves-effect top_nav_client_select color-white highlight_top_nav_client" data-client="0"><i class="zmdi zmdi-minus-square"></i> &nbsp; Select None &nbsp;</button>
+</div>
+
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+					 
+<!-- END ClientSwitch -->
+			   
+
+		        <!-- Vendors -->
+		        <script src="/q-assets/jquery/jquery.min.js"></script>
+		        <script src="/q-assets/tether/tether.min.js"></script>
+		        <script src="/q-assets/bootstrap/bootstrap.min.js"></script>
+		        <script src="/q-assets/waves/waves.min.js"></script>
+
+
+				<!-- Keyboard Shortcut functionality -->
+				<script src="/q-assets/easykey/easykey-1.0.0.min.js"></script>
+
+				<!-- Mobile Responsive Tables -->
+				<script src="/q-assets/basic-table/jquery.basictable.min.js"></script>
+
+				<!-- Pagination (Client View) -->
+				<script src="/q-assets/jquery.twbsPagination/jquery.twbsPagination.min.js"></script>
+		
+				<!-- growl notifications -->
+				<script src="/q-assets/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+				<!-- sparklines, time, etc -->
+				<script src="/q-assets/jquery.sparkline/jquery.sparkline.min.js"></script>
+				<script src="/q-assets/moment/moment.min.js"></script>
+
+
+				<!-- Report Builder & Interface Settings -->
+				<script src="/q-assets/bootstrap-colorpicker/bootstrap-colorpicker.min.js"></script>
+
+
+				<!-- Report Builder -->
+				<script src="/q-assets/fileinput/fileinput.min.js"></script>
+				<script src="/q-assets/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+		
+				<!-- ChartJS (Quick Insight stack/bar chart) -->
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.0/Chart.bundle.min.js"></script>
+
+
+				<!-- App functions and actions -->
+				<script src="/js/cookiemonster.js"></script>
+				<script src="/q-assets/app-1547000000.min.js"></script>
+				<script src="/q-assets/_language/english-1582000001.js"></script>
+				<script src="/q-assets/interface-1584000004.js"></script>
+
+		
+				<!-- Top Navigation Menu -->
+				<script src="/q-assets/morph2/morph-stripe-1570000001.js"></script>
+
+				
+		<script type="text/javascript">
+		$(document).ready(function() {
+
+			// Show Project Or Classic
+		        //Get saved project_vs_classic type from LocalStorage
+		        var project_vs_classicStatus = localStorage.getItem('project_vs_classic');
+
+			if (project_vs_classicStatus === undefined || project_vs_classicStatus === null) {
+					project_vs_classicStatus = 0;
+				}
+
+				localStorage.setItem('project_vs_classic', project_vs_classicStatus);
+
+		        if (project_vs_classicStatus == 0) {
+					$('#project_view').fadeIn(500);
+					$('#classic_view').fadeOut(500);
+		            $('#project_vs_classic').prop('checked', false);
+		            }else {
+					$('#project_view').fadeOut(500);
+					$('#classic_view').fadeIn(500);
+		            $('#project_vs_classic').prop('checked', true);
+		        }
+
+
+		        //Project versus Classic Mode Toggle
+		        $('body').on('change', '#project_vs_classic_div input:checkbox', function () {
+		            if ($(this).is(':checked')) {
+
+		    			$('#project_view').fadeOut(500);
+		    			$('#classic_view').fadeIn(500);
+
+		                setTimeout(function () {
+		                    localStorage.setItem('project_vs_classic', 1);
+		                }, 250);
+		            }
+		            else {
+
+		    			$('#project_view').fadeIn(500);
+		    			$('#classic_view').fadeOut(500);
+
+		                setTimeout(function () {
+		                    localStorage.setItem('project_vs_classic', 0);
+		                }, 250);
+		            }
+		        });
+		});
+
+		</script>
+
+
+<script type="text/javascript">
+////////////////////////////////////////////////////////////////////////////////
+
+$(document).ready(function () {
+	//Top Navigation
+	$('#top_nav_alerts').addClass('active'); //highlight this in the menu
+	$('#top_nav_alerts .nav-link').addClass('current_location'); //helps for current_client_id
+	$('#top_nav_alerts').css({"background-color": "#eeeeee"}); //highlight the bg of the menu	
+});
+
+</script>
+
+
+			<script type="text/javascript">
+			$(document).ready(function () {
+				$('#top_nav_keyword_lists').hide();
+			});
+			</script>
+			
+			<script type="text/javascript">
+			$(document).ready(function () {
+				$('#project_wizard_blinker').css('display', 'none');
+			});
+			</script>
+			
+			<script type="text/javascript">
+			$(document).ready(function () {
+				$('#changes_blinker').css('display', 'inline-block');
+			});
+			</script>
+			
+			<script type="text/javascript">
+
+					$(document).ready(function(){
+
+						var hash = window.location.hash;
+
+						if (hash) {
+							var hash = hash.substr(1, (hash.length-1));
+						}else {
+							hash = 'nada';
+						}				
+
+						if ((hash == "intro") || (1403668800 == 0)) { //
+							var onboardinghelp = $('<div></div>').attr('id', 'onboarding_helper');
+							onboardinghelp.appendTo('body');	
+							$('#onboarding_helper').load("/q-assets/_html/airstory/onboarding_main-1588400000.html");
+						}
+
+					});
+			</script>
+			
+				<!-- disable intercom block pop-up within demo account -->
+				<script type="text/javascript">
+					var unix_time = parseInt((new Date).getTime()/1000);
+					localStorage.setItem('intercom_disabled_warning', unix_time);
+				</script>
+				
+				
+				
+		<!-- Piwik Code -->
+		<script type="text/javascript">
+			  var _paq = _paq || [];
+			  _paq.push(['trackPageView']);
+			  _paq.push(['enableLinkTracking']);
+			  window.addEventListener('load', function() {
+			    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://www.serpwoo.com/analytics/";
+			    _paq.push(['setTrackerUrl', u+'piwik.php']);
+			    _paq.push(['setSiteId', 1]);
+			    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+			    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+			  });
+		</script>
+		<!-- Piwik Code -->
+
+		<noscript><p><img src="/analytics/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+		
+				
+				
+		<!-- Intercom not implemented, missing variables -->
+		<!-- name=[demo] -->
+		<!-- email=[demo@serpwoo.com] -->
+		<!-- user_id=[-1] -->
+		<!-- created_at=[1403668800] -->
+		<!-- host=[www.serpwoo.com] -->
+		<!-- plan=[demo] -->
+		<!-- user_hash=[8d01871f866816999132d44cb41faa33c1822fb790a482ef7ee7b4965de5f4a7] -->
+		<!-- intercom-disabled=[0] -->
+
+		
+				
+				<script type="text/javascript">
+				var W1D = '';
+				var user_date_format = 1;
+				</script>
+
+				<!-- Fraud Detection -->
+				<script src="https://js.stripe.com/v3/"></script>
+
+		    
+		<iframe allowtransparency="true" scrolling="no" name="__privateStripeMetricsController0" allowpaymentrequest="true" src="https://js.stripe.com/v3/m-outer-a0f6c1465b8d9aab778cf2913d1d3c86.html#url=https%3A%2F%2Fwww.serpwoo.com%2Fq%2Falerts%2F&amp;title=Alerts%20%7C%20SERPWoo%20Q&amp;referrer=https%3A%2F%2Fwww.serpwoo.com%2Fq%2Freports%2F&amp;muid=79c5a5a4-6989-4d55-87b0-7062065a7fc1&amp;sid=0577ecea-8306-47d3-a9f8-2a0274444f86&amp;preview=false" aria-hidden="true" tabindex="-1" style="border: medium none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;" frameborder="0"></iframe><div id="quick_insight_helper"><!-- // 100% translation complete - 6/22/2019 - CC -->
+
+<!-- Onboarding Overlay -->
+<style type="text/css">
+	@media (max-height: 749px) {
+		.hidden-height-on-small {
+			display: none !important;
+		}
+
+	  	#stack_chart_holder_container {
+	  		width: 740px;
+	  		height: 300px;
+	  	}
+	}
+	@media (min-height: 750px) {
+	  	#stack_chart_holder_container {
+	  		width: 740px;
+	  		height: 300px;
+	  	}
+	}
+</style>
+
+
+<!-- ProjectInsightPreview -->
+
+                            <div class="modal fade" id="ProjectInsightPreview" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+										<div class="modal-header bg-sw-blue p-4">
+											<h2 class="modal-title pull-left color-white"><b id="txt_quick_insight_header">Quick Insight:</b> <b class="color-amber project_name" id="txt_quick_insight_project_name">Project Name</b>
+												<br><span class="project_locality"><i class="color-amber zmdi zmdi-pin"> <span id="txt_quick_insight_locality">locality</span></i></span> <span class="project_language"><i class="color-amber zmdi zmdi-globe"> <span id="txt_quick_insight_device">device</span></i></span> <span class="project_mobile_desktop"><i class="color-amber zmdi zmdi-smartphone-iphone"> </i></span> <b class="color-amber"><span class="project_total_keywords"></span></b> <span id="txt_quick_insight_device"></span> <span id="txt_quick_insight_keywords">Keywords</span>/ <b class="color-amber"><span class="project_total_urls"></span></b> <span id="txt_quick_insight_urls">URLs</span> / <b class="color-amber"><span class="project_total_tags"></span></b> <span id="txt_quick_insight_tagging_domains">Tagging Domains/URLs</span></h2>
+
+<div class="pull-right">
+    <button class="btn bg-amber waves-effect" data-dismiss="modal"><i class="zmdi zmdi-close"></i></button>
+</div>
+
+										</div>
+                                        <div class="modal-body">
+
+										
+
+        <div class="row hidden-height-on-small">
+                            <div class="col-sm-6 col-md-2">
+                                <div id="kw_rising_color" class="bg-grey text-center" style="height: 100px;">
+
+                                            <span style="font-weight: bold; padding: 10px 10px 10px 10px; color: #fff; display:block;"><span id="txt_quick_insight_rising">Rising</span> &nbsp; <i style="font-size: 1.2em;" class="zmdi zmdi-help color-yellow" data-html="true" data-trigger="hover" data-toggle="popover" data-placement="bottom" title="" data-content="This is the amount of rankings rising, moving up, compared to the previous day.<br><br>If you see more rankings than keywords it is due to the project having multiple positive tagged domains/urls being tracked.<br><br>The Total rankings = Amount of Keywords multipled by the domains/urls." data-original-title="" id="txt_quick_insight_rising_desc"></i></span>
+                                            <h2 style="padding-bottom: 13px; color: #fff;"><span class="project_kw_rising_symbol"><i class="zmdi zmdi-trending-up"></i></span> <span class="project_kw_rising"></span></h2>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-2">
+                                <div id="kw_dropping_color" class="bg-grey text-center" style="height: 100px;">
+
+                                            <span style="font-weight: bold; padding: 10px 10px 10px 10px; color: #fff; display:block;"><span id="txt_quick_insight_dropping">Dropping</span> &nbsp; <i style="font-size: 1.2em;" class="zmdi zmdi-help color-yellow" data-html="true" data-trigger="hover" data-toggle="popover" data-placement="bottom" title="" id="txt_quick_insight_dropping_desc" data-content="This is the amount of rankings dropping, moving down, compared to the previous day.<br><br>If you see more rankings than keywords it is due to the project having multiple positive tagged domains/urls being tracked.<br><br>The Total rankings = Amount of Keywords multipled by the domains/urls." data-original-title=""></i></span>
+                                            <h2 style="padding-bottom: 13px; color: #fff;"><span class="project_kw_dropping_symbol"><i class="zmdi zmdi-trending-down"></i></span> <span class="project_kw_dropping"></span></h2>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-2">
+                                <div id="top_1_color" class="bg-grey text-center" style="height: 100px;">
+
+                                            <span style="font-weight: bold; padding: 10px 10px 10px 10px; color: #fff; display:block;"><span id="txt_quick_insight_1_pos">#1 Pos.</span> &nbsp; <i style="font-size: 1.2em;" class="zmdi zmdi-help color-yellow" data-html="true" data-trigger="hover" data-toggle="popover" data-placement="bottom" title="" data-content="This shows the amount of rankings that are #1 in the search results. Below the big number there may be a smaller number - that showcases the amount of movement detected compared to the previous day.<br><br> If you see more rankings than keywords it is due to the project having multiple positive tagged domains/urls being tracked." data-original-title="" id="txt_quick_insight_1_pos_desc"></i></span>
+                                            <h3 style="padding-bottom: 10px; color: #fff;"><span id="project_top_1"></span>
+											<br><small style="font-size: 0.6em !important;"><i id="top_1_symbol" class="zmdi zmdi-"></i> <span id="difference_1_amount"></span></small></h3>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-2">
+                                <div id="top_2_5_color" class="bg-grey text-center" style="height: 100px;">
+
+                                            <span style="font-weight: bold; padding: 10px 10px 10px 10px; color: #fff; display:block;"><span id="txt_quick_insight_2_5_pos">#2-5</span> &nbsp; <i style="font-size: 1.2em;" class="zmdi zmdi-help color-yellow" data-html="true" data-trigger="hover" data-toggle="popover" data-placement="bottom" title="" data-content="This shows the amount of rankings that are #2-5 in the search results. Below the big number there may be a smaller number - that showcases the amount of movement detected compared to the previous day.<br><br> If you see more rankings than keywords it is due to the project having multiple positive tagged domains/urls being tracked." data-original-title="" id="txt_quick_insight_2_5_pos_desc"></i></span>
+                                            <h3 style="padding-bottom: 10px; color: #fff;"><span id="project_top_2_5"></span>
+											<br><small style="font-size: 0.6em !important;"><i id="top_2_5_symbol" class="zmdi zmdi-"></i> <span id="difference_2_5_amount"></span></small></h3>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-2">
+                                <div id="top_6_10_color" class="bg-grey text-center" style="height: 100px;">
+
+                                            <span style="font-weight: bold; padding: 10px 10px 10px 10px; color: #fff; display:block;"><span id="txt_quick_insight_6_10_pos">#6-10</span> &nbsp; <i style="font-size: 1.2em;" class="zmdi zmdi-help color-yellow" data-html="true" data-trigger="hover" data-toggle="popover" data-placement="bottom" title="" data-content="This shows the amount of rankings that are #6-10 in the search results. Below the big number there may be a smaller number - that showcases the amount of movement detected compared to the previous day.<br><br> If you see more rankings than keywords it is due to the project having multiple positive tagged domains/urls being tracked." data-original-title="" id="txt_quick_insight_6_10_pos_desc"></i></span>
+                                            <h3 style="padding-bottom: 10px; color: #fff;"><span id="project_top_6_10"></span>
+											<br><small style="font-size: 0.6em !important;"><i id="top_6_10_symbol" class="zmdi zmdi-"></i> <span id="difference_6_10_amount"></span></small></h3>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-2">
+                                <div id="top_11_20_color" class="bg-grey text-center" style="height: 100px;">
+
+                                            <span style="font-weight: bold; padding: 10px 10px 10px 10px; color: #fff; display:block;"><span id="txt_quick_insight_11_20_pos">#11-20</span> &nbsp; <i style="font-size: 1.2em;" class="zmdi zmdi-help color-yellow" data-html="true" data-trigger="hover" data-toggle="popover" data-placement="bottom" title="" data-content="This shows the amount of rankings that are #11-20 in the search results. Below the big number there may be a smaller number - that showcases the amount of movement detected compared to the previous day.<br><br> If you see more rankings than keywords it is due to the project having multiple positive tagged domains/urls being tracked." data-original-title="" id="txt_quick_insight_11_20_pos_desc"></i></span>
+                                            <h3 style="padding-bottom: 10px; color: #fff;"><span id="project_top_11_20"></span>
+											<br><small style="font-size: 0.6em !important;"><i id="top_11_20_symbol" class="zmdi zmdi-"></i> <span id="difference_11_20_amount"></span></small></h3>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+								<hr>
+							</div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <center>
+				<div id="stack_chart_holder_container">
+					<canvas id="stack_chart_holder"></canvas>
+				</div>
+
+				<div style="display:block;" class="p-0 hidden-height-on-small">
+					<div class="p-1" style="display: inline-block;"><i style="font-size: 1.2em;" class="zmdi zmdi-help color-blue" data-html="true" data-trigger="hover" data-toggle="popover" data-placement="top" title="" data-content="This stack bar chart showcases the last 90 days of ranking data for this project. Each bar represents a day. The different colors within each single bar represent the search result position your domain(s) rank for." data-original-title="" id="txt_quick_insight_rank_desc"></i> &nbsp; <span id="txt_quick_insight_rank">Rank:</span></div>
+					<div class="p-1" style="display: inline-block;"><b>#1</b> <i style="color: #3fac43" class="zmdi zmdi-view-week"></i></div>
+					<div class="p-1" style="display: inline-block;"><b>2-5</b> <i style="color: #8BC34A" class="zmdi zmdi-view-week"></i></div>
+					<div class="p-1" style="display: inline-block;"><b>6-10</b> <i style="color: #0cb3ff" class="zmdi zmdi-view-week"></i></div>
+					<div class="p-1" style="display: inline-block;"><b>11-20</b> <i style="color: #1d8ce5" class="zmdi zmdi-view-week"></i></div>
+					<div class="p-1" style="display: inline-block;"><b>21-30</b> <i style="color: #ffcb30" class="zmdi zmdi-view-week"></i></div>
+					<div class="p-1" style="display: inline-block;"><b>31-50</b> <i style="color: #FF9800" class="zmdi zmdi-view-week"></i></div>
+					<div class="p-1" style="display: inline-block;"><b>51-100</b> <i style="color: #FF5722" class="zmdi zmdi-view-week"></i></div>
+					<div class="p-1" style="display: inline-block;"><b>100+</b> <i style="color: #75045c" class="zmdi zmdi-view-week"></i></div>
+				</div>
+
+			</center>
+            </div>
+        </div>
+
+
+                                        </div>
+                                        <div class="modal-footer bg-grey p-4">
+
+<div class="col-sm-4 col-md-1">
+<div class="pull-left">
+    <button id="project_insight_prev_btn" class="btn bg-sw-blue waves-effect" onclick="project_overview(1);"><i class="zmdi zmdi-arrow-back color-white"></i></button>
+</div>
+</div>
+
+<div class="col-sm-4 col-md-6">
+<div class="text-center">
+    <a class="btn btn-primary btn-lg waves-effect color-white" id="view_project_from_insight">&nbsp; <i class="zmdi zmdi-folder"></i> &nbsp; <span id="txt_quick_insight_btn_view_project">View Project</span> &nbsp;</a>
+</div>
+</div>
+
+<div class="col-sm-4 col-md-4">
+<div class="text-center">
+    <button type="button" class="btn btn-success btn waves-effect" id="open_quick_add">&nbsp; <i class="zmdi zmdi-plus-circle"></i> <span id="txt_quick_insight_btn_quick_add">Quick Add</span> &nbsp;</button>
+</div>
+</div>
+<div class="col-sm-4 col-md-1">
+<div class="pull-right">
+    <button id="project_insight_next_btn" class="btn bg-sw-blue waves-effect" onclick="project_overview(2);"><i class="zmdi zmdi-arrow-forward color-white"></i></button>
+</div>
+</div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+			    </div>
+
+<!-- End ProjectInsightPreview -->
+
+<script type="text/javascript">
+
+		//For Quick Insight sorting of previous and next project to scroll to
+		var prev_order_id = 0;
+		var next_order_id = 0;
+
+		// Quick Insight opened up
+		$(document).on('click', '.chat .listview__item, #quick_insight_for_project', function(){
+
+			var project_id = parseInt($(this).data('project-id'));
+			
+			//$('.modal').modal('hide');
+			console_log('blue', '[-]', 'Quick Insight - project_id=[' + project_id + ']');
+
+				if (project_id != 0) { 
+					$('#ProjectInsightPreview').modal('show');
+
+					var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+					if(isSafari) {
+						window.setTimeout(function() {
+							project_insight_overview(project_id);
+							console_log('blue', '[-]', 'Safari timeout 200.');
+						}, 200);
+					} else {
+						project_insight_overview(project_id);						
+					} 
+
+
+				}else {
+					notify(Language.quick_insight_unknown_project_error, Language.quick_insight_unknown_project_error_desc, 'danger', 60000);
+					console_log('red', '[-]', 'Unknown project - perhaps you need to reload this page.');
+				}
+
+		});
+				
+		
+		function project_overview (direction=0) {
+			
+			the_project_id = 0;
+			
+			if (direction == 1) {
+				the_project_id = projects_order[prev_order_id];
+				project_insight_overview(the_project_id);
+			}
+
+			if (direction == 2) {
+				the_project_id = projects_order[next_order_id];
+				project_insight_overview(the_project_id);				
+			}
+			
+		}
+
+
+		function project_insight_overview(project_id = 0) {
+			
+			
+
+				//Default Setup
+				$("#ProjectInsightPreview #kw_rising_color").removeClass('bg-green text-center bg-grey bg-red').addClass('bg-grey text-center');
+				$("#ProjectInsightPreview #kw_dropping_color").removeClass('bg-green text-center bg-grey bg-red').addClass('bg-grey text-center');
+
+				$("#ProjectInsightPreview .project_kw_rising").text(0);
+				$("#ProjectInsightPreview .project_kw_dropping").text(0);
+
+				$("#ProjectInsightPreview #project_top_1").text(0);
+				$("#ProjectInsightPreview #project_top_2_5").text(0);
+				$("#ProjectInsightPreview #project_top_6_10").text(0);
+				$("#ProjectInsightPreview #project_top_11_20").text(0);
+
+				$("#ProjectInsightPreview #top_1_color").removeClass().addClass('bg-grey text-center');
+				$("#ProjectInsightPreview #top_1_symbol").removeClass().addClass('zmdi zmdi-circle');
+
+				$("#ProjectInsightPreview #top_2_5_color").removeClass().addClass('bg-grey text-center');
+				$("#ProjectInsightPreview #top_2_5_symbol").removeClass().addClass('zmdi zmdi-circle');
+
+				$("#ProjectInsightPreview #top_6_10_color").removeClass().addClass('bg-grey text-center');
+				$("#ProjectInsightPreview #top_6_10_symbol").removeClass().addClass('zmdi zmdi-circle');
+
+				$("#ProjectInsightPreview #top_11_20_color").removeClass().addClass('bg-grey text-center');
+				$("#ProjectInsightPreview #top_11_20_symbol").removeClass().addClass('zmdi zmdi-circle');
+
+				$("#ProjectInsightPreview #difference_1_amount").text(0);
+				$("#ProjectInsightPreview #difference_2_5_amount").text(0);
+				$("#ProjectInsightPreview #difference_6_10_amount").text(0);
+				$("#ProjectInsightPreview #difference_11_20_amount").text(0);
+
+				//Empty Chart
+				$("#stack_chart_holder").remove();
+				$("#stack_chart_holder_container").empty();
+				$("#stack_chart_holder_container").append('<canvas id="stack_chart_holder"></canvas>');
+				
+				$('#view_project_from_insight').attr('href','/q/projects/');
+			
+
+			//Start Processing
+			project_id = parseInt(project_id);
+
+			if (project_id == 0) {
+					return;
+			}
+			
+			if ((projects_data_in_JSON[project_id] === undefined) || (projects_data_in_JSON[project_id] === null)) {
+				console_log('red', '[-]', ' No data info for this project project_id=[' + project_id + ']');
+				return;
+			}
+			
+			$('#view_project_from_insight').attr('href','/q/project/' + project_id + '/');			
+			
+			$('#quick_add_save_button').attr('data-project-id', project_id);
+
+			 var order_id = parseInt(projects_data_in_JSON[project_id]["sort_order"]);
+			 prev_order_id = order_id-1;
+			 next_order_id = order_id+1;
+
+ 			console_log('green', '[+]', ' project_id=[' + project_id + '] order=[' + order_id + ']');
+
+			if ((projects_order[next_order_id] !== undefined) && (projects_order[next_order_id] !== null)) {
+				//console_log('green', '[+]', ' next=[' + projects_order[next_order_id] + '] order=[' + next_order_id + ']');
+				$('#project_insight_next_btn').removeClass('bg-blue-grey').addClass('bg-sw-blue');
+			}else {
+				next_order_id = order_id;
+				$('#project_insight_next_btn').removeClass('bg-sw-blue').addClass('bg-blue-grey');
+			}
+
+			if ((projects_order[prev_order_id] !== undefined) && (projects_order[prev_order_id] !== null)) {
+				//console_log('green', '[+]', ' prev=[' + projects_order[prev_order_id] + '] order=[' + prev_order_id + ']');
+				$('#project_insight_prev_btn').removeClass('bg-blue-grey').addClass('bg-sw-blue');
+			}else {
+				prev_order_id = order_id;
+				$('#project_insight_prev_btn').removeClass('bg-sw-blue').addClass('bg-blue-grey');
+			}
+
+			
+					//console_log('green', '[+]', ' 1 - project_insight_overview=[' + project_id + ']');
+					//console_log('green', '[+]', ' 2 - project_name=[' + projects_data_in_JSON[project_id]["project_name"] + ']');
+			
+					$('.project_name').text(projects_data_in_JSON[project_id]["project_name"]);
+					$(".project_total_keywords").text(projects_data_in_JSON[project_id]["total_keywords"]);
+					$(".project_total_tags").text(projects_data_in_JSON[project_id]["total_urls"]);
+					$(".project_total_urls").text(projects_data_in_JSON[project_id]["total_positive_domains"]);
+					$(".project_country").html(projects_data_in_JSON[project_id]["country"]);
+
+			
+					if ((projects_data_in_JSON[project_id]["locality"].length > 2)) {
+						$(".project_locality").html("<i class='color-amber zmdi zmdi-pin'></i> " + projects_data_in_JSON[project_id]["locality"] + " &nbsp; / &nbsp;");
+					}else {
+						$(".project_locality").html('');
+					}
+
+					if ((projects_data_in_JSON[project_id]["language"].length >= 2)) {
+						$(".project_language").html("<i class='color-amber zmdi zmdi-globe'></i> " + projects_data_in_JSON[project_id]["language"] + " &nbsp; / &nbsp;");
+					}else {
+						$(".project_language").html('');
+					}
+
+					if ((projects_data_in_JSON[project_id]["mobile"] == 1)) {
+						$(".project_mobile_desktop").html("<i class='color-amber zmdi zmdi-smartphone-iphone'></i> " +  Language.quick_add_txt_device_mobile + " &nbsp; / &nbsp;");
+					}else {
+						$(".project_mobile_desktop").html("<i class='color-amber zmdi zmdi-desktop-mac'></i> " +  Language.quick_add_txt_device_desktop + " &nbsp; / &nbsp;");
+					}
+			
+			
+			if ((sparkline_data_in_JSON[project_id] !== undefined) && (sparkline_data_in_JSON[project_id] !== null)) {
+				
+			if ((sparkline_data_in_JSON[project_id]["1"] !== undefined) && (sparkline_data_in_JSON[project_id]["1"] !== null)) {
+			
+						if ((sparkline_data_in_JSON[project_id]["1"]["movement"]["rising"] !== undefined) && (sparkline_data_in_JSON[project_id]["1"]["movement"]["rising"] !== null)) {
+
+							if (sparkline_data_in_JSON[project_id]["1"]["movement"]["rising"] == 0) {
+								$("#ProjectInsightPreview #kw_rising_color").removeClass('bg-green text-center bg-grey').addClass('bg-grey text-center');
+							}else {
+								$("#ProjectInsightPreview #kw_rising_color").removeClass('bg-green text-center bg-grey').addClass('bg-green text-center');
+							}
+
+						}else {
+							$("#ProjectInsightPreview #kw_rising_color").removeClass('bg-green text-center bg-grey').addClass('bg-grey text-center');
+						}
+
+
+						if ((sparkline_data_in_JSON[project_id]["1"]["movement"]["dropping"] !== undefined) && (sparkline_data_in_JSON[project_id]["1"]["movement"]["dropping"] !== null)) {
+
+							if (sparkline_data_in_JSON[project_id]["1"]["movement"]["dropping"] == 0) {
+								$("#ProjectInsightPreview #kw_dropping_color").removeClass('bg-red text-center bg-grey').addClass('bg-grey text-center');
+							}else {
+								$("#ProjectInsightPreview #kw_dropping_color").removeClass('bg-red text-center bg-grey').addClass('bg-red text-center');
+							}
+
+						}else {
+							$("#ProjectInsightPreview #kw_dropping_color").removeClass('bg-red text-center bg-grey').addClass('bg-grey text-center');
+						}
+
+
+					$("#ProjectInsightPreview .project_kw_rising").text(sparkline_data_in_JSON[project_id]["1"]["movement"]["rising"]);
+					$("#ProjectInsightPreview .project_kw_dropping").text(sparkline_data_in_JSON[project_id]["1"]["movement"]["dropping"]);
+
+
+					 $("#ProjectInsightPreview #project_top_1").text(sparkline_data_in_JSON[project_id]["1"]["movement"]["today"]["1"]);
+					 $("#ProjectInsightPreview #project_top_2_5").text(sparkline_data_in_JSON[project_id]["1"]["movement"]["today"]["2-5"]);
+					 $("#ProjectInsightPreview #project_top_6_10").text(sparkline_data_in_JSON[project_id]["1"]["movement"]["today"]["6-10"]);
+					 $("#ProjectInsightPreview #project_top_11_20").text(sparkline_data_in_JSON[project_id]["1"]["movement"]["today"]["11-20"]);
+			 
+
+					 if (sparkline_data_in_JSON[project_id]["1"]["trending"]["1"]["change"] == 0) {
+					 	$("#ProjectInsightPreview #top_1_color").removeClass().addClass('bg-blue text-center');
+						$("#ProjectInsightPreview #top_1_symbol").removeClass().addClass('zmdi zmdi-circle');
+					 }else if (sparkline_data_in_JSON[project_id]["1"]["trending"]["1"]["change"] == 1) {
+					 	$("#ProjectInsightPreview #top_1_color").removeClass().addClass('bg-green text-center');
+						$("#ProjectInsightPreview #top_1_symbol").removeClass().addClass('zmdi zmdi-trending-up');
+					 }else if (sparkline_data_in_JSON[project_id]["1"]["trending"]["1"]["change"] == -1) {
+					 	$("#ProjectInsightPreview #top_1_color").removeClass().addClass('bg-red text-center');
+						$("#ProjectInsightPreview #top_1_symbol").removeClass().addClass('zmdi zmdi-trending-down');
+					 }else {
+					 	$("#ProjectInsightPreview #top_1_color").removeClass().addClass('bg-grey text-center');
+						$("#ProjectInsightPreview #top_1_symbol").removeClass().addClass('zmdi zmdi-circle');
+					 }
+
+					 if (sparkline_data_in_JSON[project_id]["1"]["trending"]["2-5"]["change"] == 0) {
+					 	$("#ProjectInsightPreview #top_2_5_color").removeClass().addClass('bg-blue text-center');
+						$("#ProjectInsightPreview #top_2_5_symbol").removeClass().addClass('zmdi zmdi-circle');
+					 }else if (sparkline_data_in_JSON[project_id]["1"]["trending"]["2-5"]["change"] == 1) {
+					 	$("#ProjectInsightPreview #top_2_5_color").removeClass().addClass('bg-green text-center');
+						$("#ProjectInsightPreview #top_2_5_symbol").removeClass().addClass('zmdi zmdi-trending-up');
+					 }else if (sparkline_data_in_JSON[project_id]["1"]["trending"]["2-5"]["change"] == -1) {
+					 	$("#ProjectInsightPreview #top_2_5_color").removeClass().addClass('bg-red text-center');
+						$("#ProjectInsightPreview #top_2_5_symbol").removeClass().addClass('zmdi zmdi-trending-down');
+					 }else {
+					 	$("#ProjectInsightPreview #top_2_5_color").removeClass().addClass('bg-grey text-center');
+						$("#ProjectInsightPreview #top_2_5_symbol").removeClass().addClass('zmdi zmdi-circle');
+					 }
+
+					 if (sparkline_data_in_JSON[project_id]["1"]["trending"]["6-10"]["change"] == 0) {
+					 	$("#ProjectInsightPreview #top_6_10_color").removeClass().addClass('bg-blue text-center');
+						$("#ProjectInsightPreview #top_6_10_symbol").removeClass().addClass('zmdi zmdi-circle');
+					 }else if (sparkline_data_in_JSON[project_id]["1"]["trending"]["6-10"]["change"] == 1) {
+					 	$("#ProjectInsightPreview #top_6_10_color").removeClass().addClass('bg-green text-center');
+						$("#ProjectInsightPreview #top_6_10_symbol").removeClass().addClass('zmdi zmdi-trending-up');
+					 }else if (sparkline_data_in_JSON[project_id]["1"]["trending"]["6-10"]["change"] == -1) {
+					 	$("#ProjectInsightPreview #top_6_10_color").removeClass().addClass('bg-red text-center');
+						$("#ProjectInsightPreview #top_6_10_symbol").removeClass().addClass('zmdi zmdi-trending-down');
+					 }else {
+					 	$("#ProjectInsightPreview #top_6_10_color").removeClass().addClass('bg-grey text-center');
+						$("#ProjectInsightPreview #top_6_10_symbol").removeClass().addClass('zmdi zmdi-circle');
+					 }
+
+					 if (sparkline_data_in_JSON[project_id]["1"]["trending"]["11-20"]["change"] == 0) {
+					 	$("#ProjectInsightPreview #top_11_20_color").removeClass().addClass('bg-blue text-center');
+						$("#ProjectInsightPreview #top_11_20_symbol").removeClass().addClass('zmdi zmdi-circle');
+					 }else if (sparkline_data_in_JSON[project_id]["1"]["trending"]["11-20"]["change"] == 1) {
+					 	$("#ProjectInsightPreview #top_11_20_color").removeClass().addClass('bg-green text-center');
+		 				$("#ProjectInsightPreview #top_11_20_symbol").removeClass().addClass('zmdi zmdi-trending-up');
+					 }else if (sparkline_data_in_JSON[project_id]["1"]["trending"]["11-20"]["change"] == -1) {
+					 	$("#ProjectInsightPreview #top_11_20_color").removeClass().addClass('bg-red text-center');
+						$("#ProjectInsightPreview #top_11_20_symbol").removeClass().addClass('zmdi zmdi-trending-down');
+					 }else {
+					 	$("#ProjectInsightPreview #top_11_20_color").removeClass().addClass('bg-grey text-center');
+						$("#ProjectInsightPreview #top_11_20_symbol").removeClass().addClass('zmdi zmdi-circle');
+					 }
+
+
+					 $("#ProjectInsightPreview #difference_1_amount").text(sparkline_data_in_JSON[project_id]["1"]["trending"]["1"]["amount"]);
+					 $("#ProjectInsightPreview #difference_2_5_amount").text(sparkline_data_in_JSON[project_id]["1"]["trending"]["2-5"]["amount"]);
+					 $("#ProjectInsightPreview #difference_6_10_amount").text(sparkline_data_in_JSON[project_id]["1"]["trending"]["6-10"]["amount"]);
+					 $("#ProjectInsightPreview #difference_11_20_amount").text(sparkline_data_in_JSON[project_id]["1"]["trending"]["11-20"]["amount"]);
+			 			 
+					//Stack Chart
+			 			 			 
+					var data1 = JSON.parse("[" + sparkline_data_in_JSON[project_id]["1"]["stackchart_data"]["1"] + "]");
+					var data2 = JSON.parse("[" + sparkline_data_in_JSON[project_id]["1"]["stackchart_data"]["2-5"] + "]");
+					var data3 = JSON.parse("[" + sparkline_data_in_JSON[project_id]["1"]["stackchart_data"]["6-10"] + "]");
+					var data4 = JSON.parse("[" + sparkline_data_in_JSON[project_id]["1"]["stackchart_data"]["11-20"] + "]");
+					var data5 = JSON.parse("[" + sparkline_data_in_JSON[project_id]["1"]["stackchart_data"]["21-30"] + "]");
+					var data6 = JSON.parse("[" + sparkline_data_in_JSON[project_id]["1"]["stackchart_data"]["31-50"] + "]");
+					var data7 = JSON.parse("[" + sparkline_data_in_JSON[project_id]["1"]["stackchart_data"]["51-100"] + "]");
+					var data8 = JSON.parse("[" + sparkline_data_in_JSON[project_id]["1"]["stackchart_data"]["101"] + "]");
+
+					
+					var top_array_length = 0;
+					
+					if (data1.length > top_array_length) { top_array_length = data1.length; }
+					if (data2.length > top_array_length) { top_array_length = data2.length; }
+					if (data3.length > top_array_length) { top_array_length = data3.length; }
+					if (data4.length > top_array_length) { top_array_length = data4.length; }
+					if (data5.length > top_array_length) { top_array_length = data5.length; }
+					if (data6.length > top_array_length) { top_array_length = data6.length; }
+					if (data7.length > top_array_length) { top_array_length = data7.length; }
+					if (data8.length > top_array_length) { top_array_length = data8.length; }
+					
+					var labels_for_data = [];
+										
+					var index = 0;
+					for (index = 0; index < top_array_length; ++index) {
+						labels_for_data.unshift('Day ' + index);
+					}
+
+					var ctx_quick_insight_stack = document.getElementById("stack_chart_holder").getContext("2d");
+
+					var config = {
+					  type: 'bar',
+					  data: {
+					    labels: labels_for_data,
+						  datasets: [
+							  { type: 'bar', label: '#101+ Pos', backgroundColor: "#75045c", data: data8 },
+							  { type: 'bar', label: '#51-100 Pos', backgroundColor: "#FF5722", data: data7 },
+							  { type: 'bar', label: '#31-50 Pos', backgroundColor: "#FF9800", data: data6 },
+							  { type: 'bar', label: '#21-30 Pos', backgroundColor: "#ffcb30", data: data5 },
+							  { type: 'bar', label: '#11-20 Pos', backgroundColor: "#1d8ce5", data: data4 },
+							  { type: 'bar', label: '#6-10 Pos', backgroundColor: "#0cb3ff", data: data3 },
+							  { type: 'bar', label: '#2-5 Pos', backgroundColor: "#8BC34A", data: data2 },
+							  { type: 'bar', label: '#1 Positions', backgroundColor: "#3fac43", data: data1 }
+						  ]
+					  },
+					  options: {
+						   tooltips: {
+							   	backgroundColor: '#000',
+								titleFontSize: 16,
+								bodyFontColor: '#fff',
+								bodyFontSize: 16,
+								xPadding: 12,
+								yPadding: 12,
+							   cornerRadius: 2,
+							   caretSize: 10
+						   },
+					    scales: {
+					      xAxes: [{
+					        stacked: true, gridLines : { display : false }, display: false
+					      }],
+					      yAxes: [{
+					        stacked: true, gridLines : { display : true }
+					      }]
+					    },
+					  	legend: {
+			              display: false
+			           	},
+						animation: {
+							duration: 300,
+							onProgress: function(animation) {
+								ctx_quick_insight_stack.value = animation.currentStep / animation.numSteps;
+							},
+							onComplete: function() {
+								window.setTimeout(function() {
+									ctx_quick_insight_stack.value = 0;
+								}, 300);
+							}
+						},
+						responsive: true, 
+						maintainAspectRatio: false
+					  }
+					};
+
+					var MyQuick_Insight_Chart = new Chart(ctx_quick_insight_stack, config);
+			
+				}
+			}else {
+				console_log('red', '[-]', 'Nothing is ranking for this project=[' + project_id + ']');
+				
+				if (projects_data_in_JSON[project_id]["total_positive_domains"] > 0) {
+					$('#stack_chart_holder_container').html("<div class='m-1 p-1' style='line-height: 2em;'>" + Language.quick_insight_stack_chart_error_504 + "</div>");					
+				}else {
+					$('#stack_chart_holder_container').html("<div class='m-1 p-1' style='line-height: 2em;'>" + Language.quick_insight_stack_chart_error_506 + "</div>");					
+				}
+			}
+			
+			
+		}
+
+
+$(document).ready(function(){
+		
+	$('[data-toggle="popover"]')[0]&&$('[data-toggle="popover"]').popover();
+	
+	//Update language
+	$("#txt_quick_insight_header").html(Language.quick_insight_header);
+	$("#txt_quick_insight_project_name").html(Language.quick_insight_project_name);
+	$("#txt_quick_insight_locality").html(Language.quick_insight_locality);
+	$("#txt_quick_insight_device").html(Language.quick_insight_device);
+	$("#txt_quick_insight_keywords").html(Language.quick_insight_keywords);
+	$("#txt_quick_insight_urls").html(Language.quick_insight_urls);
+	$("#txt_quick_insight_tagging_domains").html(Language.quick_insight_tagging_domains);
+
+	$("#txt_quick_insight_rising").html(Language.quick_insight_rising);
+	$("#txt_quick_insight_rising_desc").attr('data-content', Language.quick_insight_rising_desc);
+	$("#txt_quick_insight_dropping").html(Language.quick_insight_dropping);
+	$("#txt_quick_insight_dropping_desc").attr('data-content', Language.quick_insight_dropping_desc);
+	$("#txt_quick_insight_rank").html(Language.quick_insight_rank);
+	$("#txt_quick_insight_rank_desc").attr('data-content', Language.quick_insight_rank_desc);
+
+	$("#txt_quick_insight_btn_view_project").html(Language.quick_insight_btn_view_project);
+	$("#txt_quick_insight_btn_quick_add").html(Language.quick_insight_btn_quick_add);
+
+	$("#txt_quick_insight_1_pos").html(Language.quick_insight_1_pos);
+	$("#txt_quick_insight_1_pos_desc").attr('data-content', Language.quick_insight_1_pos_desc);
+	$("#txt_quick_insight_2_5_pos").html(Language.quick_insight_2_5_pos);
+	$("#txt_quick_insight_2_5_pos_desc").attr('data-content', Language.quick_insight_2_5_pos_desc);
+	$("#txt_quick_insight_6_10_pos").html(Language.quick_insight_6_10_pos);
+	$("#txt_quick_insight_6_10_pos_desc").attr('data-content', Language.quick_insight_6_10_pos_desc);
+	$("#txt_quick_insight_11_20_pos").html(Language.quick_insight_11_20_pos);
+	$("#txt_quick_insight_11_20_pos_desc").attr('data-content', Language.quick_insight_11_20_pos_desc);
+
+
+	//Use left and right arrows
+	//$(document).onLeftArrowKeyDown(project_overview(1)); //Go Back
+	//$(document).onRightArrowKeyDown(project_overview(2)); //Go Forward
+
+	$(document).onLeftArrowKeyDown(go_back); //Go Back
+	$(document).onRightArrowKeyDown(go_forward); //Go Forward
+
+});
+
+
+	function go_back() {
+			//alert('go_back');
+			if ($("#ProjectInsightPreview").hasClass('show')) {
+				project_overview(1);
+			}
+		
+		//console_log('blue', '[KeyPress]', 'go_back=[' + $("#ProjectInsightPreview").hasClass('show') + ']');
+	}
+
+	function go_forward() {
+			//alert('go_forward');
+			if ($("#ProjectInsightPreview").hasClass('show')) {
+				project_overview(2);
+			}
+
+		//console_log('blue', '[KeyPress]', 'go_forward=[' + $("#ProjectInsightPreview").hasClass('show') + ']');
+	}
+
+</script>
+</div><div id="quick_add_helper"><!-- // 100% translation complete - 6/22/2019 - CC -->
+
+<!-- Onboarding Overlay -->
+<style type="text/css">
+	#quick_add_x {
+		width: 800px;
+		height: 320px;
+	}
+	
+	#quick_keywords_to_add {
+		width: 96%;
+	}
+
+	#quick_domains_to_add {
+		width: 96%;
+	}
+</style>
+
+
+<!-- Quick Add -->
+
+                            <div class="modal fade" id="QuickAdd" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+										<div class="modal-header bg-sw-blue p-4">
+											<h2 class="modal-title pull-left color-white"><b id="txt_quick_add">Quick Add:</b> <b id="txt_project_name" class="color-amber project_name">Project Name</b> <span class="project_country">&nbsp;</span>
+												<br><span class="project_locality"><i class="color-amber zmdi zmdi-pin"> <span id="txt_locality">Locality</span></i></span> <span class="project_language"><i class="color-amber zmdi zmdi-globe"> <span id="txt_device">Device</span></i></span> <span class="project_mobile_desktop"><i class="color-amber zmdi zmdi-smartphone-iphone"> </i></span> <b class="color-amber"><span class="project_total_keywords"></span></b> <span id="txt_keywords">Keywords</span> / <b class="color-amber"><span class="project_total_urls"></span></b> <span id="txt_urls">URLs</span> / <b class="color-amber"><span class="project_total_tags"></span></b> <span id="txt_tagged_domains">Tagged Domains/URLs</span></h2>
+
+<div class="pull-right">
+    <button id="quick_add_close_button_top" class="btn bg-amber waves-effect" data-dismiss="modal"><i class="zmdi zmdi-close"></i></button>
+</div>
+
+										</div>
+                                        <div class="modal-body">
+
+
+        <div class="row">
+		        <div class="col-sm-6 col-md-6 col-lg-6">
+
+						<h4 style="font-weight: bold;" id="kw_to_add">Keywords to Add</h4>
+
+						<textarea id="quick_keywords_to_add" rows="8" placeholder="example keyword"></textarea>
+
+						<br>
+						<div class="col-sm-12 col-md-12 col-lg-12 m-2">
+							<span class="txt_example">Example</span><br>
+								<b id="txt_example_kw">Keyword:</b> serp monitoring<br>
+								<b id="txt_example_exact_kw">Exact Keyword:</b> "SERPWoo API"
+						</div>
+
+		        </div>
+		        <div class="col-sm-6 col-md-6 col-lg-6">
+
+						<h4 style="font-weight: bold;" id="domains_to_add">Domains/URLs to Add</h4>
+
+						<textarea id="quick_domains_to_add" rows="8" placeholder="domain.com"></textarea>
+
+						<br>
+						<div class="col-sm-12 col-md-12 col-lg-12 m-2">
+							<span class="txt_example">Example</span><br>
+								<b id="txt_example_domain">Domain:</b> serpwoo.com<br>
+								<b id="txt_example_exact_url">Exact URL:</b> "https://www.serpwoo.com/blog/"<br>
+								<b id="txt_example_partial_url">Partial URL:</b> "youtube.com/watch?v=ZZxNFbsNh4g"
+						</div>
+
+		        </div>
+        </div>
+
+
+
+                                        </div>
+                                        <div id="quick_add_footer" class="modal-footer bg-grey">
+
+<div class="col-sm-6 col-md-6 col-lg-6 color-yellow text-center">
+	&nbsp; <span id="quick_add_modal" class="p-3 color-yellow"></span> &nbsp;
+</div>
+<div class="col-sm-6 col-md-6 col-lg-6 text-center">
+
+	&nbsp; <button id="quick_add_save_button" type="button" class="btn btn-primary btn-lg waves-effect" onclick="quick_add_to_project();" data-project-id="0"><i class="zmdi zmdi-cloud-upload"></i> &nbsp; <span id="txt_save">Save</span> &nbsp;</button> &nbsp;
+
+	&nbsp; <button id="quick_add_close_button" type="button" class="btn btn-danger btn-xs" data-dismiss="modal"><i class="zmdi zmdi-close"></i> &nbsp; <span id="txt_close">Close</span> &nbsp;</button> &nbsp;
+
+</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+<!-- End Quick Add -->
+							
+							
+							
+<script type="text/javascript">
+
+	function quick_add_to_project(){
+
+	$('#incoming_data').show();
+	the_project_id = parseInt($('#quick_add_save_button').attr('data-project-id'));
+
+	to_add_keywords = encodeURIComponent($("#quick_keywords_to_add").val());
+	to_add_domains = encodeURIComponent($("#quick_domains_to_add").val());
+
+	console_log('blue', '[+106_quick_add]', ' quick add project=[' + the_project_id + ']');
+	$("#quick_add_modal").html(Language.quick_add_processing);
+	//return;
+	
+	$("#quick_add_save_button").prop("disabled",true);
+	$("#quick_add_close_button").prop("disabled",true);
+	$("#quick_add_close_button_top").prop("disabled",true);
+	$('#quick_keywords_to_add').prop('disabled', true);
+	$('#quick_domains_to_add').prop('disabled', true);
+	$("#quick_add_footer").removeClass('bg-grey').addClass('bg-yellow');
+	$("#quick_add_modal").removeClass('color-yellow').addClass('color-black');
+
+		if (the_project_id > 0) {
+
+				if ((to_add_keywords.length > 0) || (to_add_domains.length > 0)) {
+					$.ajax({
+						url: '/q/a/quick-add/',
+						type: 'POST',
+			               data: "project_id=" + the_project_id + "&new_keywords=" + to_add_keywords + "&new_domains=" + to_add_domains + "&wid=" + WID,
+						cache: false,
+						success: function(data) {
+							
+							//console_log('blue', '[+128_quick_add]', 'results=[' + data + ']');
+							//console_log('blue', '[+129_quick_add]', 'results.success=[' + data.success + ']');
+
+							//Needed if the data came back as text/html, but it comes back as json
+							//let data = JSON.parse(results);
+
+			                                	if (data.success !== true) {
+													$("#quick_add_save_button").removeClass('bg-blue bg-green bg-red').addClass('bg-red');
+													$("#quick_add_modal").html(data.message);
+													$('#incoming_data').fadeOut(500);
+
+													setTimeout(function() {
+														$('#QuickAdd').modal('hide');
+													}, 50);
+
+													notify(Language.quick_add_error, data.message, 'danger', 30000, 'zmdi zmdi-folder');
+
+			                                	}else {
+													$("#quick_add_save_button").removeClass('bg-blue bg-green bg-red').addClass('bg-green');
+													$("#quick_keywords_to_add").val('');
+													$("#quick_domains_to_add").val('');
+													$("#quick_add_modal").html(data.message);
+													if (parseInt(data.data_added) > 0) { $('#dash_total_keywords').append('<span class="color-green"> + ' + data.data_added + '</span>'); }
+													$('#incoming_data').fadeOut(500);
+													
+													setTimeout(function() {
+														$('#QuickAdd').modal('hide');
+													}, 50);
+
+													notify('', data.message, 'success', 30000, 'zmdi zmdi-folder');
+
+										}
+
+								$("#quick_add_save_button").prop("disabled",false);
+								$("#quick_add_close_button").prop("disabled",false);
+								$("#quick_add_close_button_top").prop("disabled",false);	
+								$('#quick_keywords_to_add').prop('disabled', false);
+								$('#quick_domains_to_add').prop('disabled', false);
+								$("#quick_add_footer").addClass('bg-grey').removeClass('bg-yellow');
+								$("#quick_add_modal").addClass('color-yellow').removeClass('color-black');
+
+
+						},
+						error: function( XMLHttpRequest, textStatus, errorThrown ) {
+
+									$("#quick_add_save_button").removeClass('bg-blue bg-green bg-red').addClass('bg-red');
+									$("#quick_add_modal").html("<span class='color-red'>" + Language.quick_add_server_error + "</span>");
+									$('#incoming_data').fadeOut(500);
+
+						}
+
+					});
+				}else {
+					$("#quick_add_modal").html(Language.quick_add_fields_empty);
+					$("#quick_add_save_button").removeClass('bg-blue bg-green bg-red').addClass('bg-red');
+					$('#incoming_data').fadeOut(500);
+
+					$("#quick_add_save_button").removeClass('bg-blue bg-green bg-red').addClass('bg-blue');
+					$("#quick_add_save_button").prop("disabled",false);
+					$("#quick_add_close_button").prop("disabled",false);
+					$("#quick_add_close_button_top").prop("disabled",false);	
+					$('#quick_keywords_to_add').prop('disabled', false);
+					$('#quick_domains_to_add').prop('disabled', false);
+
+				}
+		
+		}
+	
+	}
+	
+	
+	function show_quick_add_for_project (current_project_id) {
+		// Cannot be a hidden or deleted project
+
+		setTimeout(function() {
+			
+			$('#quick_add_save_button').attr('data-project-id', current_project_id);
+
+			$('.project_name').text(projects_data_in_JSON[current_project_id]["project_name"]);
+			$(".project_total_keywords").text(projects_data_in_JSON[current_project_id]["total_keywords"]);
+			$(".project_total_tags").text(projects_data_in_JSON[current_project_id]["total_urls"]);
+			$(".project_total_urls").text(projects_data_in_JSON[current_project_id]["total_positive_domains"]);
+			$(".project_country").html("&nbsp; <img src='https://www.serpwoo.com/img/members/flags/" + projects_data_in_JSON[current_project_id]["country"] + ".png' alt='Country Flag' style='width: 18px; height: auto;'>");
+
+
+			if ((projects_data_in_JSON[current_project_id]["locality"].length > 2)) {
+				$(".project_locality").html("<i class='color-amber zmdi zmdi-pin'></i> " + projects_data_in_JSON[current_project_id]["locality"] + " &nbsp; / &nbsp;");
+			}else {
+				$(".project_locality").html('');
+			}
+
+			if ((projects_data_in_JSON[current_project_id]["language"].length >= 2)) {
+				$(".project_language").html("<i class='color-amber zmdi zmdi-globe'></i> " + projects_data_in_JSON[current_project_id]["language"] + " &nbsp; / &nbsp;");
+			}else {
+				$(".project_language").html('');
+			}
+
+			if ((projects_data_in_JSON[current_project_id]["mobile"] == 1)) {
+				$(".project_mobile_desktop").html("<i class='color-amber zmdi zmdi-smartphone-iphone'></i> " +  Language.quick_add_txt_device_mobile + " &nbsp; / &nbsp;");
+			}else {
+				$(".project_mobile_desktop").html("<i class='color-amber zmdi zmdi-desktop-mac'></i> " +  Language.quick_add_txt_device_desktop + " &nbsp; / &nbsp;");
+			}
+
+			console_log('blue', '[+213_quick_add]', ' MODAL Opening - quick add project=[' + current_project_id + ']');
+		}, 100);
+
+		setTimeout(function() {
+		    $('#QuickAdd').modal('show')
+		}, 50);
+
+		
+	}
+
+
+$(document).ready(function(){
+				
+	// Quick Add opened up
+	$(document).on('click', '#open_quick_add', function(){
+
+			setTimeout(function() {
+				$('#ProjectInsightPreview').modal('hide');
+
+				var the_project_id = parseInt($('#quick_add_save_button').attr('data-project-id'));
+				show_quick_add_for_project(the_project_id);
+			}, 1);
+
+	});
+
+	//Update language
+	$("#txt_quick_add").text(Language.quick_add_header);
+	$("#txt_project_name").text(Language.quick_add_txt_project_name);
+	$("#txt_locality").text(Language.quick_add_txt_locality);
+	$("#txt_device").text(Language.quick_add_txt_device);
+	$("#txt_keywords").text(Language.quick_add_txt_keywords);
+	$("#txt_urls").text(Language.quick_add_txt_urls);
+	$("#txt_tagged_domains").text(Language.quick_add_txt_tagged_domains);
+
+	$(".txt_example").text(Language.quick_add_example);
+	$("#txt_example_kw").text(Language.quick_add_example_kw);
+	$("#txt_example_exact_kw").text(Language.quick_add_example_exact_kw);
+
+	$("#txt_example").text(Language.quick_add_example);
+	$("#txt_example_kw").text(Language.quick_add_example_kw);
+	$("#txt_example_exact_kw").text(Language.quick_add_example_exact_kw);
+
+	$("#txt_example_domain").text(Language.quick_add_example_domain);
+	$("#txt_example_exact_url").text(Language.quick_add_example_exact_url);
+	$("#txt_example_partial_url").text(Language.quick_add_example_partial_url);
+
+	$("#kw_to_add").text(Language.quick_add_kw_to_add);
+	$("#domains_to_add").text(Language.quick_add_domains_to_add);
+
+	$("#txt_close").text(Language.quick_add_txt_close);
+	$("#txt_save").text(Language.quick_add_txt_save);
+
+});
+</script>
+
+
+</div></body></html>

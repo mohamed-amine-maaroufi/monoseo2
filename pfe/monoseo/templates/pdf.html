@@ -1,0 +1,126 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rapport PDF</title>
+</head>
+<body >
+
+<center>
+	<div id="content">
+	
+<h2> Rapport generer for projet {{r.projet}} </h2>
+
+<h4> generer le  {{r.date_created}} </h4>
+
+<h2 style="color: green"> Top Google </h2>
+
+<ul>
+	<li> numero 1 :  <a target="_blank" href="{{r.topgoogle0}}"> {{r.topgoogle0}} </a> </li>
+	<br>
+	<hr>
+	<li> numero 2 :  <a target="_blank" href="{{r.topgoogle1}}"> {{r.topgoogle1}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 3 :  <a href="{{r.topgoogle2}}"> {{r.topgoogle2}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 4 :  <a href="{{r.topgoogle3}}"> {{r.topgoogle3}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 5 :  <a href="{{r.topgoogle4}}"> {{r.topgoogle4}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 6 :  <a href="{{r.topgoogle5}}"> {{r.topgoogle5}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 7 :  <a href="{{r.topgoogle6}}"> {{r.topgoogle6}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 8 :  <a href="{{r.topgoogle7}}"> {{r.topgoogle7}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 9 :  <a href="{{r.topgoogle8}}"> {{r.topgoogle8}} </a> </li>
+	<br>
+	<hr>
+
+		<li> numero 10 :  <a href="{{r.topgoogle9}}"> {{r.topgoogle9}} </a> </li>
+	<br>
+	<hr>
+
+	</ul>
+ 
+<h2 style="color: green"> Top FaceBook </h2>
+
+<ul>
+	<li> numero 1 :  <a target="_blank" href="{{r.topfb0}}"> {{r.topfb0}} </a> </li>
+	<br>
+	<hr>
+	<li> numero 2 :  <a target="_blank" href="{{r.topfb1}}"> {{r.topfb1}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 3 :  <a href="{{r.topfb2}}"> {{r.topfb2}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 4 :  <a href="{{r.topfb3}}"> {{r.topfb3}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 5 :  <a href="{{r.topfb4}}"> {{r.topfb4}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 6 :  <a href="{{r.topfb5}}"> {{r.topfb5}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 7 :  <a href="{{r.topfb6}}"> {{r.topfb6}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 8 :  <a href="{{r.topfb7}}"> {{r.topfb7}} </a> </li>
+	<br>
+	<hr>
+		<li> numero 9 :  <a href="{{r.topfb8}}"> {{r.topfb8}} </a> </li>
+	<br>
+	<hr>
+
+		<li> numero 10 :  <a href="{{r.topfb9}}"> {{r.topfb9}} </a> </li>
+	<br>
+	<hr>
+
+	</ul>
+
+
+</div>
+<button onclick="window.print();"> print</button>
+<button onclick="down();">download</button>
+<p>or <a href="mailto:someone@example.com?subject=This%20is%20the%20subject&cc=someone_else@example.com&body=This%20is%20the%20body">Send by email</a></p>
+
+</center>
+
+
+<script src="{% static 'jquery.min.js' %}"></script>
+
+<!-- jsPDF library -->
+<script src="{% static 'jspdf.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+<script type="text/javascript">
+	
+function down(){
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+}
+
+
+</script>
+
+</body>
+</html>

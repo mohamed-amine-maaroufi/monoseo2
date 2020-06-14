@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title_page %} Add key word {% endblock %}
+
+{% block content %}
+<section class="content" style="padding-top: 130px;">
+    <div class="content__inner">
+        <header class="content__title">
+            <h1>Add key word</h1>
+
+        </header>
+
+        <div class="card">
+            <div class="card-header" style="background-color: #00294e;">
+
+
+            </div>
+            <div>
+
+                <center>
+                    <h1> Add new key word </h1>
+
+                    {% if messages %}
+                        <div class="span12">
+                        {% for message in messages %}
+                            {% if message.tags == 'success' %}
+									<div class="alert alert-success" role="alert">
+										{{ message|safe }}
+									</div>
+								{% endif %}
+
+								{% if message.tags == 'error' %}
+									<div class="alert alert-danger" role="alert">
+										{{ message|safe }}
+									</div>
+								{% endif %}
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                </center>
+
+
+                <form method="post" action="/addquickwork/{{project.id}}">
+                    {% csrf_token %}
+
+
+                    <div class="login__block__body">
+
+
+                        <div class="form-group">
+                            <label>Key word</label>
+
+                            <input type="text" name="key" id="id_name" required="" class="form-control" maxlength="150">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Domain</label>
+
+                            <select name="domain" class="form-control" id="exampleFormControlSelect1">
+                                <option value="tn">tn</option>
+                                <option value="com">com</option>
+                                <option value="fr">fr</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Sector</label>
+                            <input type="text" name="sector" id="id_type" required="" class="form-control"
+                                   maxlength="150">
+                        </div>
+
+                        <center>
+
+                            <button type="submit" id="form_create_new_btn"
+                                    class="btn btn-primary color-white waves-effect"><span id="sign_in_text">Add key word</span>
+                                &nbsp; <i id="sign_in_icon" class="zmdi zmdi-long-arrow-right"></i></button>
+
+                        </center>
+                    </div>
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+</section>
+
+{% endblock %}

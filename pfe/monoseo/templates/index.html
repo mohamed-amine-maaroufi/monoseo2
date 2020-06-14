@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block title_page %} Home {% endblock %}
+
+{% block content %}
+  <section class="content" style="padding-top: 130px;">
+                <div class="content__inner">
+                    <header class="content__title">
+                        <h1>Welcome To Mono SEO</h1>
+                        <small class="hidden-xs-down"></small>
+
+
+                    </header>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <!-- Top Projects and Top SERP Views -->
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="card">
+                                        <div class="card-header bg-sw-blue card-inverse">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-3 col-lg-3">
+                                                    <h2 class="card-title">Home Panel</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="quick_projects" class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header bg-blue card-inverse">
+                                            <h2 class="card-title">Top Projects (by Project View)</h2>
+                                        </div>
+                                        <div class="card-block p-4">
+                                            <table style="width: 100%;" class="table table-sorting table-striped table-hover" id="top_projects_table">
+                                                <thead>
+                                                    <tr class="bg-deep-purple color-white">
+                                                        <th>Projects</th>
+                                                        <th>Created At</th>
+                                                        <th>Location</th>
+
+                                                        <!-- <th>&nbsp;</th> -->
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+
+                                                    {% for i in projects %}
+
+                                                    <tr id="row_top_projects_3">
+                                                        <td last-update="1589102101" query-amounts="92" align="left">
+                                                            <a href="#" class="color-blue"><i class="zmdi zmdi-folder"></i></a> &nbsp; <a href="/q/project/3/">{{i.name}}</a>
+                                                        </td>
+
+                                                                  <td last-update="1589102101" query-amounts="92" >
+                                                          {{i.date_created}}
+                                                        </td>
+
+                                                                         <td last-update="1589102101" query-amounts="92" >
+
+                                                           {{i.type}}
+                                                        </td>
+
+                                                    </tr>
+
+                                                    {% endfor %}
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="quick_serp_view" class="col-sm-12 col-md-3 col-lg-3">
+                                    <div class="card">
+                                        <div class="card-header bg-blue card-inverse">
+                                            <h2 class="card-title">Top Domain (by {{request.user}})</h2>
+                                        </div>
+                                        <div class="card-block p-4">
+                                            <table style="width: 100%;" class="table table-sorting table-striped table-hover" id="top_keywords_table">
+                                                <thead>
+                                                    <tr class="bg-deep-purple color-white">
+                                                        <th>Domain</th>
+                                                        <th>Date</th>
+                                                        <!-- <th>&nbsp;</th> -->
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+
+{% for i in keywords %}
+                                                    <tr>
+                                                        <td query-amounts="36" align="left">
+                                                            <a href="/q/serp/3/18/"><i class="zmdi zmdi-key"></i> &nbsp; {{i.domain}}</a>
+                                                        </td>
+                                                        <td align="right">{{i.date_created}}</td>
+                                                        <!-- <td align='center'><i style='font-size: 1.2em;' class='zmdi zmdi-more-vert'></i></td> -->
+                                                    </tr>
+{% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+      <div id="quick_serp_view" class="col-sm-12 col-md-3 col-lg-3">
+                                    <div class="card">
+                                        <div class="card-header bg-blue card-inverse">
+                                            <h2 class="card-title">Top Keywords (by {{request.user}})</h2>
+                                        </div>
+                                        <div class="card-block p-4">
+                                            <table style="width: 100%;" class="table table-sorting table-striped table-hover" id="top_keywords_table">
+                                                <thead>
+                                                    <tr class="bg-deep-purple color-white">
+                                                        <th>Keyword</th>
+                                                        <th>Date</th>
+                                                        <!-- <th>&nbsp;</th> -->
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+
+{% for i in listsearch %}
+                                                    <tr>
+                                                        <td query-amounts="36" align="left">
+                                                            <a href="/q/serp/3/18/"><i class="zmdi zmdi-key"></i> &nbsp; {{i.key}}</a>
+                                                        </td>
+                                                        <td align="right">{{i.date_created}}</td>
+                                                        <!-- <td align='center'><i style='font-size: 1.2em;' class='zmdi zmdi-more-vert'></i></td> -->
+                                                    </tr>
+{% endfor %}
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Gains and Losses -->
+
+
+
+                            <!-- By Volume, CPC, OCI, Comp, country, locality, device -->
+
+
+
+
+                </div>
+            </section>
+
+{% endblock %}

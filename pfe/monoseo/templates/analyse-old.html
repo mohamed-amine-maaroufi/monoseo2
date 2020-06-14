@@ -1,0 +1,100 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rapport PDF</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+
+
+</head>
+<body >
+
+<center>
+	<div id="content">
+
+<h2 style="color: green"> Analyse : {{site}} </h2>
+<h2 style="color: green"> urls </h2>
+<ul>
+{% for i in res.urls %}
+   <li>  {{i}} </li>
+{% endfor %}
+
+</ul>
+<hr>
+<h2 style="color: green"> image </h2>
+<ul>
+    {% for i in res.images %}
+       <li> <img src="{{i}}" /> </li>
+    {% endfor %}
+    
+    </ul>
+
+
+    <hr>
+
+    <h2 style="color: green"> p </h2>
+    <ul>
+        {% for i in res.ps %}
+        <li>  {{i}} </li>
+        {% endfor %}
+        
+        </ul>
+        <hr>
+
+        <h2 style="color: green"> About </h2>
+
+        {{res.description}}
+
+        <hr>
+        <h2 style="color: green"> video </h2>
+        <ul>
+            {% for i in res.videos %}
+               <li> <img src="{{i}}" /> </li>
+            {% endfor %}
+            
+            </ul>
+        
+        
+            <hr>
+
+
+</div>
+<button onclick="window.print();"> print</button>
+<button onclick="down();">download</button>
+<p>or <a href="mailto:someone@example.com?subject=This%20is%20the%20subject&cc=someone_else@example.com&body=This%20is%20the%20body">Send by email</a></p>
+
+</center>
+
+
+<script src="{% static 'jquery.min.js' %}"></script>
+
+<!-- jsPDF library -->
+<script src="{% static 'jspdf.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+<script type="text/javascript">
+	
+function down(){
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+}
+
+
+</script>
+
+</body>
+</html>
