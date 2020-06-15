@@ -9,23 +9,12 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
-#model user profil
-class UserProfileInfo(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
-    societe = models.CharField(max_length=50,blank=True)
-    tel = models.CharField(max_length=8,blank=True)
-    adresse = models.CharField(max_length=50, blank=True)
-
-    def __str__(self):
-      return self.user.username
-
 
 #model list of project
 class Project(models.Model):
     name = models.CharField(max_length=100, unique='true')
     type = models.CharField(max_length=100, default="")
     date_created = models.DateTimeField(default=timezone.now)
-    #device = models.CharField(max_length=7, choices=device_choices, default="desktop")
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
@@ -33,6 +22,8 @@ class Project(models.Model):
 
     class Meta:
         unique_together = ('name', 'type',)
+
+
 
 #model list of searched keywords
 class KeyWord(models.Model):
@@ -47,3 +38,13 @@ class KeyWord(models.Model):
 
     class Meta:
         unique_together = (('key', 'domain'), ('sector', 'project'))
+
+
+#model list of rapport
+class Report(models.Model):
+    name = models.CharField(max_length=100, unique='true')
+    date_created = models.DateTimeField(default=timezone.now)
+    keyword = models.ForeignKey(KeyWord, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.name

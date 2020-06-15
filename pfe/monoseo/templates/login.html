@@ -359,15 +359,24 @@
                 <div class="login__block__header"><b id="login_1">Hi there! Please Sign in</b></div>
 
 				{% if messages %}
-				<div class="span12">
-				{% for message in messages %}
-					<div class="color-red">
-						<br>
-						{{ message|safe }}
-					</div>
-				{% endfor %}
-				</div>
-				{% endif %}
+
+                    <div class="span12">
+                        {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message|safe }}
+                        </div>
+                        {% endif %}
+
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message|safe }}
+                        </div>
+                        {% endif %}
+
+                        {% endfor %}
+                    </div>
+                    {% endif %}
 
     <form method="post" action="{% url 'loginuser' %}">
   {% csrf_token %}

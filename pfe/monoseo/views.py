@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
-from monoseo.forms import UserForm,UserProfileInfoForm
+from monoseo.forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -19,7 +19,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-#@login_required(login_url='loginuser/')
+@login_required(login_url='loginuser/')
 def index(request):
 	projects = Project.objects.all()
 	keywords = KeyWord.objects.all()
@@ -38,25 +38,20 @@ def user_logout(request):
 def register(request):
     registered = False
     if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        profile_form = UserProfileInfoForm(data=request.POST)
-        if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
-            profile.save()
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            messages.success(request, "Thank for your registration")
             registered = True
-        else:
-            print(user_form.errors,profile_form.errors)
     else:
-        user_form = UserForm()
-        profile_form = UserProfileInfoForm()
-    return render(request,'register.html',
-                          {'user_form':user_form,
-                           'profile_form':profile_form,
-                           'registered':registered})
+        form = UserForm()
+    return render(request, 'register.html',
+                  {'user_form': form,
+                   'registered': registered})
 
 def loginuser(request):
     if request.method == "POST":
@@ -64,9 +59,13 @@ def loginuser(request):
         upass = request.POST.get('password','')
         print(uname, upass)
         user = authenticate(request, username=uname, password=upass)
-        if user is not None:
-            login(request, user)
-            return redirect('index')
+        if user:
+            if user.is_active:
+                login(request, user)
+                return redirect('index')
+            else:
+                messages.error(request, 'Your account is not active, contact the admin !')
+                return redirect('loginuser')
         else:
             messages.error(request, 'Invalid login details given')
             return redirect('loginuser')
@@ -75,12 +74,12 @@ def loginuser(request):
 
 
 
-
+@login_required(login_url='/loginuser/')
 def projets(request):
     projects = Project.objects.filter(user=request.user)
     return render(request, 'projects.html', {'projects' : projects})
 
-
+@login_required(login_url='/loginuser/')
 def keywords(request,id):
 
     p = Project.objects.get(id=id)
@@ -93,7 +92,7 @@ def rapport(request):
 
     return "hello"
 
-
+@login_required(login_url='/loginuser/')
 def searchkeyword(request):
     projects = Project.objects.filter(user=request.user)
 
@@ -192,7 +191,6 @@ def addquickwork(request,id):
         domain= request.POST.get('domain','')
         sector = request.POST.get('sector','')
         project = Project.objects.get(id=id)
-
 
         k = KeyWord()
         k.key = word
