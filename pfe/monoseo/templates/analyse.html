@@ -5,9 +5,9 @@
     <title>Rapport PDF</title>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 
     <style>
@@ -123,156 +123,31 @@ ul.uploaded-pics label img { width: 100%; transition-duration: 0.2s; transform-o
 ul.uploaded-pics :checked + label:before { content: "✓"; transform: scale(1); z-index: 2;}
 ul.uploaded-pics :checked + label img { padding: 5px; z-index: -1; border: 2px dashed #0095ff;}
 .pull-right .btn { margin-left: 5px;}
+
     </style>
 
 </head>
-<body >
-
-<center>
-	<div id="content">
-
-<h2 style="color: green"> Analyse : {{site}} </h2>
-
-
-<h3 style="color : red;"> Description </h3>
-<h3> {{res.description}}</h3>
-<br>
-<h3 style="color : red;"> Copyright </h3>
-<h3> {{res.copy}}</h3>
-<br>
-<hr style="width: 50%">
-<br>
-
-
-<table>
-    <caption> Liste links</caption>
-    <thead>
-      <tr>
-        <th scope="col">Url</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-            {% for i in res.urls %}
-      <tr>
-        <td data-label="Account">{{i}}</td>
-        <td data-label="Due Date"><a href="{{i}}" > visite </a> </td>
-       
-      </tr>
-      {% endfor %}
-     
-    </tbody>
-  </table>
+<body>
 
 
 
+        <h2 style="color: green"> Result of analyse</h2>
 
-<br>
+        {% if result %}
 
-<div class="container">
-
-        <div class="horizontal">
-            <div class="verticals twelve">
-                <h1>Image</h1>
-            </div>
-        </div>
-        
-        <!-- image view block starts here -->
-        <div class="horizontal">
-            <div class="verticals twelve">
-           
-                <ul class="uploaded-pics">
-
-                        {% for i in res.images %}
-                    <li>
-                        <input type="checkbox" id="checkthis1" />
-                        <label for="checkthis1"><img src="{{i}}" /></label>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            
-
-        </div>
-        
-
-        
-    </div>
-
-<br>
-
-<div class="container">
-
-        <div class="horizontal">
-            <div class="verticals twelve">
-                <h1>Video</h1>
-            </div>
-        </div>
-        
-        <!-- image view block starts here -->
-        <div class="horizontal">
-            <div class="verticals twelve">
-           
-                <ul class="uploaded-pics">
-
-                        {% for i in res.videos %}
-                    <li>
-                        <input type="checkbox" id="checkthis1" />
-                        <label for="checkthis1"><img src="{{i}}" /></label>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            
-
-        </div>
-        
-
-        
-    </div>
-
-    <br>
+        <p><a href="{{result.link1.url|escape}}">{{result.link1.url|escape}}</a> </p>
+        <p><a href="{{result.link2.url|escape}}">{{result.link2.url|escape}}</a> </p>
+        <p><a href="{{result.link3.url|escape}}">{{result.link3.url|escape}}</a> </p>
+        <p><a href="{{result.link4.url|escape}}">{{result.link4.url|escape}}</a> </p>
+        <p><a href="{{result.link5.url|escape}}">{{result.link5.url|escape}}</a> </p>
+         <br>
 
 
+        {% else %}
+            <h1 style="color: red"> There is no result for this analyse</h1>
+        {% endif %}
 
 
-
-
-</div>
-<br>
-<br>
-<button onclick="window.print();"> print</button>
-<button onclick="down();">download</button>
-<p>or <a href="mailto:someone@example.com?subject=This%20is%20the%20subject&cc=someone_else@example.com&body=This%20is%20the%20body">Send by email</a></p>
-
-</center>
-
-
-<script src="{% static 'jquery.min.js' %}"></script>
-
-<!-- jsPDF library -->
-<script src="{% static 'jspdf.min.js' %}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
-<script type="text/javascript">
-	
-function down(){
-var doc = new jsPDF();
-var specialElementHandlers = {
-    '#editor': function (element, renderer) {
-        return true;
-    }
-};
-
-
-    doc.fromHTML($('#content').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    doc.save('sample-file.pdf');
-}
-
-
-</script>
 
 </body>
 </html>

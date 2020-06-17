@@ -262,24 +262,7 @@
 
 <body data-ma-theme="blue">
 
-<!-- loader when page process -->
-<div id="loader" class="center"></div>
-<script>
-    document.onreadystatechange = function() {
-        if (document.readyState !== "complete") {
-            document.querySelector(
-              "body").style.visibility = "hidden";
-            document.querySelector(
-              "#loader").style.visibility = "visible";
-        } else {
-            document.querySelector(
-              "#loader").style.display = "none";
-            document.querySelector(
-              "body").style.visibility = "visible";
-        }
-    };
 
-</script>
 
 <main class="main">
     <div class="page-loader">&nbsp;</div>
