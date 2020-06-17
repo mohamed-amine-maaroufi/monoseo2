@@ -92,78 +92,6 @@ def rapport(request):
 
     return "hello"
 
-@login_required(login_url='/loginuser/')
-def searchkeyword(request):
-    projects = Project.objects.filter(user=request.user)
-
-    if request.method == "POST":
-        word = request.POST.get('keyword', '')
-        domain = request.POST.get('domain', '')
-        sector = request.POST.get('sector', '')
-        id_project = request.POST.get('id_project', '')
-        project = Project.objects.get(id=id_project)
-
-        k = KeyWord()
-        k.key = word
-        k.domain = domain
-        k.sector = sector
-        k.project = project
-
-        try:
-            k.save()
-            messages.success(request, 'Key word was saved with success !!!')
-
-            try:
-                from googlesearch import search
-
-                print("*" * 80)
-                print("result google")
-                result = []
-                query = word + " " + sector
-                for j in search(query, tld=domain, num=10, stop=10, pause=2):
-                    print(j)
-                    result.append(j)
-
-                print("*" * 80)
-
-                messages.success(request, 'The result of search finish with success')
-
-            except ImportError:
-                print("No module named 'google' found")
-                messages.error(request, 'There is some problem with google search library !!!')
-
-            return render(request, 'search.html',
-                          {'result': result, 'keyword': word, 'domain': domain,
-                           'sector': sector, 'projects': projects})
-
-        except IntegrityError as e:
-            messages.error(request, 'Key word, it\'s already exist, this is the new result for its search')
-            try:
-                from googlesearch import search
-
-                print("*" * 80)
-                print("result google")
-                result = []
-                query = word + " " + sector
-
-                for j in search(query, tld=domain, num=5, stop=5, pause=2):
-                    print(j)
-                    result.append(j)
-                print("*" * 80)
-
-                messages.success(request, 'The result of search finish with success')
-
-            except ImportError:
-                print("No module named 'google' found")
-                messages.error(request, 'There is some problem with google search library !!!')
-
-            return render(request, 'search.html',
-                          {'result': result,  'keyword': word, 'domain': domain,
-                           'sector': sector,'projects': projects})
-
-
-    return render(request, 'search.html', {'projects': projects})
-
 
 def createproject(request):
     if request.method == "POST":
@@ -416,14 +344,14 @@ i = 0
 
 
 
-def analyse(request):
+def analyse(links):
 
-    links = ["https://en.wikipedia.org/wiki/%22Hello,_World!%22_program",
+    """links = ["https://en.wikipedia.org/wiki/%22Hello,_World!%22_program",
              "https://hackersandslackers.com/scraping-urls-with-beautifulsoup/",
              "https://www.planet.com/",
              "https://www.helloworld.com.au",
              "https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python/232273-utilisez-des-dictionnaires"
-             ]
+             ]"""
     list_links = ['link1','link2','link3','link4','link5']
     scrappe_data = []
     i=0;
@@ -435,4 +363,82 @@ def analyse(request):
 
     result = dict(zip(list_links, scrappe_data))
     # return HttpResponse(soup)
-    return render(request, "analyse.html", {"result": result})
+    return result
+
+######################### end scrapping functions #######################
+
+
+################## function search #####################################
+@login_required(login_url='/loginuser/')
+def searchkeyword(request):
+    projects = Project.objects.filter(user=request.user)
+
+
+    if request.method == "POST":
+        word = request.POST.get('keyword', '')
+        domain = request.POST.get('domain', '')
+        sector = request.POST.get('sector', '')
+        id_project = request.POST.get('id_project', '')
+        project = Project.objects.get(id=id_project)
+
+        k = KeyWord()
+        k.key = word
+        k.domain = domain
+        k.sector = sector
+        k.project = project
+
+        try:
+            k.save()
+            messages.success(request, 'Key word was saved with success !!!')
+
+            try:
+                from googlesearch import search
+
+                print("*" * 80)
+                print("result google")
+                links = []
+                query = word + " " + sector
+                for j in search(query, tld=domain, num=10, stop=10, pause=2):
+                    print(j)
+                    links.append(j)
+
+                print("*" * 80)
+
+                messages.success(request, 'The result of search finish with success')
+
+            except ImportError:
+                print("No module named 'google' found")
+                messages.error(request, 'There is some problem with google search library !!!')
+            resofscrapping = analyse(links)
+            return render(request, "analyse.html", {"result": resofscrapping, "project": project})
+
+        except IntegrityError as e:
+            messages.error(request, 'Key word, it\'s already exist, this is the new result for its search')
+            try:
+                from googlesearch import search
+
+                print("*" * 80)
+                print("result google")
+                links = []
+                query = word + " " + sector
+
+                for j in search(query, tld=domain, num=5, stop=5, pause=2):
+                    print(j)
+                    links.append(j)
+                print("*" * 80)
+
+                messages.success(request, 'The result of search finish with success')
+
+            except ImportError:
+                print("No module named 'google' found")
+                messages.error(request, 'There is some problem with google search library !!!')
+
+            """return render(request, 'search.html',
+                          {'result': result,  'keyword': word, 'domain': domain,
+                           'sector': sector,'projects': projects})"""
+            resofscrapping = analyse(links)
+            return render(request, "analyse.html", {"result": resofscrapping,'project': project})
+
+
+    return render(request, 'search.html', {'projects': projects})
+

@@ -1,153 +1,52 @@
-{% load staticfiles%}
-<!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
     <title>Rapport PDF</title>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-
-    <style>
-    body {
-  font-family: "Open Sans", sans-serif;
-  line-height: 1.25;
-}
-
-table {
-  border: 1px solid #ccc;
-  border-collapse: collapse;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  table-layout: fixed;
-}
-
-table caption {
-  font-size: 1.5em;
-  margin: .5em 0 .75em;
-}
-
-table tr {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  padding: .35em;
-}
-
-table th,
-table td {
-  padding: .625em;
-  text-align: center;
-}
-
-table th {
-  font-size: .85em;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-@media screen and (max-width: 600px) {
-  table {
-    border: 0;
-  }
-
-  table caption {
-    font-size: 1.3em;
-  }
-  
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-  
-  table tr {
-    border-bottom: 3px solid #ddd;
-    display: block;
-    margin-bottom: .625em;
-  }
-  
-  table td {
-    border-bottom: 1px solid #ddd;
-    display: block;
-    font-size: .8em;
-    text-align: right;
-  }
-  
-  table td::before {
-    /*
-    * aria-label has no advantage, it won't be read inside a table
-    content: attr(aria-label);
-    */
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  
-  table td:last-child {
-    border-bottom: 0;
-  }
-}
-    
-    
-
-
-
-
-
-
-
-
-
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-body { font-family: 'Open Sans', sans-serif;}
-h1 { text-align: center; font-size: 28px; font-weight: 600; margin-top: 40px; margin-bottom: 30px;}
-h3 { font-size: 22px; margin: 15px 0 15px;}
-h3.head3 { font-weight: 600; border-bottom: 4px solid #f3f3f3; padding-bottom: 5px;}
-ul { margin: 0; padding: 0;}
-ul.uploaded-pics { list-style-type: none;}
-ul.uploaded-pics li { width: 16.40%; display: inline-table; margin: 5px}
-ul.uploaded-pics img { border: 2px dashed transparent;}
-ul.uploaded-pics input[type="checkbox"][id^="checkthis"] { display: none;}
-ul.uploaded-pics label { padding: 5px; display: block; position: relative; cursor: pointer;}
-ul.uploaded-pics label:before { font-size: 15px; background-color: #ffffff; color: #0095ff; content: ""; display: block; border-radius: 50%; border: 1px solid #0095ff; position: absolute; top: -6px; right: -6px; width: 25px; height: 25px; line-height: 25px; text-align: center; transition-duration: 0.4s; transform: scale(0);}
-ul.uploaded-pics label img { width: 100%; transition-duration: 0.2s; transform-origin: 50% 50%;}
-ul.uploaded-pics :checked + label:before { content: "✓"; transform: scale(1); z-index: 2;}
-ul.uploaded-pics :checked + label img { padding: 5px; z-index: -1; border: 2px dashed #0095ff;}
-.pull-right .btn { margin-left: 5px;}
-
-    </style>
 
 </head>
 <body>
+<center>
+    <div style="width:500px;height:150px;border:5px solid #000;">
+        <h2>Rapport d'analyse concurentiells </h2>
+        <h2>projet site web: {{project.name}} </h2>
+        <h2> Document de base</h2></div>
+</center>
 
+<div class="container-fluid">
+    <h4>Sommaire</h4>
+    <p><a>{{result.link1.sitename|escape}}</a></p>
+    <p><a>{{result.link2.sitename|escape}}</a></p>
+    <p><a>{{result.link3.sitename|escape}}</a></p>
+    <p><a>{{result.link4.sitename|escape}}</a></p>
+    <p><a>{{result.link5.sitename|escape}}</a></p>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="text-align: right;">
+            <img height="250px" width="250px" src="{% static 'images/signature.jpg' %}" style="max-width: 300px; "/>
 
-        <h2 style="color: green"> Result of analyse</h2>
+    </div>
+    <br>
+    <br>
+    <p>
+        <stong style="font-size:80px">L</stong>a base de tout projet de site internet est de vous amener de nouveaux visiteurs, de
+        nouveaux clients et de fidéliser l’existant.
+        Aussi, la mise en place d’un site doit être étudiée de façon approfondie et ne peut
+        être abordée comme la rédaction d’un document classique.
+        VISS vous propose la création d’un site réellement orienté utilisateur, associé à un design
+        agréable et percutant, à la navigation simple et adaptée à tout type de visiteurs.
+    </p>
 
-        {% if result %}
-
-        <p><a href="{{result.link1.url|escape}}">{{result.link1.url|escape}}</a> </p>
-        <p><a href="{{result.link2.url|escape}}">{{result.link2.url|escape}}</a> </p>
-        <p><a href="{{result.link3.url|escape}}">{{result.link3.url|escape}}</a> </p>
-        <p><a href="{{result.link4.url|escape}}">{{result.link4.url|escape}}</a> </p>
-        <p><a href="{{result.link5.url|escape}}">{{result.link5.url|escape}}</a> </p>
-         <br>
-
-
-        {% else %}
-            <h1 style="color: red"> There is no result for this analyse</h1>
-        {% endif %}
-
-
-
+</div>
 </body>
 </html>
