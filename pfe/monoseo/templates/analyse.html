@@ -9,8 +9,10 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 
+
 </head>
 <body>
+
 <center>
     <div style="width:500px;height:150px;border:5px solid #000;">
         <h2>Rapport d'analyse concurentiells </h2>
@@ -199,7 +201,29 @@
 
                 </ul>
             </div>
+
+             <div class="card p-4">
+                <div class="card-header">
+                    <h1>Conclusion</h1>
+                    <hr>
+                </div>
+
+                 <div class="form-group">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+             </div>
             <br>
+
+    <center>
+        <button onclick="generate_pdf();" type="button" class="btn btn-primary">Generate pdf report</button>
+        <a class="btn btn-primary"
+           href="mailto:someone@example.com?subject=This%20is%20the%20subject&cc=someone_else@example.com&body=This%20is%20the%20body">Send
+            by email</a>
+        <br>
+        <br>
+        <hr>
+    </center>
+
 
 </div>
 </body>

@@ -21,7 +21,7 @@ class Project(models.Model):
         return self.name
 
     class Meta:
-        unique_together = ('name', 'type',)
+        unique_together = ('name','type')
 
 
 #model list of searched keywords

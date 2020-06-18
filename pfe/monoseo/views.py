@@ -309,14 +309,11 @@ def get_theme_color(html):
 def get_menu(html):
     menu = []
     if html.find("nav"):
-        #menu =
-        for a in html.find("nav").get_text():
+        menu = html.find("nav").get_text()
+        """for a in html.find("nav").get_text():
             if a['href'].count('/') > 1 or '#' in a['href']:
                 continue
-            menu.append(a['href'])
-
-
-
+            menu.append(a['href'])"""
     return menu
 
 def scrape_page_data(url):
@@ -526,3 +523,4 @@ def searchkeyword(request):
     return render(request, 'search.html', {'projects': projects})
 
 #################### end search function ################################
+
