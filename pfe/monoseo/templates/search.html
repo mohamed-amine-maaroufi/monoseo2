@@ -26,7 +26,8 @@
             right: 0;
             margin: auto;
         }
-    </style>
+
+</style>
 
 <section class="content" style="padding-top: 130px;">
     <div class="content__inner">
@@ -109,7 +110,9 @@
 
 
                         <div class="search-button">
-                            <button style="width: 50px height100px;" onclick="showLoaderOnClick('/search/')" type="submit">Search</button>
+                            <button style="width: 50px height100px;" onclick="showLoaderOnClick('/search/')"
+                                    type="submit">Search
+                            </button>
                         </div>
 
 
@@ -138,34 +141,149 @@
                 <p><h4 style="color: green"> Key word : {{keyword}} | Domain : {{domain}} | Sector : {{sector}}</h4></p>
             </center>
 
-            <div class="card-block p-4">
-                <table style="width: 100%;" class="table table-sorting table-striped table-hover"
-                       id="top_keywords_table">
-                    <thead>
-                    <tr class="bg-deep-purple color-white">
-                        <th>Site</th>
-                        <th></th>
-                        <!-- <th>&nbsp;</th> -->
-                    </tr>
-                    </thead>
+            <!---------------------- link 1 ------------------------------>
+            <div class="card p-4">
+                <div class="card-header">
+                    <h2>{{result.link1.sitename|escape}}</h2>
+                    <hr>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Title : </strong>{{result.link1.title|escape}}</li>
+                    <li class="list-group-item"><strong>Url : </strong>{{result.link1.url|escape}}</li>
+                    <li class="list-group-item"><strong>Description : </strong>{{result.link1.description|escape}}</li>
+                    <li class="list-group-item"><strong>Metaimage : </strong>{{result.link1.metaimage|escape}}</li>
+                    <li class="list-group-item"><strong>Favicon : </strong>{{result.link1.favicon|escape}}</li>
+                    <li class="list-group-item"><strong>Logo : </strong>{{result.link1.logo|escape}}</li>
+                    <li class="list-group-item"><strong>Theme color : </strong>{{result.link1.color|escape}}</li>
+                    <li class="list-group-item"><strong>Footer : </strong>{{result.link1.footer|escape}}</li>
+                   <li class="list-group-item">
+                        <square><strong>All images : </strong>
+                            {% for i in result.link1.allimages %}
+                            <li class="list-group-item">
+                                {{i}}
+                            </li>
+                            {% endfor %}
+                        </square>
+                    </li>
 
-                    <tbody>
-                    {% for i in result %}
-                    <tr>
-                        <td query-amounts="36" align="left">
-                            <a target="_blank" href="{{i}}"><i class="zmdi zmdi-key"></i> &nbsp; {{i}}</a>
-                        </td>
-                        <td align="right"><a href="{% url 'analyse' %}"> analyse </a>
-                        </td>
-                        <!-- <td align='center'><i style='font-size: 1.2em;' class='zmdi zmdi-more-vert'></i></td> -->
-                    </tr>
-                    {% endfor %}
+                </ul>
+            </div>
 
-                    </tbody>
-                </table>
+            <!---------------------- link 2 ------------------------------>
+            <div class="card p-4">
+                <div class="card-header">
+                    <h2>{{result.link2.sitename|escape}}</h2>
+                    <hr>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Title : </strong>{{result.link2.title|escape}}</li>
+                    <li class="list-group-item"><strong>Url : </strong>{{result.link2.url|escape}}</li>
+                    <li class="list-group-item"><strong>Description : </strong>{{result.link2.description|escape}}</li>
+                    <li class="list-group-item"><strong>Metaimage : </strong>{{result.link2.metaimage|escape}}</li>
+                    <li class="list-group-item"><strong>Favicon : </strong>{{result.link2.favicon|escape}}</li>
+                    <li class="list-group-item"><strong>Logo : </strong>{{result.link2.logo|escape}}</li>
+                    <li class="list-group-item"><strong>Theme color : </strong>{{result.link2.color|escape}}</li>
+                    <li class="list-group-item"><strong>Footer : </strong>{{result.link2.footer|escape}}</li>
+
+
+                    <li class="list-group-item">
+                        <square><strong>All images : </strong>
+                            {% for i in result.link2.allimages %}
+                            <li class="list-group-item">
+                                {{i}}
+                            </li>
+                            {% endfor %}
+                        </square>
+                    </li>
+
+
+                </ul>
             </div>
 
 
+            <!---------------------- link 3 ------------------------------>
+            <div class="card p-4">
+                <div class="card-header">
+                    <h2>{{result.link3.sitename|escape}}</h2>
+                    <hr>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Title : </strong>{{result.link3.title|escape}}</li>
+                    <li class="list-group-item"><strong>Url : </strong>{{result.link3.url|escape}}</li>
+                    <li class="list-group-item"><strong>Description : </strong>{{result.link3.description|escape}}</li>
+                    <li class="list-group-item"><strong>Metaimage : </strong>{{result.link3.metaimage|escape}}</li>
+                    <li class="list-group-item"><strong>Favicon : </strong>{{result.link3.favicon|escape}}</li>
+                    <li class="list-group-item"><strong>Logo : </strong>{{result.link3.logo|escape}}</li>
+                    <li class="list-group-item"><strong>Theme color : </strong>{{result.link3.color|escape}}</li>
+                    <li class="list-group-item"><strong>Footer : </strong>{{result.link3.footer|escape}}</li>
+                    <li class="list-group-item">
+                        <square><strong>All images : </strong>
+                            {% for i in result.link3.allimages %}
+                            <li class="list-group-item">
+                                {{i}}
+                            </li>
+                            {% endfor %}
+                        </square>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!---------------------- link 4 ------------------------------>
+            <div class="card p-4">
+                <div class="card-header">
+                    <h2>{{result.link4.sitename|escape}}</h2>
+                    <hr>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Title : </strong>{{result.link4.title|escape}}</li>
+                    <li class="list-group-item"><strong>Url : </strong>{{result.link4.url|escape}}</li>
+                    <li class="list-group-item"><strong>Description : </strong>{{result.link4.description|escape}}</li>
+                    <li class="list-group-item"><strong>Metaimage : </strong>{{result.link4.metaimage|escape}}</li>
+                    <li class="list-group-item"><strong>Favicon : </strong>{{result.link4.favicon|escape}}</li>
+                    <li class="list-group-item"><strong>Logo : </strong>{{result.link4.logo|escape}}</li>
+                    <li class="list-group-item"><strong>Theme color : </strong>{{result.link4.color|escape}}</li>
+                    <li class="list-group-item"><strong>Footer : </strong>{{result.link4.footer|escape}}</li>
+                    <li class="list-group-item">
+                        <square><strong>All images : </strong>
+                            {% for i in result.link4.allimages %}
+                            <li class="list-group-item">
+                                {{i}}
+                            </li>
+                            {% endfor %}
+                        </square>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!---------------------- link 5 ------------------------------>
+            <div class="card p-4">
+                <div class="card-header">
+                    <h2>{{result.link5.sitename|escape}}</h2>
+                    <hr>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Title : </strong>{{result.link5.title|escape}}</li>
+                    <li class="list-group-item"><strong>Url : </strong>{{result.link5.url|escape}}</li>
+                    <li class="list-group-item"><strong>Description : </strong>{{result.link5.description|escape}}</li>
+                    <li class="list-group-item"><strong>Metaimage : </strong>{{result.link5.metaimage|escape}}</li>
+                    <li class="list-group-item"><strong>Favicon : </strong>{{result.link5.favicon|escape}}</li>
+                    <li class="list-group-item"><strong>Logo : </strong>{{result.link5.logo|escape}}</li>
+                    <li class="list-group-item"><strong>Theme color : </strong>{{result.link5.color|escape}}</li>
+                    <li class="list-group-item"><strong>Footer : </strong>{{result.link5.footer|escape}}</li>
+                    <li class="list-group-item">
+                        <square><strong>All images : </strong>
+                            {% for i in result.link5.allimages %}
+                            <li class="list-group-item">
+                                {{i}}
+                            </li>
+                            {% endfor %}
+                        </square>
+                    </li>
+
+                </ul>
+            </div>
             <br>
 
 

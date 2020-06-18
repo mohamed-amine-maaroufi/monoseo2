@@ -24,7 +24,6 @@ class Project(models.Model):
         unique_together = ('name', 'type',)
 
 
-
 #model list of searched keywords
 class KeyWord(models.Model):
     key = models.CharField(max_length=100)
