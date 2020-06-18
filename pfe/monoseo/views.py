@@ -11,6 +11,7 @@ from django.db import IntegrityError
 from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
+from django.utils import timezone
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -375,6 +376,8 @@ def createreport(request):
         sector = request.POST.get('sector', '')
         id_project = request.POST.get('id_project', '')
         project = Project.objects.get(id=id_project)
+        currentuser = request.user
+        datecreation = timezone.now()
 
         k = KeyWord()
         k.key = word
@@ -406,11 +409,12 @@ def createreport(request):
                 messages.error(request, 'There is some problem with google search library !!!')
 
             resofscrapping = analyse(links)
-            """return render(request, 'search.html',
-                          {'result': resofscrapping, 'keyword': word, 'domain': domain,
-                           'sector': sector, 'projects': projects})"""
 
-            return render(request, "analyse.html", {"result": resofscrapping, 'project': project})
+            return render(request, "analyse.html", {"result": resofscrapping, 'project': project,
+                                                    'keyword': word, 'domain': domain,
+                                                    'sector': sector, 'user': currentuser,
+                                                    'datecreation': datecreation
+                                                    })
 
         except IntegrityError as e:
             messages.error(request, 'Key word, it\'s already exist, this is the new result for its search')
@@ -434,10 +438,12 @@ def createreport(request):
                 messages.error(request, 'There is some problem with google search library !!!')
 
             resofscrapping = analyse(links)
-            """return render(request, 'search.html',
-                          {'result': resofscrapping,  'keyword': word, 'domain': domain,
-                           'sector': sector,'projects': projects})"""
-            return render(request, "analyse.html", {"result": resofscrapping,'project': project})
+
+            return render(request, "analyse.html", {"result": resofscrapping,'project': project,
+                                                    'keyword': word, 'domain': domain,
+                                                    'sector': sector, 'user' : currentuser,
+                                                    'datecreation': datecreation
+                                                    })
 
 
     return render(request, 'createreport.html', {'projects': projects})
