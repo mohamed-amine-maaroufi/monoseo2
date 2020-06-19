@@ -42,7 +42,7 @@ class KeyWord(models.Model):
 #model list of rapport
 class Report(models.Model):
     name = models.CharField(max_length=100, unique='true')
-    date_created = models.DateTimeField(default=timezone.now)
+    date_created_report = models.DateTimeField(default=timezone.now)
     keyword = models.ForeignKey(KeyWord, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):

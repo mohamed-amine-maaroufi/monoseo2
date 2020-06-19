@@ -6,19 +6,23 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Project, KeyWord
+from .models import Project, KeyWord, Report
 from django.db import IntegrityError
 from django.shortcuts import (get_object_or_404,
                               render,
                               HttpResponseRedirect)
 from django.utils import timezone
+from googlesearch import search
+
+# -*- coding: utf-8 -*-
 import requests
 from bs4 import BeautifulSoup
+import pprint
 import re
 import sys
-
 reload(sys)
 sys.setdefaultencoding('utf8')
+
 
 @login_required(login_url='/loginuser/')
 def index(request):
@@ -56,13 +60,20 @@ def register(request):
 @login_required(login_url='/loginuser/')
 def updateprofilinfo(request):
     user = request.user
+
     if request.method == 'POST':
-        lastname = request.POST.get('last_name', '')
-        firstname = request.POST.get('first_name', '')
-        upass = request.POST.get('password', '')
-    else:
-        lastname = request.POST.get('last_name', '')
+        last_name = request.POST.get('last_name', '')
+        first_name = request.POST.get('first_name', '')
+        email = request.POST.get('email', '')
+        user.last_name = last_name
+        user.first_name = first_name
+        user.email = email
+        user.save()
+        messages.success(request, 'Your password was successfully updated!')
+
+
     return render(request, 'updateuserinfo.html', {'user': user})
+
 
 def loginuser(request):
     if request.method == "POST":
@@ -81,9 +92,6 @@ def loginuser(request):
             messages.error(request, 'Invalid login details given')
             return redirect('loginuser')
     return render(request, 'login.html')
-
-def rapport(request):
-    return "report"
 
 
 @login_required(login_url='/loginuser/')
@@ -180,15 +188,7 @@ def deletekeyword(request,id):
 #################################################################################
 ################## scrapping functions ##########################################
 
-"""Scrape metadata from target URL."""
-# -*- coding: utf-8 -*-
-import requests
-from bs4 import BeautifulSoup
-import pprint
-import re
-import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
+
 
 def get_title(html):
     """Scrape page title."""
@@ -473,29 +473,34 @@ def createreport(request):
         k.project = project
 
         try:
+            from googlesearch import search
+            print("*" * 80)
+            print("result google")
+            links = []
+            query = word + " " + sector + "." + domain
+            for j in search(query, tld=domain, num=10, stop=10, pause=2):
+                print(j)
+                links.append(j)
+
+            print("*" * 80)
+
+            messages.success(request, 'The result of search finish with success')
+
+
+            resofscrapping = analyse(links,word)
+
+
             k.save()
             messages.success(request, 'Key word was saved with success !!!')
 
-            try:
-                from googlesearch import search
+            #save the report
+            name_report = "report_" + word
+            report = Report()
+            report.name = name_report;
+            report.keyword = k
+            report.save()
 
-                print("*" * 80)
-                print("result google")
-                links = []
-                query = word + " " + sector + "." + domain
-                for j in search(query, tld=domain, num=10, stop=10, pause=2):
-                    print(j)
-                    links.append(j)
-
-                print("*" * 80)
-
-                messages.success(request, 'The result of search finish with success')
-
-            except ImportError:
-                print("No module named 'google' found")
-                messages.error(request, 'There is some problem with google search library !!!')
-
-            resofscrapping = analyse(links,word)
+            messages.success(request, 'Report saved with success !!!')
 
             return render(request, "analyse.html", {"result": resofscrapping, 'project': project,
                                                     'keyword': word, 'domain': domain,
@@ -504,7 +509,7 @@ def createreport(request):
                                                     })
 
         except IntegrityError as e:
-            messages.error(request, 'Key word, it\'s already exist, this is the new result for its search')
+            messages.error(request, 'Key word: ' + word + ', it\'s already exist, this is the new result for its search')
             try:
                 from googlesearch import search
 
@@ -525,6 +530,17 @@ def createreport(request):
                 messages.error(request, 'There is some problem with google search library !!!')
 
             resofscrapping = analyse(links,word)
+
+            # save the report
+            name_report = "report_" + word
+            keywords_for_current_project = KeyWord.objects.filter(project=project)
+            keyword = keywords_for_current_project.get(key=word)
+
+            report = Report()
+            report.name = name_report
+            report.keyword = keyword
+            report.save()
+            messages.success(request, 'Report saved with success !!!')
 
             return render(request, "analyse.html", {"result": resofscrapping,'project': project,
                                                     'keyword': word, 'domain': domain,

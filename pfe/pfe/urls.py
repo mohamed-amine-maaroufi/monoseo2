@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from monoseo import views
+from django.contrib.auth.views import PasswordChangeView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,7 +27,6 @@ urlpatterns = [
     url(r'^updateprofilinfo/$', views.updateprofilinfo, name='updateprofilinfo'),
     url(r'^createproject/$', views.createproject, name='createproject'),
     url(r'^projets/$', views.projets, name='projets'),
-    url(r'^rapport/$', views.rapport, name='rapport'),
     url(r'^search/$', views.searchkeyword, name='search'),
     url(r'^createreport/$', views.createreport, name='createreport'),
     #url(r'^analyse/$', views.analyse, name='analyse'),
