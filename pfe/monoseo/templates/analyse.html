@@ -58,13 +58,27 @@
                     <li class="list-group-item"><strong>Name : </strong>{{result.link1.sitename|escape}}</li>
                     <li class="list-group-item"><strong>Title : </strong>{{result.link1.title|escape}}</li>
                     <li class="list-group-item"><strong>Url : </strong><a href="{{result.link1.url|escape}}">{{result.link1.url|escape}}</a></li>
+                    <li class="list-group-item"><strong>Phone : </strong><a href="{{result.link2.url|escape}}">{{result.link1.phone|escape}}</a></li>
+                    <li class="list-group-item"><strong>Email : </strong><a href="{{result.link2.url|escape}}">{{result.link1.email|escape}}</a></li>
                     <li class="list-group-item"><strong>Description : </strong>{{result.link1.description|escape}}</li>
+                    <li class="list-group-item"><strong>Paragraph has keyWord : </strong>{{result.link1.paragraph_has_keyword|escape}}</li>
                     <li class="list-group-item"><strong>Metaimage : </strong>{{result.link1.metaimage|escape}}</li>
                     <li class="list-group-item"><strong>Favicon : </strong>{{result.link1.favicon|escape}}</li>
                     <li class="list-group-item"><strong>Logo : </strong>{{result.link1.logo|escape}}</li>
                     <li class="list-group-item"><strong>Menu : </strong>{{result.link1.menu|escape}}</li>
                     <li class="list-group-item"><strong>Theme color : </strong>{{result.link1.color|escape}}</li>
                     <li class="list-group-item"><strong>Footer : </strong>{{result.link1.footer|escape}}</li>
+
+                    <li class="list-group-item">
+                        <square><p><strong>All links :</strong></p>
+                            {% for i in result.link1.alllinks %}
+
+
+                                 <li class="list-group-item">{{i}}</li>
+
+                            {% endfor %}
+                        </square>
+                    </li>
                    <li class="list-group-item">
                         <square><p><strong>All images :</strong></p>
                             {% for i in result.link1.allimages %}
@@ -90,14 +104,26 @@
 
                     <li class="list-group-item"><strong>Title : </strong>{{result.link2.title|escape}}</li>
                     <li class="list-group-item"><strong>Url : </strong><a href="{{result.link2.url|escape}}">{{result.link2.url|escape}}</a></li>
+                    <li class="list-group-item"><strong>Phone : </strong><a href="{{result.link2.url|escape}}">{{result.link2.phone|escape}}</a></li>
+                    <li class="list-group-item"><strong>Email : </strong><a href="{{result.link2.url|escape}}">{{result.link2.email|escape}}</a></li>
                     <li class="list-group-item"><strong>Description : </strong>{{result.link2.description|escape}}</li>
+                    <li class="list-group-item"><strong>Paragraph has keyWord : </strong>{{result.link2.paragraph_has_keyword|escape}}</li>
                     <li class="list-group-item"><strong>Metaimage : </strong>{{result.link2.metaimage|escape}}</li>
                     <li class="list-group-item"><strong>Favicon : </strong>{{result.link2.favicon|escape}}</li>
                     <li class="list-group-item"><strong>Logo : </strong>{{result.link2.logo|escape}}</li>
                     <li class="list-group-item"><strong>Menu : </strong>{{result.link2.menu|escape}}</li>
                     <li class="list-group-item"><strong>Theme color : </strong>{{result.link2.color|escape}}</li>
                     <li class="list-group-item"><strong>Footer : </strong>{{result.link2.footer|escape}}</li>
+                    <li class="list-group-item">
+                        <square><p><strong>All links :</strong></p>
+                            {% for i in result.link2.alllinks %}
 
+
+                                 <li class="list-group-item">{{i}}</li>
+
+                            {% endfor %}
+                        </square>
+                    </li>
 
                     <li class="list-group-item">
                         <square><p><strong>All images :</strong></p>
@@ -126,13 +152,26 @@
 
                     <li class="list-group-item"><strong>Title : </strong>{{result.link3.title|escape}}</li>
                     <li class="list-group-item"><strong>Url : </strong><a href="{{result.link3.url|escape}}">{{result.link3.url|escape}}</a></li>
+                    <li class="list-group-item"><strong>Phone : </strong><a href="{{result.link2.url|escape}}">{{result.link3.phone|escape}}</a></li>
+                    <li class="list-group-item"><strong>Email : </strong><a href="{{result.link2.url|escape}}">{{result.link3.email|escape}}</a></li>
                     <li class="list-group-item"><strong>Description : </strong>{{result.link3.description|escape}}</li>
+                      <li class="list-group-item"><strong>Paragraph has keyWord : </strong>{{result.link3.paragraph_has_keyword|escape}}</li>
                     <li class="list-group-item"><strong>Metaimage : </strong>{{result.link3.metaimage|escape}}</li>
                     <li class="list-group-item"><strong>Favicon : </strong>{{result.link3.favicon|escape}}</li>
                     <li class="list-group-item"><strong>Logo : </strong>{{result.link3.logo|escape}}</li>
                     <li class="list-group-item"><strong>Menu : </strong>{{result.link3.menu|escape}}</li>
                     <li class="list-group-item"><strong>Theme color : </strong>{{result.link3.color|escape}}</li>
                     <li class="list-group-item"><strong>Footer : </strong>{{result.link3.footer|escape}}</li>
+                    <li class="list-group-item">
+                        <square><p><strong>All links :</strong></p>
+                            {% for i in result.link3.alllinks %}
+
+
+                                 <li class="list-group-item">{{i}}</li>
+
+                            {% endfor %}
+                        </square>
+                    </li>
                     <li class="list-group-item">
                         <square><p><strong>All images :</strong></p>
                             {% for i in result.link3.allimages %}
@@ -158,13 +197,27 @@
 
                     <li class="list-group-item"><strong>Title : </strong>{{result.link4.title|escape}}</li>
                     <li class="list-group-item"><strong>Url : </strong><a href="{{result.link4.url|escape}}">{{result.link4.url|escape}}</a></li>
+                    <li class="list-group-item"><strong>Phone : </strong><a href="{{result.link2.url|escape}}">{{result.link4.phone|escape}}</a></li>
+                    <li class="list-group-item"><strong>Email : </strong><a href="{{result.link2.url|escape}}">{{result.link4.email|escape}}</a></li>
                     <li class="list-group-item"><strong>Description : </strong>{{result.link4.description|escape}}</li>
+                    <li class="list-group-item"><strong>Paragraph has keyWord : </strong>{{result.link4.paragraph_has_keyword|escape}}</li>
+
                     <li class="list-group-item"><strong>Metaimage : </strong>{{result.link4.metaimage|escape}}</li>
                     <li class="list-group-item"><strong>Favicon : </strong>{{result.link4.favicon|escape}}</li>
                     <li class="list-group-item"><strong>Logo : </strong>{{result.link4.logo|escape}}</li>
                     <li class="list-group-item"><strong>Menu : </strong>{{result.link4.menu|escape}}</li>
                     <li class="list-group-item"><strong>Theme color : </strong>{{result.link4.color|escape}}</li>
                     <li class="list-group-item"><strong>Footer : </strong>{{result.link4.footer|escape}}</li>
+                    <li class="list-group-item">
+                        <square><p><strong>All links :</strong></p>
+                            {% for i in result.link4.alllinks %}
+
+
+                                 <li class="list-group-item">{{i}}</li>
+
+                            {% endfor %}
+                        </square>
+                    </li>
                     <li class="list-group-item">
                         <square><p><strong>All images :</strong></p>
                             {% for i in result.link4.allimages %}
@@ -190,13 +243,27 @@
 
                     <li class="list-group-item"><strong>Title : </strong>{{result.link5.title|escape}}</li>
                     <li class="list-group-item"><strong>Url : </strong><a href="{{result.link5.url|escape}}">{{result.link5.url|escape}}</a></li>
+                    <li class="list-group-item"><strong>Phone : </strong><a href="{{result.link2.url|escape}}">{{result.link5.phone|escape}}</a></li>
+                    <li class="list-group-item"><strong>Email : </strong><a href="{{result.link2.url|escape}}">{{result.link5.email|escape}}</a></li>
                     <li class="list-group-item"><strong>Description : </strong>{{result.link5.description|escape}}</li>
+                    <li class="list-group-item"><strong>Paragraph has keyWord : </strong>{{result.link5s.paragraph_has_keyword|escape}}</li>
+
                     <li class="list-group-item"><strong>Metaimage : </strong>{{result.link5.metaimage|escape}}</li>
                     <li class="list-group-item"><strong>Favicon : </strong>{{result.link5.favicon|escape}}</li>
                     <li class="list-group-item"><strong>Logo : </strong>{{result.link5.logo|escape}}</li>
                     <li class="list-group-item"><strong>Menu : </strong>{{result.link5.menu|escape}}</li>
                     <li class="list-group-item"><strong>Theme color : </strong>{{result.link5.color|escape}}</li>
                     <li class="list-group-item"><strong>Footer : </strong>{{result.link5.footer|escape}}</li>
+                   <li class="list-group-item">
+                        <square><p><strong>All links :</strong></p>
+                            {% for i in result.link5.alllinks %}
+
+
+                                 <li class="list-group-item">{{i}}</li>
+
+                            {% endfor %}
+                        </square>
+                    </li>
                     <li class="list-group-item">
                         <square><p><strong>All images :</strong></p>
                             {% for i in result.link5.allimages %}

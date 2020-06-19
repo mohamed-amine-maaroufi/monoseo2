@@ -20,18 +20,17 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-@login_required(login_url='loginuser/')
+@login_required(login_url='/loginuser/')
 def index(request):
 	projects = Project.objects.all()
 	keywords = KeyWord.objects.all()
 	return render(request, 'index.html', {'projects' : projects, 'keywords' : keywords})
 
-
-@login_required
+@login_required(login_url='/loginuser/')
 def special(request):
     return HttpResponse("You are logged in !")
 
-@login_required
+@login_required(login_url='/loginuser/')
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
@@ -54,6 +53,17 @@ def register(request):
                   {'user_form': form,
                    'registered': registered})
 
+@login_required(login_url='/loginuser/')
+def updateprofilinfo(request):
+    user = request.user
+    if request.method == 'POST':
+        lastname = request.POST.get('last_name', '')
+        firstname = request.POST.get('first_name', '')
+        upass = request.POST.get('password', '')
+    else:
+        lastname = request.POST.get('last_name', '')
+    return render(request, 'updateuserinfo.html', {'user': user})
+
 def loginuser(request):
     if request.method == "POST":
         uname = request.POST.get('username','')
@@ -72,7 +82,8 @@ def loginuser(request):
             return redirect('loginuser')
     return render(request, 'login.html')
 
-
+def rapport(request):
+    return "report"
 
 
 @login_required(login_url='/loginuser/')
@@ -89,11 +100,8 @@ def keywords(request,id):
 
 
 
-def rapport(request):
 
-    return "hello"
-
-
+@login_required(login_url='/loginuser/')
 def createproject(request):
     if request.method == "POST":
         name = request.POST.get('name','')
@@ -111,6 +119,7 @@ def createproject(request):
             return redirect('createproject')
 
     return render(request, 'createproject.html')
+
 
 def addquickwork(request,id):
 
@@ -317,7 +326,81 @@ def get_menu(html):
             menu.append(a['href'])"""
     return menu
 
-def scrape_page_data(url):
+
+def get_paragraph_has_myword(html, keyword):
+    paragraph = None
+    try:
+        paragraph = html.find(lambda tag: keyword in tag.string if tag.string else False).get_text()
+
+    except:
+        pass
+    return paragraph
+
+def get_all_links(html):
+    links = []
+    try:
+        for link in html.findAll('a', attrs={'href': re.compile("^http://")}):
+            links.append(link.get('href'))
+    except:
+        pass
+    return links
+
+"""def get_phone(soup):
+
+    try:
+        phone = soup.select("a[href*=callto]")[0].text
+        return phone
+    except:
+        pass
+
+    try:
+        phone = re.findall(r'\(?\b[2-9][0-9]{2}\)?[-][2-9][0-9]{2}[-][0-9]{4}\b', response.text)[0]
+        return phone
+    except:
+        pass
+
+    try:
+       phone = re.findall(r'\(?\b[2-9][0-9]{2}\)?[-. ]?[2-9][0-9]{2}[-. ]?[0-9]{4}\b', response.text)[-1]
+       return phone
+    except:
+        print ('Phone number not found')
+        phone = ''
+        return phone"""
+
+
+def get_phone(html):
+    phone = None
+    phoneRegEx1 = re.compile('\"tel\:[\(\)\-0-9\ ]{1,}\"')
+    phoneRegEx2 = re.compile('\"phone\:[\(\)\-0-9\ ]{1,}\"')
+
+    try:
+
+        if html.find_all(phoneRegEx1):
+            phone = html.find_all(phoneRegEx1).get_text()
+
+        elif html.find_all(phoneRegEx2):
+            phone = html.find_all(phoneRegEx2).get_text()
+
+    except:
+        pass
+
+    return phone
+
+def get_email(soup):
+    try:
+        email = re.findall(r'([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)', response.text)[-1]
+        return email
+    except:
+        pass
+
+    try:
+        email = soup.select("a[href*=mailto]")[-1].text
+    except:
+        print ('Email not found')
+        email = ''
+        return email
+
+def scrape_page_data(url,keyword):
     """Scrape target URL for metadata."""
     headers = {
         'Access-Control-Allow-Origin': '*',
@@ -340,13 +423,17 @@ def scrape_page_data(url):
         'footer': get_footer(html),
         'color': get_theme_color(html),
         'logo': get_logo(html),
+        'paragraph_has_keyword' : get_paragraph_has_myword(html,keyword),
+        'alllinks' : get_all_links(html),
+        'phone' : get_phone(html),
+        'email' : get_email(html),
         'url': url
     }
     pp.pprint(metadata)
     return metadata
 
 
-def analyse(links):
+def analyse(links,keyword):
 
 
     list_links = ['link1','link2','link3','link4','link5']
@@ -356,7 +443,7 @@ def analyse(links):
         print("*" * 50)
         i = i + 1
         print(i)
-        scrappe_data.append(scrape_page_data(url))
+        scrappe_data.append(scrape_page_data(url,keyword))
 
     result = dict(zip(list_links, scrappe_data))
     # return HttpResponse(soup)
@@ -408,7 +495,7 @@ def createreport(request):
                 print("No module named 'google' found")
                 messages.error(request, 'There is some problem with google search library !!!')
 
-            resofscrapping = analyse(links)
+            resofscrapping = analyse(links,word)
 
             return render(request, "analyse.html", {"result": resofscrapping, 'project': project,
                                                     'keyword': word, 'domain': domain,
@@ -437,7 +524,7 @@ def createreport(request):
                 print("No module named 'google' found")
                 messages.error(request, 'There is some problem with google search library !!!')
 
-            resofscrapping = analyse(links)
+            resofscrapping = analyse(links,word)
 
             return render(request, "analyse.html", {"result": resofscrapping,'project': project,
                                                     'keyword': word, 'domain': domain,
@@ -492,7 +579,7 @@ def searchkeyword(request):
                 print("No module named 'google' found")
                 messages.error(request, 'There is some problem with google search library !!!')
 
-            resofscrapping = analyse(links)
+            resofscrapping = analyse(links,word)
             return render(request, 'search.html',
                           {'result': resofscrapping, 'keyword': word, 'domain': domain,
                            'sector': sector, 'projects': projects})
@@ -518,7 +605,7 @@ def searchkeyword(request):
                 print("No module named 'google' found")
                 messages.error(request, 'There is some problem with google search library !!!')
 
-            resofscrapping = analyse(links)
+            resofscrapping = analyse(links,word)
             return render(request, 'search.html',
                           {'result': resofscrapping,  'keyword': word, 'domain': domain,
                            'sector': sector,'projects': projects})

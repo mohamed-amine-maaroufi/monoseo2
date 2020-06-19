@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title_page %} Update profil {% endblock %}
+
+{% block content %}
+
+<section class="content" style="padding-top: 130px;">
+    <div class="content__inner">
+        <header class="content__title">
+            <h1>Update profile</h1>
+
+        </header>
+
+        <div class="card">
+            <div class="card-header" style="background-color: #00294e;">
+
+
+            </div>
+            <div>
+
+                <center>
+                    <h1> Update profile</h1>
+
+                    {% if messages %}
+                        <div class="span12">
+                        {% for message in messages %}
+                            {% if message.tags == 'success' %}
+									<div class="alert alert-success" role="alert">
+										{{ message|safe }}
+									</div>
+								{% endif %}
+
+								{% if message.tags == 'error' %}
+									<div class="alert alert-danger" role="alert">
+										{{ message|safe }}
+									</div>
+								{% endif %}
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                </center>
+
+
+                <div class="login__block__body">
+
+					<form method="post" enctype="multipart/form-data" action="{% url 'updateprofilinfo' %}">
+							{% csrf_token %}
+						<div class="form-group">
+							<label>Username</label>
+
+							<input type="text" name="username" id="id_username" value="{{user.username}}" autofocus="" disabled class="form-control" maxlength="150">
+						</div>
+
+
+						<div class="form-group">
+							<label>First name</label>
+
+							<input type="text" name="first_name" id="id_first_name" value="{{user.first_name}}" class="form-control" maxlength="30">
+						</div>
+
+
+						<div class="form-group">
+							<label>Last name</label>
+
+							<input type="text" name="last_name" id="id_last_name" value="{{user.last_name}}" class="form-control" maxlength="30">
+						</div>
+
+
+						<div class="form-group">
+							<label>Email</label>
+
+							<input type="email" name="email" required="" id="id_email" value="{{user.email}}" class="form-control" maxlength="254">
+						</div>
+
+
+						<div class="form-group">
+							<label>Password</label>
+
+							<input type="password" name="password1" required="" value="{{user.password}}" class="form-control" id="id_password1">
+						</div>
+
+
+						<div class="form-group">
+							<label>Password confirmation</label>
+
+							<input type="password" name="password2" required="" class="form-control" id="id_password2">
+						</div>
+
+						<center>
+										<button type="submit" id="form_create_new_btn" class="btn btn-primary color-white waves-effect"><span id="sign_in_text">Update profile</span> &nbsp; <i id="sign_in_icon" class="zmdi zmdi-long-arrow-right"></i></button>
+
+
+						</center>
+
+					</form>
+	            </div>
+
+
+
+            </div>
+
+
+
+        </div>
+</section>
+
+{% endblock %}
