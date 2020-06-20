@@ -36,12 +36,13 @@ class KeyWord(models.Model):
         return self.key
 
     class Meta:
-        unique_together = (('key', 'domain'), ('sector', 'project'))
+        unique_together = ('key', 'domain')
+        unique_together = ('sector', 'project')
 
 
 #model list of rapport
 class Report(models.Model):
-    name = models.CharField(max_length=100, unique='true')
+    name = models.CharField(max_length=100, blank=True)
     date_created_report = models.DateTimeField(default=timezone.now)
     keyword = models.ForeignKey(KeyWord, on_delete=models.CASCADE, null=True, blank=True)
 
