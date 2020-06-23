@@ -32,6 +32,8 @@ urlpatterns = [
     #url(r'^analyse/$', views.analyse, name='analyse'),
     url(r'^addquickwork/(?P<id>[0-9]+)$', views.addquickwork, name='addquickwork'),
     url(r'^keywords/(?P<id>[0-9]+)$', views.keywords, name='keywords'),
+    url(r'^getkeywords/(?P<id>[0-9]+)$', views.getkeywords, name='getkeywords'),
+    url(r'^fillsector_domain/(?P<idproject>[0-9]+)/(?P<idkeyword>[0-9]+)$', views.fillsector_domain, name='fillsector_domain'),
     url(r'^deleteproject/(?P<id>[0-9]+)$', views.deleteproject, name='deleteproject'),
     url(r'^deletekeyword/(?P<id>[0-9]+)$', views.deletekeyword, name='deletekeyword'),
 ]
