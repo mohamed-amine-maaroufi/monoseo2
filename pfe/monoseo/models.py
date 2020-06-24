@@ -44,7 +44,11 @@ class KeyWord(models.Model):
 class Report(models.Model):
     name = models.CharField(max_length=100, blank=True)
     date_created_report = models.DateTimeField(default=timezone.now)
+    project = models.ForeignKey(Project, null=True, blank=True)
     keyword = models.ForeignKey(KeyWord, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        unique_together = ('name','keyword')

@@ -21,6 +21,7 @@ from bs4 import BeautifulSoup
 import pprint
 import re
 import sys
+import os
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -430,11 +431,54 @@ def analyse(links,keyword):
 
 ######################### end scrapping functions #######################
 
+
+@login_required(login_url='/loginuser/')
+def reports(request):
+    #by default we send the data of first project to view
+    projects = Project.objects.filter(user=request.user)
+
+    firstproject = None
+    for project in projects:
+        firstproject = project
+        break
+
+    selected_project = firstproject.id
+    #reports of first porject
+    reports= Report.objects.filter(project = firstproject)
+
+    file_path = os.path.join(os.path.abspath(os.path.dirname("__file__")), "reports", "")
+
+    return render(request, 'reports.html', {'projects': projects,
+                                            'reports': reports,
+                                            'selected_project': selected_project,
+                                            'localpath': file_path})
+
+def getreports(request,id):
+    projects = Project.objects.filter(user=request.user)
+    reports = Report.objects.filter(project = id);
+    selected_project = Project.objects.get(id=id)
+    return render(request, 'reports.html', {'projects': projects, 'reports': reports,
+                                           'selected_project':selected_project})
+
+
+def deletereport(request,id):
+
+    # fetch the object related to passed id
+    obj = get_object_or_404(Report, id=id)
+
+    if request.method == "POST":
+        # delete object
+        obj.delete()
+        # after deleting redirect to
+        messages.success(request, 'Report deleted with success !!!')
+        return HttpResponseRedirect("/reports")
+
+    return render(request, "reports.html")
+
 ######################### create report #################################
 @login_required(login_url='/loginuser/')
 def createreport(request):
     projects = Project.objects.filter(user=request.user)
-
 
     if request.method == "POST":
         word = request.POST.get('keywordofreport', '')
@@ -471,11 +515,20 @@ def createreport(request):
         keywords_for_current_project = KeyWord.objects.filter(project=project)
         keyword = keywords_for_current_project.get(key=word)
 
-        report = Report()
-        report.name = name_report
-        report.keyword = keyword
-        report.save()
-        messages.success(request, 'Report saved with success !!!')
+
+
+        try:
+            #save in table report in there is no old report for this word
+            report = Report()
+            report.name = name_report
+            report.keyword = keyword
+            report.project = project
+            report.save()
+            print ("report saved !!!")
+        except IntegrityError as e:
+            #update the date of creation for the report of the word
+            Report.objects.filter(keyword=keyword).update(date_created_report=timezone.now())
+            print ("report updated !!!")
 
         print("******************* before save pdf ************")
         Render.render_to_file('analyse.html', {"result": resofscrapping, 'project': project,
@@ -491,7 +544,7 @@ def createreport(request):
                                        })
 
 
-    return render(request, 'createreport.html', {'projects': projects})
+    return render(request, 'reports.html', {'projects': projects})
 
 ######################### end create report #############################
 

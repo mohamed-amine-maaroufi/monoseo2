@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% block title_page %} Reports {% endblock %}
+
+{% block content %}
+<style>
+        #loader {
+            border: 12px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 12px solid #444444;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .center {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+</style>
+
+<section class="content" style="padding-top: 130px;">
+    <div class="content__inner">
+        <header class="content__title">
+            <h1>List of Reports</h1>
+
+        </header>
+
+        <div class="card">
+            <div class="card-header" style="background-color: #00294e;">
+
+
+            </div>
+            <div>
+
+                <center>
+                    <h1> Select a project to get thier reports</h1>
+
+                    {% if messages %}
+
+                    <div class="span12">
+                        {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message|safe }}
+                        </div>
+                        {% endif %}
+
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message|safe }}
+                        </div>
+                        {% endif %}
+
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </center>
+
+
+                <div class="card">
+                    <div class="tab-container">
+
+
+                        <div class="tab-content p-5">
+
+                            <div class="tab-pane active fade show" id="shown_projects" role="tabpanel">
+
+
+                                <div class="form-group">
+                                    <label>Project</label>
+                                    <select class="form-control" name="id_project" id="currentproject">
+                                        {% for project in projects %}
+                                        <option id="idproject" value="{{project.id}}"
+                                        {% if project.id == selected_project.id %}selected="selected"{% endif %}>{{project.name}}</option>
+                                        {% endfor%}
+                                    </select>
+                                </div>
+
+                                <table style="width: 100%"
+                                       class="table table-sorting table-striped table-hover tab_table" id="main_table">
+                                    <thead>
+                                    <tr class="color-white">
+                                        <th rowspan="1" colspan="10" class="bg-teal hidden-lg-down">
+
+
+                                        </th>
+                                    </tr>
+
+                                    <tr class="color-white">
+
+                                        <th class="bg-sw-blue">ID</th>
+                                        <th class="bg-sw-blue">Report Name</th>
+                                        <th class="bg-sw-blue">Created At</th>
+                                        <th class="bg-sw-blue hidden-md-down" data-sort="int">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                {% if reports %}
+                                    {% for i in reports %}
+
+                                    <tr class="project_row" data-id="3" id="row_3">
+
+                                        <td class="text-center " data-sort-value="regular">{{i.id}}</td>
+                                        <td class="text-center " data-sort-value="regular">
+                                            <a href="{{localpath}}{{i.name}}" target="_blank">{{i.name}}</a></td>
+                                        <td class="text-center " data-sort-value="regular">{{i.date_created_report}}</td>
+                                        <td class="text-center hidden-md-down" data-sort-value="1">
+
+
+                                            <form action="/deletereport/{{ i.id }}"
+                                                  method="post" style="display: inline;" onsubmit="window.mytest()">
+                                                {% csrf_token %}
+
+
+                                                <button type="submit"
+                                                    class="btn btn-danger btn waves-effect a_projects_quick_add_btn"
+                                                    data-project-id="3"><i class="zmdi zmdi-delete"></i> <a
+                                                    style="color: white;" > Delete </a></button>
+                                            </form>
+                                            <script type="text/javascript">
+                                                window.mytest = function() { var isValid = confirm('Are you sure ?');if (!isValid) { event.preventDefault();  alert("It wont delete. Yay!");}}
+                                            </script>
+
+                                        </td>
+
+                                        </td>
+                                      </tr>
+
+
+                                    {% endfor %}
+
+                                {% else %}
+
+                                    <div class="alert alert-info" role="alert">
+                                        <h3>There is no reports generated in this selected project</h3>
+                                    </div>
+
+                                {% endif %}
+
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+</section>
+
+
+<script>
+
+//get list keywords of the selected project
+var select_project = document.getElementById('currentproject');
+document.getElementById("currentproject").onchange = function()
+{
+
+  console.log(select_project.value);
+
+  var url = "/getreports/";
+  var id = select_project.value;
+
+   // Construct the full URL with "id"
+   document.location.href = url + id;
+};
+
+
+</script>
+
+{% endblock %}
