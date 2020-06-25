@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 from django.shortcuts import render, redirect
 from monoseo.forms import UserForm
 from django.contrib.auth import authenticate, login, logout
@@ -28,9 +28,20 @@ sys.setdefaultencoding('utf8')
 
 @login_required(login_url='/loginuser/')
 def index(request):
-	projects = Project.objects.all()
-	keywords = KeyWord.objects.all()
-	return render(request, 'index.html', {'projects' : projects, 'keywords' : keywords})
+    projects = Project.objects.filter(user=request.user)
+    keywords = KeyWord.objects.all()
+
+    list_keywords_of_user = []
+
+
+    for project in projects:
+        for keyword in keywords:
+            print(keyword.project == project.id)
+            print ("keyword: " + str(keyword.project_id))
+            if (keyword.project_id == project.id):
+                list_keywords_of_user.append(keyword)
+
+    return render(request, 'index.html', {'projects' : projects, 'keywords' : list_keywords_of_user})
 
 @login_required(login_url='/loginuser/')
 def special(request):
@@ -242,25 +253,45 @@ def get_image(html):
 def get_all_images(html):
     """Scrape share image."""
     image = []
-    imagespng = html.find_all('img', {'src': re.compile('.png')})
-    imagesjepg = html.find_all('img', {'src': re.compile('.jepg')})
-    imagesjpg = html.find_all('img', {'src': re.compile('.jpg')})
-    for img in imagespng:
-        image.append(img['src'])
-    for img in imagesjepg:
-        image.append(img['src'])
-    for img in imagesjpg:
-        image.append(img['src'])
+
+    pattern = re.compile(r' ')
+
+    try:
+        imagespng = html.find_all('img', {'src': re.compile('.png')})
+        imagesjepg = html.find_all('img', {'src': re.compile('.jepg')})
+        imagesjpg = html.find_all('img', {'src': re.compile('.jpg')})
+        for img in imagespng:
+            if pattern.findall(img['src']):
+                print(' space Found')
+            else:
+                image.append(img['src'].encode('UTF-8').strip())
+
+        for img in imagesjepg:
+            if pattern.findall(img['src']):
+                print(' space Found')
+            else:
+                image.append(img['src'].encode('UTF-8').strip())
+
+        for img in imagesjpg:
+            if pattern.findall(img['src']):
+                print(' space Found')
+            else:
+                image.append(img['src'].encode('UTF-8').strip())
+
+    except:
+        pass
 
     return image
 
 
 def get_logo(html):
     """Scrape share image."""
-    logo = None
-    if html.find("img", class_="logo"):
-        text = html.find("img", class_="logo")
-
+    try:
+        logo = None
+        if html.find("img", class_="logo"):
+            text = html.find("img", class_="logo")
+    except:
+        pass
     return logo
 
 
@@ -300,14 +331,19 @@ def get_footer(html):
 
 def get_favicon(html, url):
     """Scrape favicon."""
-    if html.find("link", attrs={"rel": "icon"}):
-        favicon = html.find("link", attrs={"rel": "icon"}).get('href')
-    elif html.find("link", attrs={"rel": "shortcut icon"}):
-        favicon = html.find("link", attrs={"rel": "shortcut icon"}).get('href')
-    else:
-        favicon = "empty favicon"
-    return favicon
+    favicon = None
+    try:
+        if html.find("link", attrs={"rel": "icon"}):
+            favicon = html.find("link", attrs={"rel": "icon"}).get('href')
+        elif html.find("link", attrs={"rel": "shortcut icon"}):
+            favicon = html.find("link", attrs={"rel": "shortcut icon"}).get('href')
+        else:
+            favicon = "empty favicon"
 
+    except:
+        pass
+
+    return favicon
 
 def get_theme_color(html):
     """Scrape brand color."""
