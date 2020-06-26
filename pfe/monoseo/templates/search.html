@@ -78,13 +78,14 @@
                         <div class="form-group">
                             <label>Project</label>
                             <select class="form-control" name="id_project" id="currentproject">
+
                                 {% for project in projects %}
                                 <option id="idproject" value="{{project.id}}"
                                 {% if project.id == selected_project.id %}selected="selected"{% endif %}>{{project.name}}</option>
                                 {% endfor%}
                             </select>
                         </div>
-
+    
                         {% if keywords %}
                         <div class="form-group">
                             <label>Key word</label>

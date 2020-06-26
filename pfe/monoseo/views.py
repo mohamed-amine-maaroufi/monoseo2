@@ -13,6 +13,7 @@ from django.shortcuts import (get_object_or_404,
                               HttpResponseRedirect)
 from django.utils import timezone
 from .render import Render
+from django.contrib.auth.models import User
 from googlesearch import search
 
 # -*- coding: utf-8 -*-
@@ -54,21 +55,27 @@ def user_logout(request):
 
 def register(request):
     registered = False
+
+
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
+
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+
             login(request, user)
+
             messages.success(request, "Thank for your registration")
             registered = True
-    else:
-        form = UserForm()
+
+
     return render(request, 'register.html',
                   {'user_form': form,
-                   'registered': registered})
+                   'registered': registered
+                   })
 
 @login_required(login_url='/loginuser/')
 def updateprofilinfo(request):
@@ -251,7 +258,7 @@ def get_image(html):
 
 
 def get_all_images(html):
-    """Scrape share image."""
+    
     image = []
 
     pattern = re.compile(r' ')
@@ -282,6 +289,7 @@ def get_all_images(html):
         pass
 
     return image
+
 
 
 def get_logo(html):
@@ -465,8 +473,20 @@ def analyse(links,keyword):
     # return HttpResponse(soup)
     return result
 
+
+
+
 ######################### end scrapping functions #######################
 
+############################### begin - function open pdef file ###############
+
+def pdf_view(request, name_pdf):
+    with open('C:\\Users\\amine\\PycharmProjects\\monoseo2\\pfe\\reports\\'+name_pdf, 'rb') as pdf:
+        response = HttpResponse(pdf.read(),content_type='application/pdf')
+        response['Content-Disposition'] = 'filename=some_file.pdf'
+        return response
+
+############################### end - open pdef file ##########################
 
 @login_required(login_url='/loginuser/')
 def reports(request):

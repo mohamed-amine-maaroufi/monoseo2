@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^reports/$', views.reports, name='reports'),
     url(r'^search/$', views.searchkeyword, name='search'),
     url(r'^createreport/$', views.createreport, name='createreport'),
+    url(r'^pdf_view/(?P<name_pdf>.*)$', views.pdf_view, name='pdf_view'),
     #url(r'^analyse/$', views.analyse, name='analyse'),
     url(r'^addquickwork/(?P<id>[0-9]+)$', views.addquickwork, name='addquickwork'),
     url(r'^keywords/(?P<id>[0-9]+)$', views.keywords, name='keywords'),
