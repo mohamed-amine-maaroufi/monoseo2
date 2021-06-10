@@ -2,7 +2,7 @@ backports.functools-lru-cache==1.6.1
 beautifulsoup4==4.9.1
 certifi==2020.4.5.2
 chardet==3.0.4
-Django==1.11.29
+Django==2.2.24
 google==2.0.3
 google-search==1.0.2
 html5lib==1.0.1
