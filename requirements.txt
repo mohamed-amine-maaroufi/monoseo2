@@ -8,7 +8,7 @@ google-search==1.0.2
 html5lib==1.0.1
 idna==2.9
 lxml==4.5.1
-Pillow==6.2.2
+Pillow==9.3.0
 pyPdf==1.13
 PyPDF2==1.26.0
 pytz==2020.1
